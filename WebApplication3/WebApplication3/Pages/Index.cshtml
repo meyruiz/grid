@@ -68,8 +68,8 @@
                 document.onmousemove = document.onmouseup = '';
             }
             document.onmousemove = (e) => {
-                var x = Math.floor(e.clientX / width) * width;
-                var y = Math.floor(e.clientY / height) * height;
+                var x = Math.floor(e.clientX / gridSize) * gridSize;
+                var y = Math.floor(e.clientY / gridSize) * gridSize;
                 this.style.transform = 'translate(' + x + 'px,' + y + 'px)';
             }
 
