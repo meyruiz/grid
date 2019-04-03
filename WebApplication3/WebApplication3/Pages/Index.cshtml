@@ -5,13 +5,7 @@
 }
 
 <body>
-    <div class="header">
-        <a href="#remove-row" class="button remove-row">-</a>
-        <a href="#add-row" class="button add-row">+</a>
-        <p>
-            <a class="github-button" href="https://github.com/hootsuite/grid" data-style="mega" data-count-href="/hootsuite/grid/stargazers" data-count-api="/repos/hootsuite/grid#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star hootsuite/grid on GitHub">GitHub</a>
-        </p>
-    </div>
+
 
     <!--<div class="grid-container">
         <ul id="grid" class="grid">
@@ -20,6 +14,28 @@
             </li>
         </ul>
     </div>-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Cut Size</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text" name="lengthIN"> IN </p>
+                    <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="createSquare()">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 
@@ -38,7 +54,7 @@
 
     // Add square when clicked.
     canvas.onclick = function (e) {
-
+        $('#exampleModal').modal('show');
         promptSize(e.clientX, e.clientY);
     }
 
@@ -60,7 +76,7 @@
         sq.style.width = width + 'px';
         sq.style.height = height + 'px';
         sq.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-        sq.style.backgroundColor = randColor(0, 150);
+        sq.style.backgroundColor = 'rgba(72,132,192,1)';
 
         // Drag/Drop.
         sq.onmousedown = function () {
