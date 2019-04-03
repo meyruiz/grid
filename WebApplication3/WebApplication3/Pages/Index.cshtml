@@ -5,17 +5,6 @@
 }
 
 <body>
-
-
-    <!--<div class="grid-container">
-        <ul id="grid" class="grid">
-            <li class="position-highlight">
-                <div class="inner"></div>
-            </li>
-        </ul>
-    </div>-->
-
-    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -49,30 +38,26 @@
     // Create Canvas
     var canvas = createCanvas(window.innerWidth, window.innerHeight);
     var ctx = canvas.getContext('2d');
-
+    var event;
 
 
     // Add square when clicked.
     canvas.onclick = function (e) {
         $('#exampleModal').modal('show');
-        promptSize(e.clientX, e.clientY);
+        event = e;
     }
 
-    function promptSize(x, y) {
-        var width = prompt("width:", 20);
-        var height = prompt("height:", 20);
-        if (width == null || width == "" || height == null || height == "") {
-            txt = "User cancelled the prompt.";
-        } else {
-            createSquare(x, y, width, height);
-        }
-    }
-
-    function createSquare(x, y, width, height) {
+    function createSquare() {
+        var x = event.clientX;
+        var y = event.clientY;
+        
+        var width = document.getElementById("lengthFT").value * gridSize;
+        var height = document.getElementById("widthIN").value * gridSize;
         x = Math.floor(x / width) * width;
         y = Math.floor(y / height) * height;
 
         var sq = document.createElement('div');
+        sq.style.position = "absolute";
         sq.style.width = width + 'px';
         sq.style.height = height + 'px';
         sq.style.transform = 'translate(' + x + 'px,' + y + 'px)';
@@ -92,6 +77,7 @@
         }
 
         document.body.appendChild(sq);
+        $('#exampleModal').modal('hide');
     }
 
     // Draw Grid.
@@ -121,16 +107,6 @@
         canvas.height = h;
         document.body.appendChild(canvas);
         return canvas;
-    }
-
-    function rand(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-    function randColor(min, max) {
-        var r = Math.floor(rand(min, max)),
-            g = Math.floor(rand(min, max)),
-            b = Math.floor(rand(min, max));
-        return 'rgba(' + r + ',' + g + ',' + b + ',1)';
     }
 </script>
 
