@@ -50,8 +50,8 @@
     function createSquare() {
         var x = event.clientX;
         var y = event.clientY;
-        
-        var width = document.getElementById("lengthFT").value * gridSize;
+
+        var width = document.getElementById("lengthFT").value * gridSize + (document.getElementById("lengthIN").value / 12 * gridSize);
         var height = document.getElementById("widthIN").value * gridSize;
         x = Math.floor(x / width) * width;
         y = Math.floor(y / height) * height;
