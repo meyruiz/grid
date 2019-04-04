@@ -6,7 +6,7 @@
 
 <body>
     <div class="row">
-        <div id="scale" class="col-md-2 border border-dark">
+        <div id="scale" class="col-md-2 info" style="height:600px;">
             <p>Scale</p>
             <p>2' x 1.00"</p>
             <hr />
@@ -17,14 +17,24 @@
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-md-12 border border-dark">
+                <div class="col-md-12 info">
                     <p>SIZE: 600' X 84.0000" ITEM: FERROFLEX STEEL REINFORCED BELT    LOT: D0118990-B    CUST: ACME MINING OF MINNESOTA, INC</p>
                     <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 border border-dark">
-                    <div id="gridCanvas" style="padding: 17px 10px; position: relative;"  >
+                <div class="col-md-12 info" style="height:600px;">
+                    <div class="header">
+                        <a href="#remove-row" class="button remove-row">-</a>
+                        <a href="#add-row" class="button add-row">+</a>
+                    </div>
+
+                    <div class="grid-container">
+                        <ul id="grid" class="grid">
+                            <li class="position-highlight">
+                                <div class="inner"></div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -81,7 +91,7 @@
         x = Math.floor(x / width) * width;
         y = Math.floor(y / height) * height;
 
-        console.log(x);console.log(y);
+        console.log(x); console.log(y);
 
         var sq = document.createElement('div');
         sq.style.position = "absolute";

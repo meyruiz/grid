@@ -8,6 +8,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 body {
+    margin-top:20px;
     overflow: hidden;
 }
 
@@ -85,7 +86,6 @@ div {
 .info {
     border-style: solid;
     border-width: 2px;
-    margin: 5px;
 }
 
 .grid-container {
@@ -94,6 +94,7 @@ div {
     left: 50px;
     right: 50px;
     bottom: 0;
+    height:600px;
     overflow: auto;
 }
 
