@@ -210,8 +210,8 @@ $(function () {
 
     // Initialize grid
     var data = {
-        'size': 18, 
-        'data': [{"x": 0, "y": 0, "h": 3, "w": 3, "content": "example"}]
+        'size': 38, 
+        'data': [{"x": 0, "y": 0, "h": 1, "w": 1, "content": "example"}]
     };
 
     gridData["DemoGrid"].currentSize = data['size'];
