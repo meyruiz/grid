@@ -5,15 +5,25 @@
 }
 
 <body>
+    <div id="dialog" title="Cell Settings">
+        <div>
+            <label>Size (Width x Height)</label>
+            <span style="right: 0;">
+                <input type="text" class="item_w" style="width: 35px;">
+                x
+                <input type="text" class="item_h" style="width: 35px;">
+            </span>
+        </div>
+    </div>
     <div class="row">
         <div id="scale" class="col-md-2 info" style="height:600px;">
             <p>Scale</p>
             <p>2' x 1.00"</p>
             <hr />
-            <button type="button" class="btn btn-primary">Add Cut</button>
+            <button href="#add-cell" type="button" class="btn btn-primary add-cell">Add Cut</button>
             <hr />
-            <button type="button" class="btn" style="margin-bottom:15px;">Zoom In</button>
-            <button type="button" class="btn">Zoom Out</button>
+            <button href="#remove-column" type="button" class="btn remove-column" style="margin-bottom:15px;">Zoom In</button>
+            <button href="#add-column" type="button" class="btn add-column">Zoom Out</button>
         </div>
         <div class="col-md-10">
             <div class="row">
@@ -24,11 +34,6 @@
             </div>
             <div class="row">
                 <div class="col-md-12 info" style="height:600px;">
-                    <div class="header">
-                        <a href="#remove-row" class="button remove-row">-</a>
-                        <a href="#add-row" class="button add-row">+</a>
-                    </div>
-
                     <div class="grid-container">
                         <ul id="grid" class="grid">
                             <li class="position-highlight">
@@ -40,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
