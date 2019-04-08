@@ -76,7 +76,7 @@ function initializeDialog() {
 $(function () {
     gridData["DemoGrid"] = {
         gridElement: null,
-        currentSize: 3,
+        currentSize: 1,
         _init: function(){
             this.gridElement.gridList({
                 lanes: gridData["DemoGrid"].currentSize,
@@ -210,8 +210,8 @@ $(function () {
 
     // Initialize grid
     var data = {
-        'size': 8, 
-        'data': [{"x": 0, "y": 0, "h": 1, "w": 1, "content": "example"}]
+        'size': 18, 
+        'data': [{"x": 0, "y": 0, "h": 3, "w": 3, "content": "example"}]
     };
 
     gridData["DemoGrid"].currentSize = data['size'];
