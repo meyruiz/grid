@@ -176,8 +176,8 @@ $(function () {
                 '</li>'
             );
             $item.attr({
-                'data-w': 1,
-                'data-h': 1,
+                'data-w': 5,
+                'data-h': 5,
                 'data-x': posX,
                 'data-y': posY
             });
@@ -211,7 +211,7 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 38, 
-        'data': [{"x": 0, "y": 0, "h": 1, "w": 1, "content": "example"}]
+        'data': [{"x": 0, "y": 0, "h": 5, "w": 5, "content": "example"}]
     };
 
     gridData["DemoGrid"].currentSize = data['size'];
