@@ -190,10 +190,8 @@ $(function () {
 
             this._init();
         },
-        addCustomElement: function (lengthFT, lengthIN, widthIN) {
+        addCustomElement: function (width, height) {
             var maxHeight = 0;
-            var width = lengthFT + (lengthIN / 12);
-            var height = widthIN;
             this.gridElement.children('li').each(function () {
                 var cellY = parseInt($(this).attr("data-y"));
                 var cellH = parseInt($(this).attr("data-h"));
@@ -314,8 +312,12 @@ $(function () {
 
     $('.add-cust-cell').click(function (e) {
         e.preventDefault();
-        $('#exampleModal').modal('show');
-        gridData["DemoGrid"].addCustomElement(3, 9, 4);
+        var width = parseInt(document.getElementById("lengthFT").value);
+        var widthIN = parseInt(document.getElementById("lengthIN").value);
+        width = width + (widthIN / 12);
+        var height = document.getElementById("widthIN").value;
+        gridData["DemoGrid"].addCustomElement(width, height);
+        $('#exampleModal').modal('hide');
         console.log("Add element");
     });
 

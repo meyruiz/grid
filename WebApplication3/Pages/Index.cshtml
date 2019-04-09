@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary add-cust-cell" href="#add-cell">Create</button>
+                    <button type="button" class="btn btn-primary add-cust-cell" href="#add-cust-cell" data-toggle="modal" data-target="#exampleModal">Create</button>
                 </div>
             </div>
         </div>
@@ -122,8 +122,6 @@
         $('#exampleModal').modal('show');
         event = e;
     }
-
-    $('#exampleModal').modal('show');
 
     function createSquare() {
         var x = event.clientX;
