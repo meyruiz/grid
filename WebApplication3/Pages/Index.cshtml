@@ -15,12 +15,34 @@
             </span>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Cut Size</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text" name="lengthIN"> IN </p>
+                    <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary add-cust-cell" href="#add-cell">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div id="scale" class="col-md-2 info" style="height:600px;">
             <p>Scale</p>
             <p>2' x 1.00"</p>
             <hr />
-            <button href="#add-cell" type="button" class="btn btn-primary add-cell">Add Cut</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cut</button>
             <hr />
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom In</button>
             <button type="button" class="btn" onclick="changeZoom(1)">Zoom Out</button>
@@ -41,26 +63,6 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Cut Size</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text" name="lengthIN"> IN </p>
-                    <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="createSquare()">Create</button>
                 </div>
             </div>
         </div>
@@ -120,6 +122,8 @@
         $('#exampleModal').modal('show');
         event = e;
     }
+
+    $('#exampleModal').modal('show');
 
     function createSquare() {
         var x = event.clientX;

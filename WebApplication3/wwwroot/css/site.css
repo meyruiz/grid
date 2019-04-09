@@ -99,11 +99,12 @@ div {
     right: 30px;
     bottom: 0;
     overflow: auto;
+    height: 600px;
 }
 
 .grid {
     position: relative;
-    height: 100%;
+    height: 600px !important;
     list-style: none;
     /* Will be modified by the grid jquery lib, depending on the items */
     -webkit-transition: width 0.2s, height 0.2s;

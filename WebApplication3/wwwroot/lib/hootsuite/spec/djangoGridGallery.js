@@ -115,7 +115,6 @@ $(function () {
             this._init();
         },
         addElement: function () {
-
             var maxHeight = 0;
             this.gridElement.children('li').each(function () {
                 var cellY = parseInt($(this).attr("data-y"));
@@ -191,6 +190,84 @@ $(function () {
 
             this._init();
         },
+        addCustomElement: function (lengthFT, lengthIN, widthIN) {
+            var maxHeight = 0;
+            var width = lengthFT + (lengthIN / 12);
+            var height = widthIN;
+            this.gridElement.children('li').each(function () {
+                var cellY = parseInt($(this).attr("data-y"));
+                var cellH = parseInt($(this).attr("data-h"));
+
+                if (cellY + cellH > maxHeight) {
+                    maxHeight = cellY + cellH;
+                }
+            });
+
+            // HACK for bug fix
+            maxHeight++;
+
+            var auxList = [];
+            var i;
+            for (i = 0; i < this.currentSize; i++) {
+                auxList.push(new Array(maxHeight));
+            }
+
+            this.gridElement.children('li').each(function () {
+                var cellX = parseInt($(this).attr("data-x"));
+                var cellY = parseInt($(this).attr("data-y"));
+                var cellW = parseInt($(this).attr("data-w"));
+                var cellH = parseInt($(this).attr("data-h"));
+
+                for (var i = cellX; i < cellX + cellW; i++) {
+                    for (var j = cellY; j < cellY + cellH; j++) {
+                        auxList[i][j] = 0;
+                    }
+                }
+            });
+
+            var posX, posY;
+            for (var j = 0; j < maxHeight; j++) {
+                var flag = 0;
+                for (i = 0; i < this.currentSize; i++) {
+                    if (auxList[i][j] != 0) {
+                        posX = i;
+                        posY = j;
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 1) {
+                    break;
+                }
+            }
+
+            $item = $(
+                '<li>' +
+                '<div class="inner">' +
+                '<div class="controls">' +
+                '<a href="#config" class="config">Config</a>' +
+                '</div>' +
+                '<div class="content">' +
+                '</div>' +
+                '</div>' +
+                '</li>'
+            );
+            $item.attr({
+                'data-w': width,
+                'data-h': height,
+                'data-x': posX,
+                'data-y': posY
+            });
+
+            this.gridElement.append($item);
+            $item.find(".config").click(function (e) {
+                var el = $(e.currentTarget).closest('li');
+                gridData["grid"].gridList('toggleDrag', false);
+                openDialogConfig(el);
+            });
+
+            this._init();
+        },
         removeElement: function (element) {
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
@@ -211,7 +288,7 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 38, 
-        'data': [{"x": 0, "y": 0, "h": 5, "w": 5, "content": "example"}]
+        'data': [{"x": 0, "y": 0, "h": 1, "w": 1, "content": "example"}]
     };
 
     gridData["DemoGrid"].currentSize = data['size'];
@@ -232,6 +309,13 @@ $(function () {
     $('.add-cell').click(function(e) {
         e.preventDefault();
         gridData["DemoGrid"].addElement();
+        console.log("Add element");
+    });
+
+    $('.add-cust-cell').click(function (e) {
+        e.preventDefault();
+        $('#exampleModal').modal('show');
+        gridData["DemoGrid"].addCustomElement(3, 9, 4);
         console.log("Add element");
     });
 
