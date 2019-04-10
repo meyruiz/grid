@@ -4,28 +4,38 @@ var gridData = {};
 function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
     var content = el.find("div.inner div.content").text();
+    var lengthFT = $(el).attr("data-lenFT");
+    var lengthIN = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
-    var height = $(el).attr("data-h");
 
+    gridData["dialog"].find("div input.item_lenFT").val(lengthFT);
+    gridData["dialog"].find("div input.item_lenIN").val(lengthIN);
     gridData["dialog"].find("div input.item_w").val(width);
-    gridData["dialog"].find("div input.item_h").val(height);
     gridData["dialog"].dialog({position: { my: "center", at: "center", of: el }});
     gridData["dialog"].dialog("open");
 }
 
 function applyDialogConfig() {
     // var content = dialog.find("div input.item_content").val();
+    var lengthFT = parseInt(gridData["dialog"].find("div input.item_lenFT").val());
+    var lengthIN = parseInt(gridData["dialog"].find("div input.item_lenIN").val());
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
-    var height = parseInt(gridData["dialog"].find("div input.item_h").val());
 
+    var length = lengthFT + (lengthIN / 12);
+
+    gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
+    gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
-    gridData["cell_dialog_open"].attr("data-h", height);
+
+
     if (width > 0 && width <= gridData["DemoGrid"].currentSize) {
         gridData["DemoGrid"].gridElement.gridList('resizeItem',
             gridData["cell_dialog_open"],
             {
+                lenFT: lengthFT,
+                lenIN: lengthIN,
                 w: width,
-                h: height
+                h: length
             }
         );
     }
@@ -175,8 +185,8 @@ $(function () {
                 '</li>'
             );
             $item.attr({
-                'data-w': 5,
-                'data-h': 5,
+                'data-w': 1,
+                'data-h': 1,
                 'data-x': posX,
                 'data-y': posY
             });
@@ -190,8 +200,9 @@ $(function () {
 
             this._init();
         },
-        addCustomElement: function (width, height) {
+        addCustomElement: function (lengthFT, lengthIN, widthIN) {
             var maxHeight = 0;
+            var length = lengthFT + (lengthIN / 12);
             this.gridElement.children('li').each(function () {
                 var cellY = parseInt($(this).attr("data-y"));
                 var cellH = parseInt($(this).attr("data-h"));
@@ -251,8 +262,10 @@ $(function () {
                 '</li>'
             );
             $item.attr({
-                'data-w': width,
-                'data-h': height,
+                'data-w': widthIN,
+                'data-h': length,
+                'data-lenFT': lengthFT,
+                'data-lenIN': lengthIN,
                 'data-x': posX,
                 'data-y': posY
             });
@@ -286,7 +299,7 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 38, 
-        'data': [{"x": 0, "y": 0, "h": 1, "w": 1, "content": "example"}]
+        'data': []
     };
 
     gridData["DemoGrid"].currentSize = data['size'];
@@ -312,11 +325,10 @@ $(function () {
 
     $('.add-cust-cell').click(function (e) {
         e.preventDefault();
-        var width = parseInt(document.getElementById("lengthFT").value);
-        var widthIN = parseInt(document.getElementById("lengthIN").value);
-        width = width + (widthIN / 12);
-        var height = document.getElementById("widthIN").value;
-        gridData["DemoGrid"].addCustomElement(width, height);
+        var lengthFT = parseInt(document.getElementById("lengthFT").value);
+        var lengthIN = parseInt(document.getElementById("lengthIN").value);
+        var widthIN = document.getElementById("widthIN").value;
+        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN);
         $('#exampleModal').modal('hide');
         console.log("Add element");
     });
