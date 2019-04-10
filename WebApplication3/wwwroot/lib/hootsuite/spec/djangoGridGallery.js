@@ -261,8 +261,7 @@ $(function () {
                 '<a href="#config" class="config">Config</a>' +
                 '</div>' +
                 '<div class="content">' +
-                    '<p>Length:' + lengthFT + 'FT ' + lengthIN + 'IN </p>' + 
-                    '<p>Width:' + widthIN + 'IN </p>' + 
+                    
                 '</div>' +
                 '</div>' +
                 '</li>'

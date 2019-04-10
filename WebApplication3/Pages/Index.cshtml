@@ -99,14 +99,14 @@
 
     function showVal(a) {
         var zoomScale = Number(a) / 10;
-        setZoom(zoomScale, document.getElementsByClassName('grid-container')[0])
+        setZoom(zoomScale, document.getElementsByClassName('grid')[0])
     }
 
     function changeZoom(a) {
         zoom += a;
         var zoomScale = Number(zoom) / 10;
         console.log(zoom);
-        setZoom(zoomScale, document.getElementsByClassName('grid-container')[0])
+        setZoom(zoomScale, document.getElementsByClassName('grid')[0])
     }
 
     var canvasElementId = 'gridCanvas';
