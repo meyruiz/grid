@@ -16,7 +16,7 @@ function openDialogConfig(el) {
 }
 
 function applyDialogConfig() {
-    // var content = dialog.find("div input.item_content").val();
+    //var content = dialog.find("div input.item_content").val();
     var lengthFT = parseInt(gridData["dialog"].find("div input.item_lenFT").val());
     var lengthIN = parseInt(gridData["dialog"].find("div input.item_lenIN").val());
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
@@ -109,7 +109,8 @@ $(function () {
                                 '<a href="#config" class="config">Config</a>' +
                             '</div>' +
                             '<div class="content">' +
-                                item.content +
+                            '<p> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
+                            '<p> Width:' + item.width + ' IN</p>' +
                             '</div>' +
                         '</div>' +
                     '</li>'
@@ -180,10 +181,13 @@ $(function () {
                             '<a href="#config" class="config">Config</a>' +
                         '</div>' +
                         '<div class="content">' +
+                            '<p> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
+                            '<p> Width:' + item.width + ' IN</p>' +
                         '</div>' +
                     '</div>' +
                 '</li>'
             );
+
             $item.attr({
                 'data-w': 1,
                 'data-h': 1,
@@ -257,6 +261,8 @@ $(function () {
                 '<a href="#config" class="config">Config</a>' +
                 '</div>' +
                 '<div class="content">' +
+                    '<p>Length:' + lengthFT + 'FT ' + lengthIN + 'IN </p>' + 
+                    '<p>Width:' + widthIN + 'IN </p>' + 
                 '</div>' +
                 '</div>' +
                 '</li>'
