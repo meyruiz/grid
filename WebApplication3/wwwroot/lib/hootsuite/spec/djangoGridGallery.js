@@ -261,7 +261,7 @@ $(function () {
                 '<a href="#config" class="config">Config</a>' +
                 '</div>' +
                 '<div class="content">' +
-                    
+                '<p>' + length.toFixed(4) + "' " + 'x' + widthIN + '</p>' + 
                 '</div>' +
                 '</div>' +
                 '</li>'
@@ -303,7 +303,7 @@ $(function () {
 
     // Initialize grid
     var data = {
-        'size': 38, 
+        'size': 60, 
         'data': []
     };
 
