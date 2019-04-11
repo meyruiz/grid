@@ -4,6 +4,7 @@ var gridData = {};
 function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
     var content = el.find("div.inner div.content").text();
+    console.log(content);
     var lengthFT = $(el).attr("data-lenFT");
     var lengthIN = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
@@ -16,16 +17,17 @@ function openDialogConfig(el) {
 }
 
 function applyDialogConfig() {
-    //var content = dialog.find("div input.item_content").val();
     var lengthFT = parseInt(gridData["dialog"].find("div input.item_lenFT").val());
     var lengthIN = parseInt(gridData["dialog"].find("div input.item_lenIN").val());
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
+    var content = gridData["dialog"].find("div input.item_content").val(lengthFT);
 
     var length = lengthFT + (lengthIN / 12);
 
     gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
     gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
+    gridData["cell_dialog_open"].attr("item_content", content);
 
 
     if (width > 0 && width <= gridData["DemoGrid"].currentSize) {
@@ -35,10 +37,13 @@ function applyDialogConfig() {
                 lenFT: lengthFT,
                 lenIN: lengthIN,
                 w: width,
-                h: length
+                h: length,
+                content: content
             }
         );
     }
+
+
 }
 
 function initializeDialog() {
@@ -109,8 +114,11 @@ $(function () {
                                 '<a href="#config" class="config">Config</a>' +
                             '</div>' +
                             '<div class="content">' +
-                            '<p> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
-                            '<p> Width:' + item.width + ' IN</p>' +
+                            '<p class="dimensions"> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
+                            '<p> Cust: Acme Mining Co.' +
+                            '<p> Date: 03/31/2019' +
+                            '<p> Order: 123456789' +
+                            '<p> Prod Ord: 123456789' +
                             '</div>' +
                         '</div>' +
                     '</li>'
@@ -119,89 +127,12 @@ $(function () {
                     'data-w': item.w,
                     'data-h': item.h,
                     'data-x': item.x,
-                    'data-y': item.y
+                    'data-y': item.y,
+                    'data-lenFT': lengthFT,
+                    'data-lenIN': lengthIN,
                 });
                 this.gridElement.append($item);
             }
-            this._init();
-        },
-        addElement: function () {
-            var maxHeight = 0;
-            this.gridElement.children('li').each(function () {
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellH = parseInt($(this).attr("data-h"));
-
-                if (cellY + cellH > maxHeight) {
-                    maxHeight = cellY + cellH;
-                }
-            });
-
-            // HACK for bug fix
-            maxHeight++;
-
-            var auxList = [];
-            var i;
-            for (i=0; i<this.currentSize; i++) {
-                auxList.push(new Array(maxHeight));
-            }
-
-            this.gridElement.children('li').each(function () {
-                var cellX = parseInt($(this).attr("data-x"));
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellW = parseInt($(this).attr("data-w"));
-                var cellH = parseInt($(this).attr("data-h"));
-
-                for (var i=cellX; i < cellX + cellW; i++) {
-                    for (var j=cellY; j < cellY + cellH; j++) {
-                        auxList[i][j] = 0;
-                    }
-                }
-            });
-
-            var posX, posY;
-            for (var j=0; j < maxHeight; j++) {
-                var flag = 0;
-                for (i=0; i < this.currentSize; i++) {
-                    if (auxList[i][j] != 0) {
-                        posX = i;
-                        posY = j;
-                        flag = 1;
-                        break;
-                    }
-                }
-                if (flag == 1) {
-                    break;
-                }
-            }
-
-            $item = $(
-                '<li>' +
-                    '<div class="inner">' +
-                        '<div class="controls">' +
-                            '<a href="#config" class="config">Config</a>' +
-                        '</div>' +
-                        '<div class="content">' +
-                            '<p> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
-                            '<p> Width:' + item.width + ' IN</p>' +
-                        '</div>' +
-                    '</div>' +
-                '</li>'
-            );
-
-            $item.attr({
-                'data-w': 1,
-                'data-h': 1,
-                'data-x': posX,
-                'data-y': posY
-            });
-
-            this.gridElement.append($item);
-            $item.find(".config").click(function(e) {
-                var el = $(e.currentTarget).closest('li');
-                gridData["grid"].gridList('toggleDrag', false);
-                openDialogConfig(el);
-            });
-
             this._init();
         },
         addCustomElement: function (lengthFT, lengthIN, widthIN) {
@@ -261,7 +192,11 @@ $(function () {
                 '<a href="#config" class="config">Config</a>' +
                 '</div>' +
                 '<div class="content">' +
-                '<p>' + length.toFixed(4) + "' " + 'x' + widthIN + '</p>' + 
+                    '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
+                    '<p> Cust: Acme Mining Co.' +
+                    '<p> Date: 03/31/2019' +
+                    '<p> Order: 123456789' +
+                    '<p> Prod Ord: 123456789' +
                 '</div>' +
                 '</div>' +
                 '</li>'
@@ -303,7 +238,7 @@ $(function () {
 
     // Initialize grid
     var data = {
-        'size': 60, 
+        'size': 84, 
         'data': []
     };
 
@@ -334,7 +269,7 @@ $(function () {
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = document.getElementById("widthIN").value;
         gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN);
-        $('#exampleModal').modal('hide');
+        $("#exampleModal input").val("");
         console.log("Add element");
     });
 

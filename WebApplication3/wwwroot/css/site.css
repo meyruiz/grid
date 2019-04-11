@@ -110,7 +110,7 @@ div {
     /* Will be modified by the grid jquery lib, depending on the items */
     -webkit-transition: width 0.2s, height 0.2s;
     transition: width 0.2s, height 0.2s;
-    background-size: 28px 28px;
+    background-size: 20px 20px;
     background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
 }
 
@@ -141,10 +141,18 @@ div {
         }
 
         .grid li .inner .content {
-            font-size: 5em;
+            font-size: 7em;
             background: #33c6ff;
             margin-top: 30px;
         }
+
+            .grid li .inner .content .dimensions {
+                margin: 30px 0;
+            }
+
+            .grid li .inner .content p {
+                margin: 20px 0;
+            }
 
         .grid li.changed .inner {
             background: #ffff66;
