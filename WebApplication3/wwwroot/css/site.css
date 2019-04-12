@@ -141,7 +141,7 @@ div {
         }
 
         .grid li .inner .content {
-            font-size: 7em;
+            font-size: 6em;
             background: #33c6ff;
             margin-top: 30px;
         }
@@ -233,4 +233,92 @@ div {
         padding: 14px 0 0 10px;
         font-size: 18px;
         line-height: 18px;
+    }
+
+
+.ruler-horizontal {
+    position: relative;
+    width: 106%;
+    margin: 0 0 50px 15px;
+    height: 14px;
+}
+
+    .ruler-horizontal .in {
+        position: absolute;
+        height: 14px;
+        width: 22%;
+    }
+
+        .ruler-horizontal .in:after {
+            position: absolute;
+            bottom: -15px;
+            font: 11px/1 sans-serif;
+        }
+
+    .ruler-horizontal .in:nth-of-type(1) {
+        left: 0%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(1):after {
+            content: '0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(2) {
+        left: 12.5%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(2):after {
+            content: '12.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(3) {
+        left: 25%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(3):after {
+            content: '24.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(4) {
+        left: 37.5%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(4):after {
+            content: '36.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(5) {
+        left: 50%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(5):after {
+            content: '48.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(6) {
+        left: 62.5%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(6):after {
+            content: '60.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(7) {
+        left: 75%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(7):after {
+            content: '72.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(8) {
+        left: 87.5%;
+    }
+
+        .ruler-horizontal .in:nth-of-type(8):after {
+            content: '84.0"';
+        }
+
+    .ruler-horizontal .in:nth-of-type(9) {
+        left: 100%;
     }
