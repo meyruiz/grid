@@ -352,7 +352,7 @@ div {
             }
 
         .ruler-vertical .in:nth-of-type(2) {
-            top: 12.5%;
+            top: 20%;
         }
 
             .ruler-vertical .in:nth-of-type(2):after {
@@ -360,7 +360,7 @@ div {
             }
 
         .ruler-vertical .in:nth-of-type(3) {
-            top: 25%;
+            top: 40%;
         }
 
             .ruler-vertical .in:nth-of-type(3):after {
@@ -368,7 +368,7 @@ div {
             }
 
         .ruler-vertical .in:nth-of-type(4) {
-            top: 37.5%;
+            top: 60%;
         }
 
             .ruler-vertical .in:nth-of-type(4):after {
@@ -376,37 +376,9 @@ div {
             }
 
         .ruler-vertical .in:nth-of-type(5) {
-            top: 50%;
+            top: 80%;
         }
 
             .ruler-vertical .in:nth-of-type(5):after {
                 content: "80.0'";
             }
-
-        .ruler-vertical .in:nth-of-type(6) {
-            top: 62.5%;
-        }
-
-            .ruler-vertical .in:nth-of-type(6):after {
-                content: "100.0'";
-            }
-
-        .ruler-vertical .in:nth-of-type(7) {
-            top: 75%;
-        }
-
-            .ruler-vertical .in:nth-of-type(7):after {
-                content: "120.0'";
-            }
-
-        .ruler-vertical .in:nth-of-type(8) {
-            top: 87.5%;
-        }
-
-            .ruler-vertical .in:nth-of-type(8):after {
-                content: "140.0'";
-            }
-
-        .ruler-vertical .in:nth-of-type(9) {
-            top: 100%;
-        }
