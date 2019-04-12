@@ -322,3 +322,91 @@ div {
     .ruler-horizontal .in:nth-of-type(9) {
         left: 100%;
     }
+
+
+.ruler-vertical {
+    position: absolute;
+    height: 100%;
+    margin: 27px 0 0px 0px;
+    width: 14px;
+}
+
+    .ruler-vertical .in {
+        position: absolute;
+        width: 14px;
+    }
+
+        .ruler-vertical .in:after {
+            position: absolute;
+            bottom: -15px;
+            font: 11px/1 sans-serif;
+            float: right;
+        }
+
+        .ruler-vertical .in:nth-of-type(1) {
+            top: 0%;
+        }
+
+            .ruler-vertical .in:nth-of-type(1):after {
+                content: '0"';
+            }
+
+        .ruler-vertical .in:nth-of-type(2) {
+            top: 12.5%;
+        }
+
+            .ruler-vertical .in:nth-of-type(2):after {
+                content: "20.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(3) {
+            top: 25%;
+        }
+
+            .ruler-vertical .in:nth-of-type(3):after {
+                content: "40.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(4) {
+            top: 37.5%;
+        }
+
+            .ruler-vertical .in:nth-of-type(4):after {
+                content: "60.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(5) {
+            top: 50%;
+        }
+
+            .ruler-vertical .in:nth-of-type(5):after {
+                content: "80.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(6) {
+            top: 62.5%;
+        }
+
+            .ruler-vertical .in:nth-of-type(6):after {
+                content: "100.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(7) {
+            top: 75%;
+        }
+
+            .ruler-vertical .in:nth-of-type(7):after {
+                content: "120.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(8) {
+            top: 87.5%;
+        }
+
+            .ruler-vertical .in:nth-of-type(8):after {
+                content: "140.0'";
+            }
+
+        .ruler-vertical .in:nth-of-type(9) {
+            top: 100%;
+        }
