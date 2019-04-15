@@ -87,7 +87,7 @@ div {
     }
 }
 
-.info {
+.border {
     border-style: solid;
     border-width: 2px;
 }
@@ -140,17 +140,17 @@ div {
             transition: background 3s;
         }
 
-        .grid li .inner .content {
+        .grid li .inner .info {
             font-size: 6em;
             background: #33c6ff;
             margin-top: 30px;
         }
 
-            .grid li .inner .content .dimensions {
+            .grid li .inner .info .dimensions {
                 margin: 30px 0;
             }
 
-            .grid li .inner .content p {
+            .grid li .inner .info p {
                 margin: 20px 0;
             }
 

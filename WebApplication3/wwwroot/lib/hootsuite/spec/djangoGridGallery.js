@@ -20,15 +20,15 @@ function applyDialogConfig() {
     var lengthFT = parseInt(gridData["dialog"].find("div input.item_lenFT").val());
     var lengthIN = parseInt(gridData["dialog"].find("div input.item_lenIN").val());
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
-    var content = gridData["dialog"].find("div input.item_content").val(lengthFT);
+    //var content = gridData["dialog"].find("div input.item_content").val(lengthFT);
 
     var length = lengthFT + (lengthIN / 12);
 
     gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
     gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
-    gridData["cell_dialog_open"].attr("item_content", content);
-
+    //gridData["cell_dialog_open"].attr("item_content", content);
+    gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
 
     if (width > 0 && width <= gridData["DemoGrid"].currentSize) {
         gridData["DemoGrid"].gridElement.gridList('resizeItem',
@@ -37,8 +37,7 @@ function applyDialogConfig() {
                 lenFT: lengthFT,
                 lenIN: lengthIN,
                 w: width,
-                h: length,
-                content: content
+                h: length
             }
         );
     }
@@ -113,7 +112,7 @@ $(function () {
                             '<div class="controls">' +
                                 '<a href="#config" class="config">Config</a>' +
                             '</div>' +
-                            '<div class="content">' +
+                            '<div class="info">' +
                             '<p class="dimensions"> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
                             '<p> Cust: Acme Mining Co.' +
                             '<p> Date: 03/31/2019' +
@@ -130,6 +129,11 @@ $(function () {
                     'data-y': item.y,
                     'data-lenFT': lengthFT,
                     'data-lenIN': lengthIN,
+                    'data-status': "Allocated",
+                    'data-cust': "Acme Mining Co",
+                    'data-date': "03/31/2019",
+                    'data-order': 123456789,
+                    'data-prod': 123456789
                 });
                 this.gridElement.append($item);
             }
@@ -191,7 +195,7 @@ $(function () {
                 '<div class="controls">' +
                 '<a href="#config" class="config">Config</a>' +
                 '</div>' +
-                '<div class="content">' +
+                '<div class="info">' +
                     '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
                     '<p> Cust: Acme Mining Co.' +
                     '<p> Date: 03/31/2019' +
@@ -201,13 +205,19 @@ $(function () {
                 '</div>' +
                 '</li>'
             );
+
             $item.attr({
                 'data-w': widthIN,
                 'data-h': length,
                 'data-lenFT': lengthFT,
                 'data-lenIN': lengthIN,
                 'data-x': posX,
-                'data-y': posY
+                'data-y': posY,
+                'data-status': "Allocated",
+                'data-cust': "Acme Mining Co",
+                'data-date': "03/31/2019",
+                'data-order': 123456789,
+                'data-prod': 123456789
             });
 
             this.gridElement.append($item);
@@ -247,9 +257,9 @@ $(function () {
     gridData["DemoGrid"].gridElement.width(gridData["grid"].parent().width());
     gridData["DemoGrid"].buildElements(data['data']);
 
-    $(window).resize(function() {
+    /*$(window).resize(function() {
         gridData["grid"].gridList('reflow');
-    });
+    });*/
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
@@ -273,14 +283,8 @@ $(function () {
         console.log("Add element");
     });
 
-    $('.add-column').click(function(e) {
-        e.preventDefault();
-        gridData["DemoGrid"].resize(gridData["DemoGrid"].currentSize + 1);
-    });
+    function isOverflown(element) {
+        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+    }
 
-    $('.remove-column').click(function(e) {
-        e.preventDefault();
-        gridData["DemoGrid"].resize(Math.max(1,
-            gridData["DemoGrid"].currentSize - 1));
-    });
 });
