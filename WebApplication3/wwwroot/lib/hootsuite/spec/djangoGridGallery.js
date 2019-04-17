@@ -249,11 +249,22 @@ $(function () {
 
                 totalX = cellX + cellW + totalX;
                 totalY = cellY + cellH; // get length of last added cut
+
+                /* Get smaller x and y position to get first possible offcut
+                    Then calculate posX, posY for new cut
+                    */
+                offcutX = cellX + cellW;
+                offcutY = cellY + cellH;
             });
 
             // Got x and y  positions but what if its not at the start of the grid
             offcutWidth = data['size'] - totalX;
             offcutHeight = totalY;
+
+            console.log("width" + offcutWidth);
+            console.log("height" + offcutHeight);
+            console.log("Start x" + offcutX);
+            console.log("Start y" + offcutY);
         },
         resize: function(size) {
             if (size) {
