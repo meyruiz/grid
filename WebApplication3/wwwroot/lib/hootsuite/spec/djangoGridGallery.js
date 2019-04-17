@@ -233,6 +233,28 @@ $(function () {
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
         },
+        offcut: function (type) {
+            var offcutWidth;
+            var offcutHeight;
+            var offcutX, offcutY;
+
+            var totalX = 0;
+            var totalY = 0;
+
+            this.gridElement.children('li').each(function () {
+                var cellX = parseInt($(this).attr("data-x"));
+                var cellY = parseInt($(this).attr("data-y"));
+                var cellW = parseInt($(this).attr("data-w"));
+                var cellH = parseInt($(this).attr("data-h"));
+
+                totalX = cellX + cellW + totalX;
+                totalY = cellY + cellH; // get length of last added cut
+            });
+
+            // Got x and y  positions but what if its not at the start of the grid
+            offcutWidth = data['size'] - totalX;
+            offcutHeight = totalY;
+        },
         resize: function(size) {
             if (size) {
                 this.currentSize = size;
@@ -271,6 +293,12 @@ $(function () {
         e.preventDefault();
         gridData["DemoGrid"].addElement();
         console.log("Add element");
+    });
+
+    $('.add-offcut').click(function (e) {
+        e.preventDefault();
+        gridData["DemoGrid"].offcut("horizontal");
+        console.log("Add horizontal offcut");
     });
 
     $('.add-cust-cell').click(function (e) {
