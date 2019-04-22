@@ -89,6 +89,7 @@ $(function () {
     gridData["DemoGrid"] = {
         gridElement: null,
         currentSize: 1,
+        items: [],
         _init: function(){
             this.gridElement.gridList({
                 lanes: gridData["DemoGrid"].currentSize,
@@ -137,7 +138,7 @@ $(function () {
             }
             this._init();
         },
-        addCustomElement: function (lengthFT, lengthIN, widthIN, direction) {
+        addCustomElement: function (lengthFT, lengthIN, widthIN, direction, type) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
             this.gridElement.children('li').each(function () {
@@ -205,7 +206,6 @@ $(function () {
                 }
             }
             
-
             $item = $(
                 '<li>' +
                 '<div class="inner">' +
@@ -230,12 +230,16 @@ $(function () {
                 'data-lenIN': lengthIN,
                 'data-x': posX,
                 'data-y': posY,
-                'data-status': "Allocated",
+                'data-status': type,
                 'data-cust': "Acme Mining Co",
                 'data-date': "03/31/2019",
                 'data-order': 123456789,
                 'data-prod': 123456789
             });
+
+            this.items.push([{ w: widthIN, h: length, x: posX, y: posY, 
+                                lenFT: lengthFT, lenIN: lengthIN, status: type, 
+                                cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789}]);
 
             this.gridElement.append($item);
             $item.find(".config").click(function (e) {
@@ -290,7 +294,7 @@ $(function () {
                 console.log("Start x" + offcutX);
                 console.log("Start y" + prevY);
 
-                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal");
+                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal", "Offcut");
             } else {
                 this.gridElement.children('li').each(function () {
                     var cellX = parseInt($(this).attr("data-x"));
@@ -318,7 +322,7 @@ $(function () {
                 console.log("height" + offcutHeight);
                 console.log("Start x" + prevX);
                 console.log("Start y" + offcutY);
-                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical");
+                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
             }
             
         },
@@ -374,12 +378,28 @@ $(function () {
         console.log("Add vertical offcut");
     });
 
+    $('.save').click(function (e) {
+        e.preventDefault();
+        const fs = require('fs')
+
+        // Data which will write in a file. 
+        let data = "Learning how to write in a file."
+
+        // Write data in 'Output.txt' . 
+        fs.writeFile('Output.txt', gridData["DemoGrid"].items, (err) => {
+
+            // In case of a error throw err. 
+            if (err) throw err;
+        }) 
+        console.log("Save");
+    });
+
     $('.add-cust-cell').click(function (e) {
         e.preventDefault();
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
-        var widthIN = document.getElementById("widthIN").value;
-        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN, "horizontal");
+        var widthIN = parseInt(document.getElementById("widthIN").value);
+        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN, "horizontal", "Allocated");
         $("#exampleModal input").val("");
         console.log("Add element");
     });
