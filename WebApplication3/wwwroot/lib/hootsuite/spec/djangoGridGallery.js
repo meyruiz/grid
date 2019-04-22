@@ -41,8 +41,6 @@ function applyDialogConfig() {
             }
         );
     }
-
-
 }
 
 function initializeDialog() {
@@ -139,7 +137,7 @@ $(function () {
             }
             this._init();
         },
-        addCustomElement: function (lengthFT, lengthIN, widthIN) {
+        addCustomElement: function (lengthFT, lengthIN, widthIN, direction) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
             this.gridElement.children('li').each(function () {
@@ -173,21 +171,40 @@ $(function () {
                 }
             });
 
-            var posX, posY;
-            for (var j = 0; j < maxHeight; j++) {
-                var flag = 0;
-                for (i = 0; i < this.currentSize; i++) {
-                    if (auxList[i][j] != 0) {
-                        posX = i;
-                        posY = j;
-                        flag = 1;
+            if (direction == "horizontal") {
+                var posX, posY;
+                for (var j = 0; j < maxHeight; j++) {
+                    var flag = 0;
+                    for (i = 0; i < this.currentSize; i++) {
+                        if (auxList[i][j] != 0) {
+                            posX = i;
+                            posY = j;
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 1) {
                         break;
                     }
                 }
-                if (flag == 1) {
-                    break;
+            } else if (direction == "vertical"){ 
+                var posX, posY;
+                for (i = 0; i < this.currentSize; i++) {
+                    var flag = 0;
+                    for (var j = 0; j < maxHeight; j++) {
+                        if (auxList[i][j] != 0) {
+                            posX = i;
+                            posY = j;
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 1) {
+                        break;
+                    }
                 }
             }
+            
 
             $item = $(
                 '<li>' +
@@ -238,33 +255,72 @@ $(function () {
             var offcutHeight;
             var offcutX, offcutY;
 
-            var totalX = 0;
-            var totalY = 0;
+            var prevX = 0;
+            var prevY = 0;
 
-            this.gridElement.children('li').each(function () {
-                var cellX = parseInt($(this).attr("data-x"));
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellW = parseInt($(this).attr("data-w"));
-                var cellH = parseInt($(this).attr("data-h"));
+            if (type == "horizontal") {
 
-                totalX = cellX + cellW + totalX;
-                totalY = cellY + cellH; // get length of last added cut
+                this.gridElement.children('li').each(function () {
+                    var cellX = parseInt($(this).attr("data-x"));
+                    var cellY = parseInt($(this).attr("data-y"));
+                    var cellW = parseInt($(this).attr("data-w"));
+                    var cellH = parseInt($(this).attr("data-h"));
 
-                /* Get smaller x and y position to get first possible offcut
-                    Then calculate posX, posY for new cut
-                    */
-                offcutX = cellX + cellW;
-                offcutY = cellY + cellH;
-            });
+                    
 
-            // Got x and y  positions but what if its not at the start of the grid
-            offcutWidth = data['size'] - totalX;
-            offcutHeight = totalY;
+                    if (cellY <= prevY) {
+                        console.log("Y: " + cellY);
+                        prevX = cellX;
+                        prevY = cellY;
 
-            console.log("width" + offcutWidth);
-            console.log("height" + offcutHeight);
-            console.log("Start x" + offcutX);
-            console.log("Start y" + offcutY);
+                        /* Get smaller x and y position to get first possible offcut
+                        Then calculate posX, posY for new cut
+                        */
+                        offcutX = cellX + cellW;
+                        offcutY = cellH; // get length of last added cut
+                    }                    
+                });
+
+                // Got x and y  positions but what if its not at the start of the grid
+                offcutWidth = data['size'] - offcutX;
+                offcutHeight = offcutY;
+
+                console.log("width" + offcutWidth);
+                console.log("height" + offcutHeight);
+                console.log("Start x" + offcutX);
+                console.log("Start y" + prevY);
+
+                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal");
+            } else {
+                this.gridElement.children('li').each(function () {
+                    var cellX = parseInt($(this).attr("data-x"));
+                    var cellY = parseInt($(this).attr("data-y"));
+                    var cellW = parseInt($(this).attr("data-w"));
+                    var cellH = parseInt($(this).attr("data-h"));
+
+                    if (cellX <= prevX) {
+                        console.log("X: " + cellX);
+                        prevX = cellX;
+                        prevY = cellY;
+
+                        /* Get smaller x and y position to get first possible offcut
+                        Then calculate posX, posY for new cut
+                        */
+                        offcutX = cellW;
+                        offcutY = cellY + cellH; // get length of last added cut
+                    }
+                });
+                // Got x and y  positions but what if its not at the start of the grid
+                offcutWidth = offcutX;
+                offcutHeight = data['size'] - offcutY;
+
+                console.log("width" + offcutWidth);
+                console.log("height" + offcutHeight);
+                console.log("Start x" + prevX);
+                console.log("Start y" + offcutY);
+                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical");
+            }
+            
         },
         resize: function(size) {
             if (size) {
@@ -306,10 +362,16 @@ $(function () {
         console.log("Add element");
     });
 
-    $('.add-offcut').click(function (e) {
+    $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
         gridData["DemoGrid"].offcut("horizontal");
         console.log("Add horizontal offcut");
+    });
+
+    $('.add-vertical-offcut').click(function (e) {
+        e.preventDefault();
+        gridData["DemoGrid"].offcut("vertical");
+        console.log("Add vertical offcut");
     });
 
     $('.add-cust-cell').click(function (e) {
@@ -317,7 +379,7 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = document.getElementById("widthIN").value;
-        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN);
+        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN, "horizontal");
         $("#exampleModal input").val("");
         console.log("Add element");
     });
