@@ -166,7 +166,9 @@
             this._maxGridCols = this.gridList.grid.length;
         },
 
-        _onDrag: function(event, ui) {
+        _onDrag: function (event, ui) {
+
+            console.log("drag");
             var item = this._getItemByElement(ui.helper),
                 newPosition = this._snapItemPositionToGrid(item);
 

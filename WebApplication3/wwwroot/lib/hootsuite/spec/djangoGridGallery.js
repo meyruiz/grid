@@ -380,18 +380,8 @@ $(function () {
 
     $('.save').click(function (e) {
         e.preventDefault();
-        const fs = require('fs')
 
-        // Data which will write in a file. 
-        let data = "Learning how to write in a file."
-
-        // Write data in 'Output.txt' . 
-        fs.writeFile('Output.txt', gridData["DemoGrid"].items, (err) => {
-
-            // In case of a error throw err. 
-            if (err) throw err;
-        }) 
-        console.log("Save");
+        console.log(gridData["DemoGrid"].items);
     });
 
     $('.add-cust-cell').click(function (e) {

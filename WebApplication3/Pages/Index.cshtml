@@ -95,7 +95,32 @@
 </body>
 
 
-<script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        var canvasHeight = $('#grid').height();
+        var canvasWidth = $('#grid').width();
+        console.log(canvasHeight);
+        console.log(canvasWidth);
+        $('li.ui-draggable-handle').draggable({
+            drag: function (evt, ui) {
+                // zoom fix
+                console.log("drag");
+                ui.position.top = Math.round(ui.position.top / zoom);
+                ui.position.left = Math.round(ui.position.left / zoom);
+
+                // don't let draggable to get outside of the canvas
+                if (ui.position.left < 0)
+                    ui.position.left = 0;
+                if (ui.position.left + $(this).width() > canvasWidth)
+                    ui.position.left = canvasWidth - $(this).width();
+                if (ui.position.top < 0)
+                    ui.position.top = 0;
+                if (ui.position.top + $(this).height() > canvasHeight)
+                    ui.position.top = canvasHeight - $(this).height();
+
+            }
+        });
+    });
 
     var zoom = 10;
 
@@ -129,5 +154,23 @@
         var zoomScale = Number(zoom) / 10;
         console.log(zoom);
         setZoom(zoomScale, document.getElementsByClassName('grid')[0])
+
+        zoomScale = document.getElementById('grid');
+        const element = document.querySelector('.grid');
+        //const style = getComputedStyle(element);
+
+        console.log(element.style.transform); // Before pseudo element
+        console.log("Scale: " + zoomScale);
     }
+
+    var zoomScale = document.getElementById('grid');
+    const element = document.querySelector('.grid');
+    const style = getComputedStyle(element);
+
+    console.log(style.transform); // Before pseudo element
+    console.log("Scale: " + zoomScale);
+   // var canvasHeight = $('#canvas').height();
+   // var canvasWidth = $('#canvas').width();
+
+    
 </script>
