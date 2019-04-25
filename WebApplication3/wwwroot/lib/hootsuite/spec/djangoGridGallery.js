@@ -105,6 +105,7 @@ $(function () {
             this.gridElement.empty();
             for (i = 0; i < items.length; i++) {
                 item = items[i];
+                var length = item.lenFT + (item.lenIN / 12);
                 $item = $(
                     '<li>' +
                         '<div class="inner">' +
@@ -112,7 +113,7 @@ $(function () {
                                 '<a href="#config" class="config">Config</a>' +
                             '</div>' +
                             '<div class="info">' +
-                            '<p class="dimensions"> Length:' + item.lenFT + ' FT' + ' ' + item.lenIN + ' IN </p>' +
+                            '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' + 
                             '<p> Cust: Acme Mining Co.' +
                             '<p> Date: 03/31/2019' +
                             '<p> Order: 123456789' +
@@ -126,8 +127,8 @@ $(function () {
                     'data-h': item.h,
                     'data-x': item.x,
                     'data-y': item.y,
-                    'data-lenFT': lengthFT,
-                    'data-lenIN': lengthIN,
+                    'data-lenFT': item.lenFT,
+                    'data-lenIN': item.lenIN,
                     'data-status': "Allocated",
                     'data-cust': "Acme Mining Co",
                     'data-date': "03/31/2019",
@@ -348,17 +349,19 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 84, 
-        'data': []
+        'data': [{ x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0}]
     };
 
+    gridData["DemoGrid"].items = data['data'];
     gridData["DemoGrid"].currentSize = data['size'];
     gridData["DemoGrid"].gridElement = gridData["grid"];
     gridData["DemoGrid"].gridElement.width(gridData["grid"].parent().width());
     gridData["DemoGrid"].buildElements(data['data']);
 
-    /*$(window).resize(function() {
+    $(window).resize(function () {
+        console.log("resize");
         gridData["grid"].gridList('reflow');
-    });*/
+    });
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');

@@ -253,16 +253,19 @@
             }
         },
 
+        /* Change cell size this instead of every instance of the size */
         _calculateCellSize: function() {
             if (this.options.direction === "horizontal") {
+                console.log("e");
                 this._cellHeight = Math.floor(this.$element.height() / this.options.lanes);
                 this._cellWidth = this._cellHeight * this.options.widthHeightRatio;
             } else {
-                this._cellWidth = Math.floor(this.$element.width() / this.options.lanes);
+                console.log("e");
+                this._cellWidth = Math.floor(this.$element.width() / this.options.lanes / (zoom / 10));
                 this._cellHeight = this._cellWidth / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
-                this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;
+                this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio / (zoom / 10);
             }
         },
 
@@ -277,8 +280,8 @@
         _applySizeToItems: function() {
             for (var i = 0; i < this.items.length; i++) {
                 this.items[i].$element.css({
-                    width: this._getItemWidth(this.items[i]),
-                    height: this._getItemHeight(this.items[i])
+                    width: (this._getItemWidth(this.items[i])) / (zoom / 10),
+                    height: (this._getItemHeight(this.items[i])) / (zoom / 10)
                 });
             }
             if (this.options.heightToFontSizeRatio) {
@@ -325,7 +328,7 @@
 
             position[0] -= this.$element.position().left;
 
-            var col = Math.round((position.left / this._cellWidth)/(zoom / 10)),
+            var col = Math.round((position.left / this._cellWidth) / (zoom / 10)),
                 row = Math.round((position.top / this._cellHeight) / (zoom / 10));
 
             // Keep item position within the grid and don't let the item create more
