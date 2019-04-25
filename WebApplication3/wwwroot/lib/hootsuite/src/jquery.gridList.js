@@ -325,8 +325,8 @@
 
             position[0] -= this.$element.position().left;
 
-            var col = Math.round(position.left / this._cellWidth),
-                row = Math.round(position.top / this._cellHeight);
+            var col = Math.round((position.left / this._cellWidth)/(zoom / 10)),
+                row = Math.round((position.top / this._cellHeight) / (zoom / 10));
 
             // Keep item position within the grid and don't let the item create more
             // than one extra column
