@@ -102,7 +102,7 @@
         console.log(canvasHeight);
         console.log(canvasWidth);
         $('li.ui-draggable-handle').draggable({
-            drag: function (evt, ui) {
+            _onDrag: function (evt, ui) {
                 // zoom fix
                 console.log("drag");
                 ui.position.top = Math.round(ui.position.top / zoom);

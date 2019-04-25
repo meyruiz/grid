@@ -270,8 +270,6 @@ $(function () {
                     var cellW = parseInt($(this).attr("data-w"));
                     var cellH = parseInt($(this).attr("data-h"));
 
-                    
-
                     if (cellY <= prevY) {
                         console.log("Y: " + cellY);
                         prevX = cellX;
@@ -289,12 +287,18 @@ $(function () {
                 offcutWidth = data['size'] - offcutX;
                 offcutHeight = offcutY;
 
+                console.log("Posx: " + offcutX);
                 console.log("width" + offcutWidth);
                 console.log("height" + offcutHeight);
-                console.log("Start x" + offcutX);
+                console.log("Start x" + prevX);
                 console.log("Start y" + prevY);
 
-                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal", "Offcut");
+                if (prevX == 0) {
+                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal", "Offcut");
+                }
+                if (offcutX == data['size']) {
+                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, prevX, "horizontal", "Offcut");
+                }
             } else {
                 this.gridElement.children('li').each(function () {
                     var cellX = parseInt($(this).attr("data-x"));
@@ -322,9 +326,11 @@ $(function () {
                 console.log("height" + offcutHeight);
                 console.log("Start x" + prevX);
                 console.log("Start y" + offcutY);
-                gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
-            }
-            
+
+                if (offcutHeight != 0) {
+                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
+                }
+            }  
         },
         resize: function(size) {
             if (size) {
@@ -368,7 +374,8 @@ $(function () {
 
     $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
-        gridData["DemoGrid"].offcut("horizontal");
+        //gridData["DemoGrid"].offcut("horizontal");
+        gridData["DemoGrid"].resize(10);
         console.log("Add horizontal offcut");
     });
 

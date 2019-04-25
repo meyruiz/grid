@@ -22,7 +22,7 @@
     DraggableGridList.prototype = {
 
         defaults: {
-            lanes: 5,
+            lanes: 1,
             direction: "horizontal",
             itemSelector: 'li[data-w]',
             widthHeightRatio: 1,
@@ -168,8 +168,25 @@
 
         _onDrag: function (event, ui) {
 
-            console.log("drag");
-            var item = this._getItemByElement(ui.helper),
+            console.log("zoom:" + zoom);
+            
+            var canvasHeight = 1680;
+            var canvasWidth = 1680;
+            var item = this._getItemByElement(ui.helper);
+            ui.position.top = Math.round(ui.position.top / (zoom / 10));
+            ui.position.left = Math.round(ui.position.left / (zoom / 10));
+
+            // don't let draggable to get outside of the canvas
+            if (ui.position.left < 0)
+                ui.position.left = 0;
+            if (ui.position.left + (this._cellWidth * (this._getItemWidth(item) / 20)) > canvasWidth) // multiply per item's width / 20 (20 is the grid's size in px)
+                ui.position.left = canvasWidth - (this._cellWidth * (this._getItemWidth(item) / 20));
+            if (ui.position.top < 0)
+                ui.position.top = 0;
+            if (ui.position.top + (this._cellHeight * (this._getItemHeight(item) / 20)) > canvasHeight)
+                ui.position.top = canvasHeight - (this._cellHeight * (this._getItemHeight(item) / 20));
+
+            item = this._getItemByElement(ui.helper),
                 newPosition = this._snapItemPositionToGrid(item);
 
             if (this._dragPositionChanged(newPosition)) {
