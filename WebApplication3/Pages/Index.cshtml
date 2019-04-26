@@ -96,36 +96,9 @@
 
 
 <script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        var canvasHeight = $('#grid').height();
-        var canvasWidth = $('#grid').width();
-        console.log(canvasHeight);
-        console.log(canvasWidth);
-        $('li.ui-draggable-handle').draggable({
-            _onDrag: function (evt, ui) {
-                // zoom fix
-                console.log("drag");
-                ui.position.top = Math.round(ui.position.top / zoom);
-                ui.position.left = Math.round(ui.position.left / zoom);
-
-                // don't let draggable to get outside of the canvas
-                if (ui.position.left < 0)
-                    ui.position.left = 0;
-                if (ui.position.left + $(this).width() > canvasWidth)
-                    ui.position.left = canvasWidth - $(this).width();
-                if (ui.position.top < 0)
-                    ui.position.top = 0;
-                if (ui.position.top + $(this).height() > canvasHeight)
-                    ui.position.top = canvasHeight - $(this).height();
-
-            }
-        });
-    });
-
     var zoom = 10;
 
     function setZoom(zoom, el) {
-
         transformOrigin = [0, 0];
         el = el || instance.getContainer();
         var p = ["webkit", "moz", "ms", "o"],
@@ -139,7 +112,6 @@
 
         el.style["transform"] = s;
         el.style["transformOrigin"] = oString;
-
     }
 
     //setZoom(5,document.getElementsByClassName('container')[0]);
@@ -155,12 +127,12 @@
         console.log(zoom);
         setZoom(zoomScale, document.getElementsByClassName('grid')[0])
 
-        zoomScale = document.getElementById('grid');
-        const element = document.querySelector('.grid');
-        //const style = getComputedStyle(element);
+        document.getElementById("grid").style.width = (1680 * (Number(zoom) / 10));
+        document.getElementById("grid").style.height = (1680 * (Number(zoom) / 10));
 
-        console.log(element.style.transform); // Before pseudo element
-        console.log("Scale: " + zoomScale);
+        document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
+        document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
+
     }
 
     var zoomScale = document.getElementById('grid');

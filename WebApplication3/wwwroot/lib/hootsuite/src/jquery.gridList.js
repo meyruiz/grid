@@ -82,7 +82,7 @@
 
         removeElement: function (element) {
             var item = this._getItemByElement(element);
-            this.gridList.removeItem(item);
+            //this.gridList.removeItem(item);
             this._applyPositionToItems();
         },
 
@@ -256,11 +256,9 @@
         /* Change cell size this instead of every instance of the size */
         _calculateCellSize: function() {
             if (this.options.direction === "horizontal") {
-                console.log("e");
-                this._cellHeight = Math.floor(this.$element.height() / this.options.lanes);
+                this._cellHeight = Math.floor(this.$element.height() / this.options.lanes / (zoom / 10));
                 this._cellWidth = this._cellHeight * this.options.widthHeightRatio;
             } else {
-                console.log("e");
                 this._cellWidth = Math.floor(this.$element.width() / this.options.lanes / (zoom / 10));
                 this._cellHeight = this._cellWidth / this.options.widthHeightRatio;
             }
