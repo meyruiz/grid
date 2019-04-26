@@ -265,7 +265,7 @@
                 this._cellHeight = this._cellWidth / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
-                this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio / (zoom / 10);
+                this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;
             }
         },
 
@@ -280,8 +280,8 @@
         _applySizeToItems: function() {
             for (var i = 0; i < this.items.length; i++) {
                 this.items[i].$element.css({
-                    width: (this._getItemWidth(this.items[i])) / (zoom / 10),
-                    height: (this._getItemHeight(this.items[i])) / (zoom / 10)
+                    width: (this._getItemWidth(this.items[i])),
+                    height: (this._getItemHeight(this.items[i]))
                 });
             }
             if (this.options.heightToFontSizeRatio) {
