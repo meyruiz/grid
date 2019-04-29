@@ -140,6 +140,18 @@ div {
             transition: background 3s;
         }
 
+        .grid li .Allocated {
+            background: #33c6ff;
+        }
+
+        .grid li .Offcut {
+            background: #FF6FFF !important;
+        }
+
+        .grid li .Cut {
+            background: gray !important;
+        }
+
         .grid li .inner .info {
             font-size: 6em;
             background: #33c6ff;

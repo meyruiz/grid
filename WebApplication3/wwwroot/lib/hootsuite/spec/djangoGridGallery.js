@@ -106,13 +106,14 @@ $(function () {
             for (i = 0; i < items.length; i++) {
                 item = items[i];
                 var length = item.lenFT + (item.lenIN / 12);
+
                 $item = $(
                     '<li>' +
-                        '<div class="inner">' +
-                            '<div class="controls">' +
-                                '<a href="#config" class="config">Config</a>' +
+                        '<div class="inner ' + item.status + '">' +
+                            '<div class="controls ' + item.status + '">' +
+                            '<a href="#config" class="config ' + item.status + '">Config</a>' +
                             '</div>' +
-                            '<div class="info">' +
+                            '<div class="info ' + item.status + '">' +
                             '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' + 
                             '<p> Cust: Acme Mining Co.' +
                             '<p> Date: 03/31/2019' +
@@ -122,6 +123,7 @@ $(function () {
                         '</div>' +
                     '</li>'
                 );
+
                 $item.attr({
                     'data-w': item.w,
                     'data-h': item.h,
@@ -129,7 +131,7 @@ $(function () {
                     'data-y': item.y,
                     'data-lenFT': item.lenFT,
                     'data-lenIN': item.lenIN,
-                    'data-status': "Allocated",
+                    'data-status': item.status,
                     'data-cust': "Acme Mining Co",
                     'data-date': "03/31/2019",
                     'data-order': 123456789,
@@ -370,7 +372,9 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 84, 
-        'data': [{ x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0}]
+        'data': [{ x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
+            { x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
+            { x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }]
     };
 
     gridData["DemoGrid"].items = data['data'];
