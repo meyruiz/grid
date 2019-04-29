@@ -206,23 +206,44 @@ $(function () {
                     }
                 }
             }
-            
-            $item = $(
-                '<li>' +
-                '<div class="inner">' +
-                '<div class="controls">' +
-                '<a href="#config" class="config">Config</a>' +
-                '</div>' +
-                '<div class="info">' +
-                    '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
+
+            if (type === "Offcut") {
+                $item = $(
+                    '<li>' +
+                    '<div class="inner" style="background: #FF6FFF;">' +
+                    '<div class="controls" style="background: #FF6FFF;">' +
+                    '<a href="#config" class="config" style="background: #FF6FFF;">Config</a>' +
+                    '</div>' +
+                    '<div class="info" style="background: #FF6FFF;">' +
+                    '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' +
                     '<p> Cust: Acme Mining Co.' +
                     '<p> Date: 03/31/2019' +
                     '<p> Order: 123456789' +
                     '<p> Prod Ord: 123456789' +
-                '</div>' +
-                '</div>' +
-                '</li>'
-            );
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
+                );
+            } else {
+                $item = $(
+                    '<li>' +
+                    '<div class="inner">' +
+                    '<div class="controls">' +
+                    '<a href="#config" class="config">Config</a>' +
+                    '</div>' +
+                    '<div class="info">' +
+                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
+                        '<p> Cust: Acme Mining Co.' +
+                        '<p> Date: 03/31/2019' +
+                        '<p> Order: 123456789' +
+                        '<p> Prod Ord: 123456789' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
+                );
+            }
+
+            
 
             $item.attr({
                 'data-w': widthIN,
@@ -377,8 +398,8 @@ $(function () {
 
     $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
-        //gridData["DemoGrid"].offcut("horizontal");
-        gridData["DemoGrid"].resize(10);
+        gridData["DemoGrid"].offcut("horizontal");
+        //gridData["DemoGrid"].resize(10);
         console.log("Add horizontal offcut");
     });
 
