@@ -4,7 +4,6 @@ var gridData = {};
 function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
     var content = el.find("div.inner div.content").text();
-    console.log(content);
     var lengthFT = $(el).attr("data-lenFT");
     var lengthIN = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
@@ -337,12 +336,45 @@ $(function () {
                 }
             }  
         },
+        print: function () {
+            this.gridElement.gridList('print');
+        },
+
         resize: function(size) {
             if (size) {
                 this.currentSize = size;
             }
             this.gridElement.gridList('resize', this.currentSize);
-        }
+        },
+
+        toString: function () {
+            console.log(this.gridElement.length);
+            var widthOfGrid = this.gridElement.length,
+                output = '\n #|',
+                border = '\n --',
+                item,
+                i,
+                j;
+
+            // Render the table header
+            for (i = 0; i < widthOfGrid; i++) {
+                output += ' ' + this.gridElement.gridList('_padNumber', i, ' ');
+                border += '---';
+            };
+            output += border;
+
+            // Render table contents row by row, as we go on the y axis
+            for (i = 0; i < this._options.lanes; i++) {
+                output += '\n' + this._padNumber(i, ' ') + '|';
+                for (j = 0; j < widthOfGrid; j++) {
+                    output += ' ';
+                    item = this.grid[j][i];
+                    output += item ? this.gridElement.gridList('_padNumber', this.items.indexOf(item), '0') : '--';
+                }
+            };
+            output += '\n';
+            return output;
+        },
     };
 
     // Get grid element
@@ -393,6 +425,12 @@ $(function () {
         e.preventDefault();
         gridData["DemoGrid"].offcut("vertical");
         console.log("Add vertical offcut");
+    });
+
+    $('.print').click(function (e) {
+        e.preventDefault();
+        gridData["DemoGrid"].toString();
+        console.log(gridData["DemoGrid"].items);
     });
 
     $('.save').click(function (e) {

@@ -49,7 +49,8 @@
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
             <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut" style="margin-bottom:15px;">Horizontal Offcut</button>
-            <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut">Vertical Offcut</button>
+            <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;">Vertical Offcut</button>
+            <button type="button" class="btn print" href="#print" onclick="PrintElem()" style="margin-bottom:15px;">Print</button>
         </div>
         <div class="col-md-10">
             <div class="row">
@@ -79,7 +80,7 @@
                         <div class='in'></div>
                         <div class='in'></div>
                     </div>
-                    <div class="grid-container">
+                    <div id="grid-container" class="grid-container">
                         <ul id="grid" class="grid">
                             <li class="position-highlight">
                                 <div class="inner"></div>
@@ -114,7 +115,7 @@
         el.style["transformOrigin"] = oString;
     }
 
-    //setZoom(5,document.getElementsByClassName('container')[0]);
+    //setZoom(5,document.getElementsByClassName('grid-container')[0]);
 
     function showVal(a) {
         var zoomScale = Number(a) / 10;
@@ -125,10 +126,15 @@
         zoom += a;
         var zoomScale = Number(zoom) / 10;
         console.log(zoom);
-        setZoom(zoomScale, document.getElementsByClassName('grid')[0])
+        setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
-        document.getElementById("grid").style.width = (1680 * (Number(zoom) / 10));
-        document.getElementById("grid").style.height = (1680 * (Number(zoom) / 10));
+
+        var width = (1680 * (Number(zoom) / 10));
+        var height = (1680 * (Number(zoom) / 10));
+        console.log(width);
+
+        document.getElementById("grid-container").style.width = width + "px";
+        document.getElementById("grid-container").style.height = height + "px";
 
         //document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
         //document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
@@ -144,5 +150,23 @@
    // var canvasHeight = $('#canvas').height();
    // var canvasWidth = $('#canvas').width();
 
-    
+    function PrintElem() {
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + document.title + '</title>');
+        mywindow.document.write('<link rel="stylesheet" href="~/css/site.css" /> />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + document.title + '</h1>');
+        mywindow.document.write(document.getElementById("grid-container").innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+
 </script>

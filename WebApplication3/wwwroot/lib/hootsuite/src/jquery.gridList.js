@@ -43,6 +43,10 @@
             return this.items;
         },
 
+        print: function () {
+            this.gridList.toString();
+        },
+
         resize: function(lanes) {
             if (lanes) {
                 this.options.lanes = lanes;

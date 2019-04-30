@@ -99,6 +99,8 @@ div {
     right: 30px;
     bottom: 0;
     overflow: scroll;
+    max-width: 95%;
+    max-height: 600px;
     height: 600px;
 }
 
