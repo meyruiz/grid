@@ -57,7 +57,7 @@ function initializeDialog() {
                         gridData["cell_dialog_open"]);
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    gridData["grid"].gridList('toggleDrag', true);
+                    //gridData["grid"].gridList('toggleDrag', true); // Makes errors when removing elements with zoom enabled
                 }
             },
             {
@@ -65,7 +65,7 @@ function initializeDialog() {
                 click: function() {
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    gridData["grid"].gridList('toggleDrag', true);
+                    //gridData["grid"].gridList('toggleDrag', true);
                 }
             },
             {
@@ -74,7 +74,7 @@ function initializeDialog() {
                     applyDialogConfig();
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    gridData["grid"].gridList('toggleDrag', true);
+                    //gridData["grid"].gridList('toggleDrag', true);
                 }
             }
         ],
@@ -275,6 +275,7 @@ $(function () {
             this._init();
         },
         removeElement: function (element) {
+            console.log("Remove");
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
         },
@@ -374,7 +375,8 @@ $(function () {
         'size': 84, 
         'data': [{ x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
             { x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }]
+            { x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }
+        ]
     };
 
     gridData["DemoGrid"].items = data['data'];

@@ -82,7 +82,7 @@
 
         removeElement: function (element) {
             var item = this._getItemByElement(element);
-            //this.gridList.removeItem(item);
+            this.gridList.removeItem(item);
             this._applyPositionToItems();
         },
 
@@ -186,8 +186,8 @@
             if (ui.position.top + (this._cellHeight * (this._getItemHeight(item) / 20)) > canvasHeight)
                 ui.position.top = canvasHeight - (this._cellHeight * (this._getItemHeight(item) / 20));
 
-            item = this._getItemByElement(ui.helper),
-                newPosition = this._snapItemPositionToGrid(item);
+            
+            newPosition = this._snapItemPositionToGrid(item);
 
             if (this._dragPositionChanged(newPosition)) {
                 this._previousDragPosition = newPosition;
