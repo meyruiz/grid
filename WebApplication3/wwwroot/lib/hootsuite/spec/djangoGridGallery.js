@@ -139,9 +139,10 @@ $(function () {
                 });
                 this.gridElement.append($item);
             }
+            
             this._init();
         },
-        addCustomElement: function (lengthFT, lengthIN, widthIN, direction, type) {
+        addCustomElement: function (lengthFT, lengthIN, widthIN, direction, status) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
             this.gridElement.children('li').each(function () {
@@ -209,43 +210,22 @@ $(function () {
                 }
             }
 
-            if (type === "Offcut") {
-                $item = $(
+            $item = $(
                     '<li>' +
-                    '<div class="inner" style="background: #FF6FFF;">' +
-                    '<div class="controls" style="background: #FF6FFF;">' +
-                    '<a href="#config" class="config" style="background: #FF6FFF;">Config</a>' +
-                    '</div>' +
-                    '<div class="info" style="background: #FF6FFF;">' +
-                    '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' +
-                    '<p> Cust: Acme Mining Co.' +
-                    '<p> Date: 03/31/2019' +
-                    '<p> Order: 123456789' +
-                    '<p> Prod Ord: 123456789' +
-                    '</div>' +
-                    '</div>' +
+                        '<div class="inner ' + status + '">' +
+                            '<div class="controls ' + status + '">' +
+                            '<a href="#config" class="config ' + status + '">Config</a>' +
+                            '</div>' +
+                            '<div class="info ' + status + '">' +
+                            '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
+                            '<p> Cust: Acme Mining Co.' +
+                            '<p> Date: 03/31/2019' +
+                            '<p> Order: 123456789' +
+                            '<p> Prod Ord: 123456789' +
+                            '</div>' +
+                        '</div>' +
                     '</li>'
                 );
-            } else {
-                $item = $(
-                    '<li>' +
-                    '<div class="inner">' +
-                    '<div class="controls">' +
-                    '<a href="#config" class="config">Config</a>' +
-                    '</div>' +
-                    '<div class="info">' +
-                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
-                        '<p> Cust: Acme Mining Co.' +
-                        '<p> Date: 03/31/2019' +
-                        '<p> Order: 123456789' +
-                        '<p> Prod Ord: 123456789' +
-                    '</div>' +
-                    '</div>' +
-                    '</li>'
-                );
-            }
-
-            
 
             $item.attr({
                 'data-w': widthIN,
@@ -254,7 +234,7 @@ $(function () {
                 'data-lenIN': lengthIN,
                 'data-x': posX,
                 'data-y': posY,
-                'data-status': type,
+                'data-status': status,
                 'data-cust': "Acme Mining Co",
                 'data-date': "03/31/2019",
                 'data-order': 123456789,
@@ -262,7 +242,7 @@ $(function () {
             });
 
             this.items.push([{ w: widthIN, h: length, x: posX, y: posY, 
-                                lenFT: lengthFT, lenIN: lengthIN, status: type, 
+                                lenFT: lengthFT, lenIN: lengthIN, status: status, 
                                 cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789}]);
 
             this.gridElement.append($item);
