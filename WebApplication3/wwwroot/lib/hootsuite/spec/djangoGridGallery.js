@@ -271,34 +271,38 @@ $(function () {
         toggleOffcuts: function (id) {
 
             var currentCut = $(this.gridElement.children('li')[id]);
+            var lastY = 0;
+            var lastYID = 0;
+            var cutNextToXPos = false;
 
             var cellX = parseInt($(currentCut).attr("data-x"));
             var cellY = parseInt($(currentCut).attr("data-y"));
             var cellW = parseInt($(currentCut).attr("data-w"));
             var cellH = parseInt($(currentCut).attr("data-h"));
-            console.log(cellX);
+            
 
-            this.gridElement.children('li').each(function () {
-
-            });
-        },
-        checkNextToXPos: function (cellX, cellW, cellY, cellH) {
-            var cutNextToXPos = false;
             this.gridElement.children('li').each(function () {
                 var cellID = parseInt($(this).attr("data-id"));
                 var x = parseInt($(this).attr("data-x"));
                 var w = parseInt($(this).attr("data-w"));
                 var y = parseInt($(this).attr("data-y"));
                 var h = parseInt($(this).attr("data-h"));
-                console.log("x: " + x); console.log("w: " + w);
-                    console.log("cellx: " + cellX);
-                    console.log("cellw: " + cellW);
-                    
+
                 if (x == cellX + cellW && y + h < cellY) {
                     cutNextToXPos = true;
                 }
+
+                // only show vertical offcut option for the cut with biggest Y pos
+                if (lastY < y) {
+                    lastYID = cellID;
+                    lastY = cellY;
+                }
             });
-            return cutNextToXPos;
+            if (cutNextToXPos) {
+                $(this.gridElement.children('li')[id]).addClass("showHOffcut");
+            }
+            // show vertical offcut option for idLastY
+            $(this.gridElement.children('li')[lastYID]).addClass("showVOffcut");
         },
         removeElement: function (element) {
             console.log("Remove");
