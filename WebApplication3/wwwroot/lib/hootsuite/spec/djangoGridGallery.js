@@ -3,7 +3,6 @@ var gridData = {};
 
 function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
-    var content = el.find("div.inner div.content").text();
     var lengthFT = $(el).attr("data-lenFT");
     var lengthIN = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
@@ -11,7 +10,22 @@ function openDialogConfig(el) {
     gridData["dialog"].find("div input.item_lenFT").val(lengthFT);
     gridData["dialog"].find("div input.item_lenIN").val(lengthIN);
     gridData["dialog"].find("div input.item_w").val(width);
-    gridData["dialog"].dialog({position: { my: "center", at: "center", of: el }});
+    gridData["dialog"].dialog({ position: { my: "center", at: "center", of: el } });
+
+    gridData["DemoGrid"].toggleOffcuts();
+
+    if ($(el).hasClass("showHOffcut")) {
+        gridData["dialog"].find("div .add-horizontal-offcut").show();
+    } else {
+        gridData["dialog"].find("div .add-horizontal-offcut").hide();
+    }
+
+    if ($(el).hasClass("showVOffcut")) {
+        gridData["dialog"].find("div .add-vertical-offcut").show();
+    } else {
+        gridData["dialog"].find("div .add-vertical-offcut").hide();
+    }
+
     gridData["dialog"].dialog("open");
 }
 
@@ -124,6 +138,7 @@ $(function () {
                 );
 
                 $item.attr({
+                    'data-id': item.id,
                     'data-w': item.w,
                     'data-h': item.h,
                     'data-x': item.x,
@@ -253,6 +268,57 @@ $(function () {
 
             this._init();
         },
+        toggleOffcuts: function () {
+            var lastYID = 0;
+            var lastY = 0;
+            var lastX = 0;
+
+            this.gridElement.children('li').each(function () {
+                var cellID = parseInt($(this).attr("data-id"));
+                var cellX = parseInt($(this).attr("data-x"));
+                var cellY = parseInt($(this).attr("data-y"));
+                var cellW = parseInt($(this).attr("data-w"));
+                var cellH = parseInt($(this).attr("data-h"));
+
+                $(this).removeClass("showHOffcut");
+
+                if (cellX == 0 || cellX + cellW == data['size']) {
+                    var cutNextToXPos = gridData["DemoGrid"].checkNextToXPos(cellX, cellW);
+                    //show horizontal offcut btn
+                    console.log(cutNextToXPos);
+                    if (cutNextToXPos) {
+                        $(this).addClass("showHOffcut");
+                    }
+                }
+
+                // only show vertical offcut option for the cut with biggest Y pos
+                if (lastY < cellY) {
+                    lastYID = cellID;
+                    lastY = cellY;
+                }       
+            });
+
+            // show vertical offcut option for idLastY
+            $(this.gridElement.children('li')[lastYID]).addClass("showVOffcut");
+        },
+        checkNextToXPos: function (cellX, cellW, cellY, cellH) {
+            var cutNextToXPos = false;
+            this.gridElement.children('li').each(function () {
+                var cellID = parseInt($(this).attr("data-id"));
+                var x = parseInt($(this).attr("data-x"));
+                var w = parseInt($(this).attr("data-w"));
+                var y = parseInt($(this).attr("data-y"));
+                var h = parseInt($(this).attr("data-h"));
+                console.log("x: " + x);
+                    console.log("cellx: " + cellX);
+                    console.log("w: " + w);
+                if (x == cellX + cellW && y + h < cellY) {
+                    
+                    cutNextToXPos = true;
+                }
+            });
+            return cutNextToXPos;
+        },
         removeElement: function (element) {
             console.log("Remove");
             $(element).remove();
@@ -331,50 +397,20 @@ $(function () {
                 console.log("Start x" + prevX);
                 console.log("Start y" + offcutY);
 
-                if (offcutHeight != 0) {
+                if (prevY == 0 && offcutHeight != 0) {
                     gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
+                }
+                if (offcutX == data['size']) {
+                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, prevX, "vertical", "Offcut");
                 }
             }  
         },
-        print: function () {
-            this.gridElement.gridList('print');
-        },
-
         resize: function(size) {
             if (size) {
                 this.currentSize = size;
             }
             this.gridElement.gridList('resize', this.currentSize);
-        },
-
-        toString: function () {
-            console.log(this.gridElement.length);
-            var widthOfGrid = this.gridElement.length,
-                output = '\n #|',
-                border = '\n --',
-                item,
-                i,
-                j;
-
-            // Render the table header
-            for (i = 0; i < widthOfGrid; i++) {
-                output += ' ' + this.gridElement.gridList('_padNumber', i, ' ');
-                border += '---';
-            };
-            output += border;
-
-            // Render table contents row by row, as we go on the y axis
-            for (i = 0; i < this._options.lanes; i++) {
-                output += '\n' + this._padNumber(i, ' ') + '|';
-                for (j = 0; j < widthOfGrid; j++) {
-                    output += ' ';
-                    item = this.grid[j][i];
-                    output += item ? this.gridElement.gridList('_padNumber', this.items.indexOf(item), '0') : '--';
-                }
-            };
-            output += '\n';
-            return output;
-        },
+        }
     };
 
     // Get grid element
@@ -385,11 +421,13 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 84, 
-        'data': [{ x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
-            { x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }
+        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
+            { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
+            { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }
         ]
     };
+
+    var selectedCut = 0;
 
     gridData["DemoGrid"].items = data['data'];
     gridData["DemoGrid"].currentSize = data['size'];
@@ -404,6 +442,7 @@ $(function () {
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
+        selectedCut = el[0].dataset.id;
         gridData["grid"].gridList('toggleDrag', false);
         openDialogConfig(el);
     });
@@ -416,8 +455,9 @@ $(function () {
 
     $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
+        var el = $(e.currentTarget).closest('li');
+        console.log(el);
         gridData["DemoGrid"].offcut("horizontal");
-        //gridData["DemoGrid"].resize(10);
         console.log("Add horizontal offcut");
     });
 

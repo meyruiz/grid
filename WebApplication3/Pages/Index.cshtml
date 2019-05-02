@@ -8,6 +8,8 @@
     <div id="dialog" title="Cell Settings">
         <div>
             <label>Size</label>
+        </div>
+        <div>
             <span style="right: 0;">
                 Length:
                 <input type="text" class="item_lenFT" style="width: 35px;"> FT
@@ -15,6 +17,10 @@
 
                 Width: <input type="text" class="item_w" style="width: 35px;"> IN
             </span>
+        </div>
+        <div>
+            <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut" style="margin-bottom:15px;">Horizontal Offcut</button>
+            <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;">Vertical Offcut</button>
         </div>
     </div>
 
@@ -153,9 +159,12 @@
     function PrintElem() {
         var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
+        mywindow.document.write('<base href="' + location.origin + location.pathname + '">');
         mywindow.document.write('<html><head><title>' + document.title + '</title>');
-        mywindow.document.write('<link rel="stylesheet" href="~/css/site.css" /> />');
         mywindow.document.write('</head><body >');
+        mywindow.document.write('<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />');
+        mywindow.document.write('<link rel="stylesheet" href="/css/site.css" type="text/css"/>');
+        mywindow.document.write('<link rel="stylesheet" href="/css/jquery-ui.min.css" />');
         mywindow.document.write('<h1>' + document.title + '</h1>');
         mywindow.document.write(document.getElementById("grid-container").innerHTML);
         mywindow.document.write('</body></html>');
