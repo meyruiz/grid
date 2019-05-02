@@ -12,7 +12,7 @@ function openDialogConfig(el) {
     gridData["dialog"].find("div input.item_w").val(width);
     gridData["dialog"].dialog({ position: { my: "center", at: "center", of: el } });
 
-    gridData["DemoGrid"].toggleOffcuts();
+    gridData["DemoGrid"].toggleOffcuts($(el).attr("data-id"));
 
     if ($(el).hasClass("showHOffcut")) {
         gridData["dialog"].find("div .add-horizontal-offcut").show();
@@ -268,38 +268,19 @@ $(function () {
 
             this._init();
         },
-        toggleOffcuts: function () {
-            var lastYID = 0;
-            var lastY = 0;
-            var lastX = 0;
+        toggleOffcuts: function (id) {
+
+            var currentCut = $(this.gridElement.children('li')[id]);
+
+            var cellX = parseInt($(currentCut).attr("data-x"));
+            var cellY = parseInt($(currentCut).attr("data-y"));
+            var cellW = parseInt($(currentCut).attr("data-w"));
+            var cellH = parseInt($(currentCut).attr("data-h"));
+            console.log(cellX);
 
             this.gridElement.children('li').each(function () {
-                var cellID = parseInt($(this).attr("data-id"));
-                var cellX = parseInt($(this).attr("data-x"));
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellW = parseInt($(this).attr("data-w"));
-                var cellH = parseInt($(this).attr("data-h"));
 
-                $(this).removeClass("showHOffcut");
-
-                if (cellX == 0 || cellX + cellW == data['size']) {
-                    var cutNextToXPos = gridData["DemoGrid"].checkNextToXPos(cellX, cellW);
-                    //show horizontal offcut btn
-                    console.log(cutNextToXPos);
-                    if (cutNextToXPos) {
-                        $(this).addClass("showHOffcut");
-                    }
-                }
-
-                // only show vertical offcut option for the cut with biggest Y pos
-                if (lastY < cellY) {
-                    lastYID = cellID;
-                    lastY = cellY;
-                }       
             });
-
-            // show vertical offcut option for idLastY
-            $(this.gridElement.children('li')[lastYID]).addClass("showVOffcut");
         },
         checkNextToXPos: function (cellX, cellW, cellY, cellH) {
             var cutNextToXPos = false;
@@ -309,11 +290,11 @@ $(function () {
                 var w = parseInt($(this).attr("data-w"));
                 var y = parseInt($(this).attr("data-y"));
                 var h = parseInt($(this).attr("data-h"));
-                console.log("x: " + x);
+                console.log("x: " + x); console.log("w: " + w);
                     console.log("cellx: " + cellX);
-                    console.log("w: " + w);
-                if (x == cellX + cellW && y + h < cellY) {
+                    console.log("cellw: " + cellW);
                     
+                if (x == cellX + cellW && y + h < cellY) {
                     cutNextToXPos = true;
                 }
             });
