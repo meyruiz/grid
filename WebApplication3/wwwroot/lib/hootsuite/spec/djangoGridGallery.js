@@ -242,6 +242,7 @@ $(function () {
                 );
 
             $item.attr({
+                'data-id': this.gridElement.children('li').length,
                 'data-w': widthIN,
                 'data-h': length,
                 'data-lenFT': lengthFT,
@@ -282,27 +283,45 @@ $(function () {
             
 
             this.gridElement.children('li').each(function () {
-                var cellID = parseInt($(this).attr("data-id"));
+                var id2 = parseInt($(this).attr("data-id"));
                 var x = parseInt($(this).attr("data-x"));
                 var w = parseInt($(this).attr("data-w"));
                 var y = parseInt($(this).attr("data-y"));
                 var h = parseInt($(this).attr("data-h"));
 
-                if (x == cellX + cellW && y + h < cellY) {
+                //if (x != cellX + cellW && cellX != x + w // check if there are no cuts at the sides
+                    //&& (cellY + cellH > y)
+                    //&& (cellID != id)) { //&& y + h < cellY) {
+                if (!(cellY + cellH < y && cellY > y + h) && (id2 != id)) {
+                    console.log(id2);
                     cutNextToXPos = true;
                 }
 
-                // only show vertical offcut option for the cut with biggest Y pos
-                if (lastY < y) {
-                    lastYID = cellID;
-                    lastY = cellY;
-                }
+                /*if (inRange(y, cellY, cellY + cellH) && inRange(cellY, y, y + h)) {
+                    console.log("x: " + x);
+                    console.log("w: " + w);
+                    console.log("y: " + y);
+                    console.log("h: " + h);
+                }*/
+
+                // work on showing vertical cuts for all possible ones
+                if (y > lastY) {
+                    lastYID = id2;
+                    lastY = y;
+                }         
             });
-            if (cutNextToXPos) {
+            if (cutNextToXPos || this.gridElement.children('li').length == 1) {
                 $(this.gridElement.children('li')[id]).addClass("showHOffcut");
+            } else {
+                $(this.gridElement.children('li')[id]).removeClass("showHOffcut");
             }
             // show vertical offcut option for idLastY
-            $(this.gridElement.children('li')[lastYID]).addClass("showVOffcut");
+            if (lastYID != id) {
+                $(this.gridElement.children('li')[id]).removeClass("showVOffcut");
+            } else {
+                $(this.gridElement.children('li')[id]).addClass("showVOffcut");
+            }
+            
         },
         removeElement: function (element) {
             console.log("Remove");
