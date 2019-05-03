@@ -292,9 +292,13 @@ $(function () {
                 //if (x != cellX + cellW && cellX != x + w // check if there are no cuts at the sides
                     //&& (cellY + cellH > y)
                     //&& (cellID != id)) { //&& y + h < cellY) {
-                if (!(cellY + cellH < y && cellY > y + h) && (id2 != id)) {
+                if (!(cellY + cellH > y && cellY < y + h) && (id2 != id) && (cellX == 0 || cellX + cellW == data['size'])) {
                     console.log(id2);
                     cutNextToXPos = true;
+                    console.log("x: " + x);
+                    console.log("w: " + w);
+                    console.log("y: " + y);
+                    console.log("h: " + h);
                 }
 
                 /*if (inRange(y, cellY, cellY + cellH) && inRange(cellY, y, y + h)) {
