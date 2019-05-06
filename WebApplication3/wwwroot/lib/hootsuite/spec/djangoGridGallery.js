@@ -275,13 +275,13 @@ $(function () {
             var lastY = 0;
             var lastYID = 0;
             var cutNextToXPos = false;
+            var edgeOfGrid = false;
 
             var cellX = parseInt($(currentCut).attr("data-x"));
             var cellY = parseInt($(currentCut).attr("data-y"));
             var cellW = parseInt($(currentCut).attr("data-w"));
             var cellH = parseInt($(currentCut).attr("data-h"));
             
-
             this.gridElement.children('li').each(function () {
                 var id2 = parseInt($(this).attr("data-id"));
                 var x = parseInt($(this).attr("data-x"));
@@ -289,24 +289,22 @@ $(function () {
                 var y = parseInt($(this).attr("data-y"));
                 var h = parseInt($(this).attr("data-h"));
 
-                //if (x != cellX + cellW && cellX != x + w // check if there are no cuts at the sides
-                    //&& (cellY + cellH > y)
-                    //&& (cellID != id)) { //&& y + h < cellY) {
-                if (!(cellY + cellH > y && cellY < y + h) && (id2 != id) && (cellX == 0 || cellX + cellW == data['size'])) {
-                    console.log(id2);
+                // if grid has no empty space horizontally
+                if (!(cellY + cellH > y && cellY < y + h) && (id2 != id)) {
                     cutNextToXPos = true;
+                    console.log(id2);
+                    console.log(cellY + " + " + cellH + " > " + y);
+                    console.log(cellY + " < " + y + " + " + h);
                     console.log("x: " + x);
                     console.log("w: " + w);
                     console.log("y: " + y);
                     console.log("h: " + h);
                 }
 
-                /*if (inRange(y, cellY, cellY + cellH) && inRange(cellY, y, y + h)) {
-                    console.log("x: " + x);
-                    console.log("w: " + w);
-                    console.log("y: " + y);
-                    console.log("h: " + h);
-                }*/
+                // If the cut is on the edge of the grid
+                if (cellX == 0 || cellX + cellW == data['size']) {
+                    edgeOfGrid = true;
+                }
 
                 // work on showing vertical cuts for all possible ones
                 if (y > lastY) {
@@ -314,16 +312,21 @@ $(function () {
                     lastY = y;
                 }         
             });
-            if (cutNextToXPos || this.gridElement.children('li').length == 1) {
-                $(this.gridElement.children('li')[id]).addClass("showHOffcut");
+
+            console.log(this.gridElement.children('li').length);
+
+            if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
+                console.log("True");
+                $(currentCut).addClass("showHOffcut");
             } else {
-                $(this.gridElement.children('li')[id]).removeClass("showHOffcut");
+                console.log("False");
+                $(currentCut).removeClass("showHOffcut");
             }
             // show vertical offcut option for idLastY
             if (lastYID != id) {
-                $(this.gridElement.children('li')[id]).removeClass("showVOffcut");
+                $(currentCut).removeClass("showVOffcut");
             } else {
-                $(this.gridElement.children('li')[id]).addClass("showVOffcut");
+                $(currentCut).addClass("showVOffcut");
             }
             
         },
@@ -429,9 +432,9 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 84, 
-        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
+        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" }
+            { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
         ]
     };
 
