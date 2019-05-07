@@ -272,9 +272,9 @@ $(function () {
         toggleOffcuts: function (id) {
 
             var currentCut = $(this.gridElement.children('li')[id]);
-            var lastY = 0;
             var lastYID = 0;
             var cutNextToXPos = false;
+            var cutNextToYPos = false;
             var edgeOfGrid = false;
 
             var cellX = parseInt($(currentCut).attr("data-x"));
@@ -292,13 +292,22 @@ $(function () {
                 // if grid has no empty space horizontally
                 if ((cellY + cellH - 1 > y && cellY < y + h) && (id2 != id)) {
                     cutNextToXPos = true;
+                }
+
+                // if grid has no empty space vertically
+                if (cellX > x + y && (id2 != id)) {
+                    cutNextToYPos = true;
+
 
                 } else {
                     console.log(id2);
-                    console.log(cellY + " + " + cellH + " - 1 > " + y);
-                    console.log(cellY + cellH - 1 > y);
-                    console.log(cellY + " < " + y + " + " + h + "");
-                    console.log(cellY < y + h);
+                    console.log(cellX + " > " + x + " + " + y);
+                    console.log(cellX > x + y);
+
+                    //console.log(cellX + " + " + cellW + " - 1 > " + x);
+                    //console.log(cellX + cellW > x);
+                    //console.log(cellX + " < " + x + " + " + w + "");
+                    //console.log(cellX < x + w);
                     console.log("x: " + x);
                     console.log("w: " + w);
                     console.log("y: " + y);
@@ -308,28 +317,21 @@ $(function () {
                 // If the cut is on the edge of the grid
                 if (cellX == 0 || cellX + cellW == data['size']) {
                     edgeOfGrid = true;
-                }
-
-                // work on showing vertical cuts for all possible ones
-                if (y > lastY) {
-                    lastYID = id2;
-                    lastY = y;
-                }      
-                
+                }          
             });
-            console.log("------------------------------------------------------");
+            console.log("----------------------");
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
-                console.log("True");
                 $(currentCut).addClass("showHOffcut");
             } else {
-                console.log("False");
                 $(currentCut).removeClass("showHOffcut");
             }
             // show vertical offcut option for idLastY
-            if (lastYID != id) {
-                $(currentCut).removeClass("showVOffcut");
-            } else {
+            if (!cutNextToYPos || this.gridElement.children('li').length == 1) {
+                console.log("True");
                 $(currentCut).addClass("showVOffcut");
+            } else {
+                console.log("False");
+                $(currentCut).removeClass("showVOffcut");
             }
             
         },
