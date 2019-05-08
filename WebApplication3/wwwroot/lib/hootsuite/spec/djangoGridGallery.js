@@ -292,26 +292,15 @@ $(function () {
                 // if grid has no empty space horizontally
                 if ((cellY + cellH - 1 > y && cellY < y + h) && (id2 != id)) {
                     cutNextToXPos = true;
-                }
-
-                // if grid has no empty space vertically
-                if (cellX > x + y && (id2 != id)) {
-                    cutNextToYPos = true;
-
-
-                } else {
-                    console.log(id2);
-                    console.log(cellX + " > " + x + " + " + y);
-                    console.log(cellX > x + y);
-
                     //console.log(cellX + " + " + cellW + " - 1 > " + x);
                     //console.log(cellX + cellW > x);
                     //console.log(cellX + " < " + x + " + " + w + "");
                     //console.log(cellX < x + w);
-                    console.log("x: " + x);
-                    console.log("w: " + w);
-                    console.log("y: " + y);
-                    console.log("h: " + h);
+                }
+
+                // if grid has no empty space vertically
+                if ((cellX < x + w && cellX + cellW - 1 > x && y > cellY) && (id2 != id)) {
+                    cutNextToYPos = true;
                 }
 
                 // If the cut is on the edge of the grid
@@ -319,7 +308,7 @@ $(function () {
                     edgeOfGrid = true;
                 }          
             });
-            console.log("----------------------");
+
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
                 $(currentCut).addClass("showHOffcut");
             } else {
