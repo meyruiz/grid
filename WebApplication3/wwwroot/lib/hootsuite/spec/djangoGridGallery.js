@@ -153,7 +153,7 @@ $(function () {
                 });
                 this.gridElement.append($item);
             }
-            
+
             this._init();
         },
         addCustomElement: function (lengthFT, lengthIN, widthIN, direction, status) {
@@ -270,9 +270,20 @@ $(function () {
             this._init();
         },
         toggleOffcuts: function (id) {
+            var currentCut;
+            var i = 0, index = 0;
+            this.gridElement.children('li').each(function () {
+                if (parseInt($(this).attr("data-id")) == id) {
+                    index = i;
+                    return;
+                }
+                i++;
+            });
 
-            var currentCut = $(this.gridElement.children('li')[id]);
-            var lastYID = 0;
+            currentCut = $(this.gridElement.children('li')[index]);
+            console.log(currentCut);
+            console.log(id);
+            
             var cutNextToXPos = false;
             var cutNextToYPos = false;
             var edgeOfGrid = false;
@@ -284,50 +295,50 @@ $(function () {
             
             this.gridElement.children('li').each(function () {
                 var id2 = parseInt($(this).attr("data-id"));
-                var x = parseInt($(this).attr("data-x"));
-                var w = parseInt($(this).attr("data-w"));
-                var y = parseInt($(this).attr("data-y"));
-                var h = parseInt($(this).attr("data-h"));
+                if (id2 != undefined && id2 != id) {
+                    console.log(id2);
+                    var x = parseInt($(this).attr("data-x"));
+                    var w = parseInt($(this).attr("data-w"));
+                    var y = parseInt($(this).attr("data-y"));
+                    var h = parseInt($(this).attr("data-h"));
 
-                // if grid has no empty space horizontally
-                if ((cellY + cellH - 1 > y && cellY < y + h) && (id2 != id)) {
-                    cutNextToXPos = true;
-                    //console.log(cellX + " + " + cellW + " - 1 > " + x);
-                    //console.log(cellX + cellW > x);
-                    //console.log(cellX + " < " + x + " + " + w + "");
-                    //console.log(cellX < x + w);
-                }
+                    // if grid has no empty space horizontally
+                    if ((cellY + cellH - 1 > y && cellY < y + h)) {
+                        cutNextToXPos = true;
+                    }
 
-                // if grid has no empty space vertically
-                if ((cellX < x + w && cellX + cellW - 1 > x && y > cellY) && (id2 != id)) {
-                    cutNextToYPos = true;
-                }
+                    // if grid has no empty space vertically
+                    if ((cellX < x + w && cellX + cellW - 1 > x && y > cellY)) {
+                        cutNextToYPos = true;
+                    }
 
-                // If the cut is on the edge of the grid
-                if (cellX == 0 || cellX + cellW == data['size']) {
-                    edgeOfGrid = true;
-                }          
+                    // If the cut is on the edge of the grid
+                    if (cellX == 0 || cellX + cellW == data['size']) {
+                        edgeOfGrid = true;
+                    }  
+                }       
             });
 
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
                 $(currentCut).addClass("showHOffcut");
+                //$(currentCut).attr("data-test", 10);
             } else {
                 $(currentCut).removeClass("showHOffcut");
             }
+
             // show vertical offcut option for idLastY
             if (!cutNextToYPos || this.gridElement.children('li').length == 1) {
-                console.log("True");
                 $(currentCut).addClass("showVOffcut");
             } else {
-                console.log("False");
                 $(currentCut).removeClass("showVOffcut");
-            }
-            
+            }  
         },
         removeElement: function (element) {
             console.log("Remove");
+            console.log(element);
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
+            this.gridElement.children('li')
         },
         offcut: function (type) {
             var offcutWidth;
@@ -433,8 +444,6 @@ $(function () {
         ]
     };
 
-    var selectedCut = 0;
-
     gridData["DemoGrid"].items = data['data'];
     gridData["DemoGrid"].currentSize = data['size'];
     gridData["DemoGrid"].gridElement = gridData["grid"];
@@ -471,12 +480,6 @@ $(function () {
         e.preventDefault();
         gridData["DemoGrid"].offcut("vertical");
         console.log("Add vertical offcut");
-    });
-
-    $('.print').click(function (e) {
-        e.preventDefault();
-        gridData["DemoGrid"].toString();
-        console.log(gridData["DemoGrid"].items);
     });
 
     $('.save').click(function (e) {
