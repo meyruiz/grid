@@ -160,12 +160,12 @@ $(function () {
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
         },
-        addCustomElement: function (lengthFT, lengthIN, widthIN, direction, status) {
+        addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, direction, status) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
-            this.gridElement.children('li').each(function () {
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellH = parseInt($(this).attr("data-h"));
+            items.forEach(function (value, index) {
+                var cellY = parseInt(value.dataset.y);
+                var cellH = parseInt(value.dataset.h);
 
                 if (cellY + cellH > maxHeight) {
                     maxHeight = cellY + cellH;
@@ -181,11 +181,11 @@ $(function () {
                 auxList.push(new Array(maxHeight));
             }
 
-            this.gridElement.children('li').each(function () {
-                var cellX = parseInt($(this).attr("data-x"));
-                var cellY = parseInt($(this).attr("data-y"));
-                var cellW = parseInt($(this).attr("data-w"));
-                var cellH = parseInt($(this).attr("data-h"));
+            items.forEach(function (value, index) {
+                var cellX = parseInt(value.dataset.x);
+                var cellY = parseInt(value.dataset.y);
+                var cellW = parseInt(value.dataset.w);
+                var cellH = parseInt(value.dataset.h);
 
                 for (var i = cellX; i < cellX + cellW; i++) {
                     for (var j = cellY; j < cellY + cellH; j++) {
@@ -194,27 +194,11 @@ $(function () {
                 }
             });
 
-            if (direction == "horizontal") {
+            if (status != "Offcut") {
                 var posX, posY;
                 for (var j = 0; j < maxHeight; j++) {
                     var flag = 0;
                     for (i = 0; i < this.currentSize; i++) {
-                        if (auxList[i][j] != 0) {
-                            posX = i;
-                            posY = j;
-                            flag = 1;
-                            break;
-                        }
-                    }
-                    if (flag == 1) {
-                        break;
-                    }
-                }
-            } else if (direction == "vertical"){ 
-                var posX, posY;
-                for (i = 0; i < this.currentSize; i++) {
-                    var flag = 0;
-                    for (var j = 0; j < maxHeight; j++) {
                         if (auxList[i][j] != 0) {
                             posX = i;
                             posY = j;
@@ -245,20 +229,37 @@ $(function () {
                     '</li>'
                 );
 
-            $item.attr({
-                'data-id': this.gridElement.children('li').length,
-                'data-w': widthIN,
-                'data-h': length,
-                'data-lenFT': lengthFT,
-                'data-lenIN': lengthIN,
-                'data-x': posX,
-                'data-y': posY,
-                'data-status': status,
-                'data-cust': "Acme Mining Co",
-                'data-date': "03/31/2019",
-                'data-order': 123456789,
-                'data-prod': 123456789
-            });
+            if (status != "Offcut") {
+                $item.attr({
+                    'data-id': this.gridElement.children('li').length,
+                    'data-w': widthIN,
+                    'data-h': length,
+                    'data-lenFT': lengthFT,
+                    'data-lenIN': lengthIN,
+                    'data-x': posX,
+                    'data-y': posY,
+                    'data-status': status,
+                    'data-cust': "Acme Mining Co",
+                    'data-date': "03/31/2019",
+                    'data-order': 123456789,
+                    'data-prod': 123456789
+                });
+            } else {
+                $item.attr({
+                    'data-id': this.gridElement.children('li').length,
+                    'data-w': widthIN,
+                    'data-h': length,
+                    'data-lenFT': lengthFT,
+                    'data-lenIN': lengthIN,
+                    'data-x': x,
+                    'data-y': y,
+                    'data-status': status,
+                    'data-cust': "Acme Mining Co",
+                    'data-date': "03/31/2019",
+                    'data-order': 123456789,
+                    'data-prod': 123456789
+                });
+            }
 
             // Append item to grid list and items array
             this.gridElement.append($item);
@@ -345,12 +346,23 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
+
+                    console.log(posX);
+                    console.log(y);
+                    console.log(h);
+                    console.log(width);
+
                     //gridData["DemoGrid"].addCustomElement(posX, posY, height, 0, width, "horizontal", "Offcut");
                     gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "horizontal", "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
+
+                    console.log(0);
+                    console.log(y);
+                    console.log(h);
+                    console.log(width);
                     gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "horizontal", "Offcut");
                 }
 
@@ -430,7 +442,7 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
-        gridData["DemoGrid"].addCustomElement(lengthFT, lengthIN, widthIN, "horizontal", "Allocated");
+        gridData["DemoGrid"].addCustomElement(-1, -1, lengthFT, lengthIN, widthIN, "horizontal", "Allocated");
         $("#exampleModal input").val("");
         console.log("Add element");
     });
