@@ -284,6 +284,7 @@ $(function () {
             var cutNextToXPos = false;
             var cutNextToYPos = false;
             var edgeOfGrid = false;
+            var endOfGridY = false;
             var currentCut = this.gridElement.children('li')[id];
 
             var cellX = parseInt(currentCut.dataset.x);
@@ -307,13 +308,18 @@ $(function () {
                     if ((cellX < x + w && cellX + cellW - 1 > x && y > cellY)) {
                         cutNextToYPos = true;
                     }
-
-                    // If the cut is on the edge of the grid
-                    if (cellX == 0 || cellX + cellW == data['size']) {
-                        edgeOfGrid = true;
-                    }  
                 }       
             });
+
+            // If the cut is on the edge of the grid
+            if (cellX == 0 || cellX + cellW == data['size']) {
+                edgeOfGrid = true;
+            }
+
+            // If the cut at the end of the grid vertically
+            if (cellY + cellH == data['size']) {
+                endOfGridY = true;
+            }  
 
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
                 currentCut.classList.add('showHOffcut');
@@ -322,7 +328,7 @@ $(function () {
             }
 
             // show vertical offcut option for idLastY
-            if (!cutNextToYPos || this.gridElement.children('li').length == 1) {
+            if ((!cutNextToYPos && !endOfGridY) || this.gridElement.children('li').length == 1) {
                 currentCut.classList.add('showVOffcut');
             } else {
                 currentCut.classList.remove('showVOffcut');
@@ -346,23 +352,11 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
-
-                    console.log(posX);
-                    console.log(y);
-                    console.log(h);
-                    console.log(width);
-
-                    //gridData["DemoGrid"].addCustomElement(posX, posY, height, 0, width, "horizontal", "Offcut");
                     gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "horizontal", "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
-
-                    console.log(0);
-                    console.log(y);
-                    console.log(h);
-                    console.log(width);
                     gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "horizontal", "Offcut");
                 }
 
@@ -427,7 +421,7 @@ $(function () {
 
     $('.add-vertical-offcut').click(function (e) {
         e.preventDefault();
-        gridData["DemoGrid"].offcut("vertical");
+        gridData["DemoGrid"].offcut("vertical", this.dataset.id);
         console.log("Add vertical offcut");
     });
 
