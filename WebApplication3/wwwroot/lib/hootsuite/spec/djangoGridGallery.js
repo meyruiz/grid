@@ -16,12 +16,14 @@ function openDialogConfig(el) {
 
     if ($(el).hasClass("showHOffcut")) {
         gridData["dialog"].find("div .add-horizontal-offcut").show();
+        gridData["dialog"].find("div .add-horizontal-offcut").attr("data-id", $(el).attr("data-id"));
     } else {
         gridData["dialog"].find("div .add-horizontal-offcut").hide();
     }
 
     if ($(el).hasClass("showVOffcut")) {
         gridData["dialog"].find("div .add-vertical-offcut").show();
+        gridData["dialog"].find("div .add-vertical-offcut").attr("data-id", $(el).attr("data-id"));
     } else {
         gridData["dialog"].find("div .add-vertical-offcut").hide();
     }
@@ -271,31 +273,29 @@ $(function () {
             this._init();
         },
         getElementsToArray: function () {
-            const items = [...this.gridElement.children('li')];
+            items = [...this.gridElement.children('li')];
             // Update ids to get them later 
             items.forEach(function (value, index) {
                 value.dataset.id = index;
             })
         },
         toggleOffcuts: function (id) {
-            var currentCut = $(this.gridElement.children('li')[id]);
-            
             var cutNextToXPos = false;
             var cutNextToYPos = false;
             var edgeOfGrid = false;
+            var currentCut = this.gridElement.children('li')[id];
 
-            var cellX = parseInt($(currentCut).attr("data-x"));
-            var cellY = parseInt($(currentCut).attr("data-y"));
-            var cellW = parseInt($(currentCut).attr("data-w"));
-            var cellH = parseInt($(currentCut).attr("data-h"));
+            var cellX = parseInt(currentCut.dataset.x);
+            var cellY = parseInt(currentCut.dataset.y);
+            var cellW = parseInt(currentCut.dataset.w);
+            var cellH = parseInt(currentCut.dataset.h);
             
-            this.gridElement.children('li').each(function () {
-                var id2 = parseInt($(this).attr("data-id"));
-                if (id2 != undefined && id2 != id) {
-                    var x = parseInt($(this).attr("data-x"));
-                    var w = parseInt($(this).attr("data-w"));
-                    var y = parseInt($(this).attr("data-y"));
-                    var h = parseInt($(this).attr("data-h"));
+            items.forEach(function (value, index) {
+                if (index != id) {
+                    var x = parseInt(value.dataset.x);
+                    var w = parseInt(value.dataset.w);
+                    var y = parseInt(value.dataset.y);
+                    var h = parseInt(value.dataset.h);
 
                     // if grid has no empty space horizontally
                     if ((cellY + cellH - 1 > y && cellY < y + h)) {
@@ -315,16 +315,16 @@ $(function () {
             });
 
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
-                $(currentCut).addClass("showHOffcut");
+                currentCut.classList.add('showHOffcut');
             } else {
-                $(currentCut).removeClass("showHOffcut");
+                currentCut.classList.remove('showHOffcut');
             }
 
             // show vertical offcut option for idLastY
             if (!cutNextToYPos || this.gridElement.children('li').length == 1) {
-                $(currentCut).addClass("showVOffcut");
+                currentCut.classList.add('showVOffcut');
             } else {
-                $(currentCut).removeClass("showVOffcut");
+                currentCut.classList.remove('showVOffcut');
             }  
         },
         removeElement: function (element) {
@@ -334,88 +334,32 @@ $(function () {
             this.gridElement.gridList('removeElement', element);
             gridData["DemoGrid"].getElementsToArray();
         },
-        offcut: function (type) {
-            var offcutWidth;
-            var offcutHeight;
-            var offcutX, offcutY;
-
-            var prevX = 0;
-            var prevY = 0;
+        offcut: function (type, id) {
+            var currentCut = this.gridElement.children('li')[id];
+            var x = parseInt(currentCut.dataset.x);
+            var w = parseInt(currentCut.dataset.w);
+            var y = parseInt(currentCut.dataset.y);
+            var h = parseInt(currentCut.dataset.h);
 
             if (type == "horizontal") {
-
-                this.gridElement.children('li').each(function () {
-                    var cellX = parseInt($(this).attr("data-x"));
-                    var cellY = parseInt($(this).attr("data-y"));
-                    var cellW = parseInt($(this).attr("data-w"));
-                    var cellH = parseInt($(this).attr("data-h"));
-
-                    if (cellY <= prevY) {
-                        console.log("Y: " + cellY);
-                        prevX = cellX;
-                        prevY = cellY;
-
-                        /* Get smaller x and y position to get first possible offcut
-                        Then calculate posX, posY for new cut
-                        */
-                        offcutX = cellX + cellW;
-                        offcutY = cellH; // get length of last added cut
-                    }                    
-                });
-
-                // Got x and y  positions but what if its not at the start of the grid
-                offcutWidth = data['size'] - offcutX;
-                offcutHeight = offcutY;
-
-                console.log("Posx: " + offcutX);
-                console.log("width" + offcutWidth);
-                console.log("height" + offcutHeight);
-                console.log("Start x" + prevX);
-                console.log("Start y" + prevY);
-
-                if (prevX == 0) {
-                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "horizontal", "Offcut");
+                if (x == 0) {
+                    var posX = x + w;
+                    var width = data['size'] - w;
+                    //gridData["DemoGrid"].addCustomElement(posX, posY, height, 0, width, "horizontal", "Offcut");
+                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "horizontal", "Offcut");
                 }
-                if (offcutX == data['size']) {
-                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, prevX, "horizontal", "Offcut");
+
+                if (x + w == data['size']) {
+                    var width = data['size'] - w;
+                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "horizontal", "Offcut");
                 }
+
             } else {
-                this.gridElement.children('li').each(function () {
-                    var cellX = parseInt($(this).attr("data-x"));
-                    var cellY = parseInt($(this).attr("data-y"));
-                    var cellW = parseInt($(this).attr("data-w"));
-                    var cellH = parseInt($(this).attr("data-h"));
-
-                    if (cellX <= prevX) {
-                        console.log("X: " + cellX);
-                        prevX = cellX;
-                        prevY = cellY;
-
-                        /* Get smaller x and y position to get first possible offcut
-                        Then calculate posX, posY for new cut
-                        */
-                        offcutX = cellW;
-                        offcutY = cellY + cellH; // get length of last added cut
-                    }
-                });
-                // Got x and y  positions but what if its not at the start of the grid
-                offcutWidth = offcutX;
-                offcutHeight = data['size'] - offcutY;
-
-                console.log("width" + offcutWidth);
-                console.log("height" + offcutHeight);
-                console.log("Start x" + prevX);
-                console.log("Start y" + offcutY);
-
-                if (prevY == 0 && offcutHeight != 0) {
-                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
-                    gridData["DemoGrid"].getElementsToArray();
-                }
-                if (offcutX == data['size']) {
-                    gridData["DemoGrid"].addCustomElement(offcutHeight, 0, prevX, "vertical", "Offcut");
-                    gridData["DemoGrid"].getElementsToArray();
-                }
+                var posY = y + h;
+                var height = data['size'] - (y + h);
+                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "vertical", "Offcut");
             }  
+            gridData["DemoGrid"].getElementsToArray();
         },
         resize: function(size) {
             if (size) {
@@ -453,9 +397,6 @@ $(function () {
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
-        console.log(el);
-        var index = $("#grid").index(el);
-        console.log(index);
         gridData["grid"].gridList('toggleDrag', false);
         openDialogConfig(el);
     });
@@ -468,9 +409,7 @@ $(function () {
 
     $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
-        var el = $(e.currentTarget).closest('li');
-        console.log(el);
-        gridData["DemoGrid"].offcut("horizontal");
+        gridData["DemoGrid"].offcut("horizontal", this.dataset.id);
         console.log("Add horizontal offcut");
     });
 
