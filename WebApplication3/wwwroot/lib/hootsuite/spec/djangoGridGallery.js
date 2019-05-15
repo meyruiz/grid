@@ -153,8 +153,10 @@ $(function () {
                 });
                 this.gridElement.append($item);
             }
-
             this._init();
+
+            // Get all built elements and pass them to var items array
+            gridData["DemoGrid"].getElementsToArray();
         },
         addCustomElement: function (lengthFT, lengthIN, widthIN, direction, status) {
             var maxHeight = 0;
@@ -256,11 +258,10 @@ $(function () {
                 'data-prod': 123456789
             });
 
-            this.items.push([{ w: widthIN, h: length, x: posX, y: posY, 
-                                lenFT: lengthFT, lenIN: lengthIN, status: status, 
-                                cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789}]);
-
+            // Append item to grid list and items array
             this.gridElement.append($item);
+            gridData["DemoGrid"].getElementsToArray();
+
             $item.find(".config").click(function (e) {
                 var el = $(e.currentTarget).closest('li');
                 gridData["grid"].gridList('toggleDrag', false);
@@ -269,20 +270,15 @@ $(function () {
 
             this._init();
         },
+        getElementsToArray: function () {
+            const items = [...this.gridElement.children('li')];
+            // Update ids to get them later 
+            items.forEach(function (value, index) {
+                value.dataset.id = index;
+            })
+        },
         toggleOffcuts: function (id) {
-            var currentCut;
-            var i = 0, index = 0;
-            this.gridElement.children('li').each(function () {
-                if (parseInt($(this).attr("data-id")) == id) {
-                    index = i;
-                    return;
-                }
-                i++;
-            });
-
-            currentCut = $(this.gridElement.children('li')[index]);
-            console.log(currentCut);
-            console.log(id);
+            var currentCut = $(this.gridElement.children('li')[id]);
             
             var cutNextToXPos = false;
             var cutNextToYPos = false;
@@ -296,7 +292,6 @@ $(function () {
             this.gridElement.children('li').each(function () {
                 var id2 = parseInt($(this).attr("data-id"));
                 if (id2 != undefined && id2 != id) {
-                    console.log(id2);
                     var x = parseInt($(this).attr("data-x"));
                     var w = parseInt($(this).attr("data-w"));
                     var y = parseInt($(this).attr("data-y"));
@@ -321,7 +316,6 @@ $(function () {
 
             if ((!cutNextToXPos && edgeOfGrid) || this.gridElement.children('li').length == 1) {
                 $(currentCut).addClass("showHOffcut");
-                //$(currentCut).attr("data-test", 10);
             } else {
                 $(currentCut).removeClass("showHOffcut");
             }
@@ -338,7 +332,7 @@ $(function () {
             console.log(element);
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
-            this.gridElement.children('li')
+            gridData["DemoGrid"].getElementsToArray();
         },
         offcut: function (type) {
             var offcutWidth;
@@ -415,9 +409,11 @@ $(function () {
 
                 if (prevY == 0 && offcutHeight != 0) {
                     gridData["DemoGrid"].addCustomElement(offcutHeight, 0, offcutWidth, "vertical", "Offcut");
+                    gridData["DemoGrid"].getElementsToArray();
                 }
                 if (offcutX == data['size']) {
                     gridData["DemoGrid"].addCustomElement(offcutHeight, 0, prevX, "vertical", "Offcut");
+                    gridData["DemoGrid"].getElementsToArray();
                 }
             }  
         },
@@ -457,7 +453,9 @@ $(function () {
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
-        selectedCut = el[0].dataset.id;
+        console.log(el);
+        var index = $("#grid").index(el);
+        console.log(index);
         gridData["grid"].gridList('toggleDrag', false);
         openDialogConfig(el);
     });
