@@ -122,22 +122,41 @@ $(function () {
                 item = items[i];
                 var length = item.lenFT + (item.lenIN / 12);
 
-                $item = $(
-                    '<li>' +
+                if (item.status == "Cut") {
+                    $item = $(
+                        '<li class="Cut">' +
                         '<div class="inner ' + item.status + '">' +
-                            '<div class="controls ' + item.status + '">' +
-                            '<a href="#config" class="config ' + item.status + '">Config</a>' +
-                            '</div>' +
-                            '<div class="info ' + item.status + '">' +
-                            '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' + 
-                            '<p> Cust: Acme Mining Co.' +
-                            '<p> Date: 03/31/2019' +
-                            '<p> Order: 123456789' +
-                            '<p> Prod Ord: 123456789' +
-                            '</div>' +
+                        '<div class="controls ' + item.status + '">' +
+                        '<a href="#config" class="config ' + item.status + '">Config</a>' +
                         '</div>' +
-                    '</li>'
-                );
+                        '<div class="info ' + item.status + '">' +
+                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' +
+                        '<p> Cust: Acme Mining Co.' +
+                        '<p> Date: 03/31/2019' +
+                        '<p> Order: 123456789' +
+                        '<p> Prod Ord: 123456789' +
+                        '</div>' +
+                        '</div>' +
+                        '</li>'
+                    );
+                } else {
+                    $item = $(
+                        '<li>' +
+                        '<div class="inner ' + item.status + '">' +
+                        '<div class="controls ' + item.status + '">' +
+                        '<a href="#config" class="config ' + item.status + '">Config</a>' +
+                        '</div>' +
+                        '<div class="info ' + item.status + '">' +
+                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' +
+                        '<p> Cust: Acme Mining Co.' +
+                        '<p> Date: 03/31/2019' +
+                        '<p> Order: 123456789' +
+                        '<p> Prod Ord: 123456789' +
+                        '</div>' +
+                        '</div>' +
+                        '</li>'
+                    );
+                }
 
                 $item.attr({
                     'data-id': item.id,
@@ -156,11 +175,11 @@ $(function () {
                 this.gridElement.append($item);
             }
             this._init();
-
+            disableDrag();
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
         },
-        addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, direction, status) {
+        addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, status) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
             items.forEach(function (value, index) {
@@ -352,18 +371,18 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "horizontal", "Offcut");
+                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "horizontal", "Offcut");
+                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "Offcut");
                 }
 
             } else {
                 var posY = y + h;
                 var height = data['size'] - (y + h);
-                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "vertical", "Offcut");
+                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "Offcut");
             }  
             gridData["DemoGrid"].getElementsToArray();
         },
@@ -401,6 +420,11 @@ $(function () {
         gridData["grid"].gridList('reflow');
     });
 
+    function disableDrag() {
+        $('.Cut').draggable('disable');
+        $('.Cut').bind('dragstart', gridItemDisableHandler);
+    }
+
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
         gridData["grid"].gridList('toggleDrag', false);
@@ -436,7 +460,7 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
-        gridData["DemoGrid"].addCustomElement(-1, -1, lengthFT, lengthIN, widthIN, "horizontal", "Allocated");
+        gridData["DemoGrid"].addCustomElement(-1, -1, lengthFT, lengthIN, widthIN, "Allocated");
         $("#exampleModal input").val("");
         console.log("Add element");
     });
