@@ -103,11 +103,13 @@ function initializeDialog() {
 $(function () {
     gridData["DemoGrid"] = {
         gridElement: null,
-        currentSize: 1,
+        currentSize: 84,
         items: [],
         _init: function(){
             this.gridElement.gridList({
                 lanes: gridData["DemoGrid"].currentSize,
+                width: gridData["DemoGrid"].currentSize,
+                height: 600,
                 widthHeightRatio: 1,
                 heightToFontSizeRatio: 0.15,
                 direction: 'vertical',
@@ -336,7 +338,7 @@ $(function () {
             }
 
             // If the cut at the end of the grid vertically
-            if (cellY + cellH == data['size']) {
+            if (cellY + cellH == data['height']) {
                 endOfGridY = true;
             }  
 
@@ -381,7 +383,7 @@ $(function () {
 
             } else {
                 var posY = y + h;
-                var height = data['size'] - (y + h);
+                var height = data['height'] - (y + h);
                 gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "Offcut");
             }  
             gridData["DemoGrid"].getElementsToArray();
@@ -402,6 +404,7 @@ $(function () {
     // Initialize grid
     var data = {
         'size': 84, 
+        'height': 600,
         'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
             { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
@@ -411,6 +414,7 @@ $(function () {
 
     gridData["DemoGrid"].items = data['data'];
     gridData["DemoGrid"].currentSize = data['size'];
+    gridData["DemoGrid"].height = data['height'];
     gridData["DemoGrid"].gridElement = gridData["grid"];
     gridData["DemoGrid"].gridElement.width(gridData["grid"].parent().width());
     gridData["DemoGrid"].buildElements(data['data']);
@@ -421,8 +425,8 @@ $(function () {
     });
 
     function disableDrag() {
-        $('.Cut').draggable('disable');
-        $('.Cut').bind('dragstart', gridItemDisableHandler);
+        //$('.Cut').draggable('disable');
+        //$('.Cut').bind('dragstart', gridItemDisableHandler);
     }
 
     $(".config").click(function(e) {

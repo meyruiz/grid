@@ -23,6 +23,8 @@
 
         defaults: {
             lanes: 1,
+            width: 1,
+            height: 1,
             direction: "horizontal",
             itemSelector: 'li[data-w]',
             widthHeightRatio: 1,
@@ -41,21 +43,6 @@
 
         items: function () {
             return this.items;
-        },
-
-        print: function () {
-            this.gridList.toString();
-        },
-
-        resize: function(lanes) {
-            if (lanes) {
-                this.options.lanes = lanes;
-            }
-            this._createGridSnapshot();
-            this.gridList.resizeGrid(this.options.lanes);
-            this._updateGridSnapshot();
-
-            this.reflow();
         },
 
         resizeItem: function(element, size) {
@@ -139,6 +126,8 @@
             // positioning and sorting post-drag and dropping)
             this.gridList = new GridList(this.items, {
                 lanes: this.options.lanes,
+                width: this.options.width,
+                height: this.options.height,
                 direction: this.options.direction
             });
         },
@@ -171,10 +160,8 @@
         },
 
         _onDrag: function (event, ui) {
-
-            console.log("zoom:" + zoom);
             
-            var canvasHeight = 1680;
+            var canvasHeight = 12000;
             var canvasWidth = 1680;
             var item = this._getItemByElement(ui.helper);
             ui.position.top = Math.round(ui.position.top / (zoom / 10));
@@ -258,13 +245,15 @@
         },
 
         /* Change cell size this instead of every instance of the size */
-        _calculateCellSize: function() {
+        _calculateCellSize: function () {
             if (this.options.direction === "horizontal") {
-                this._cellHeight = Math.floor(this.$element.height() / this.options.lanes / (zoom / 10));
-                this._cellWidth = this._cellHeight * this.options.widthHeightRatio;
+                this._cellHeight = Math.floor(this.$element.height() / this.options.height / (zoom / 10));
+                this._cellWidth = Math.floor(this.$element.width() / this.options.width / (zoom / 10)) * this.options.widthHeightRatio;
+                // Prev like this because it bas calculated based on this.options.lanes instead of width/height. Now changed to support different sizes.
+                // this._cellWidth = this._cellHeight * this.options.widthHeightRatio; 
             } else {
-                this._cellWidth = Math.floor(this.$element.width() / this.options.lanes / (zoom / 10));
-                this._cellHeight = this._cellWidth / this.options.widthHeightRatio;
+                this._cellWidth = Math.floor(this.$element.width() / this.options.width / (zoom / 10));
+                this._cellHeight = Math.floor(this.$element.height() / this.options.height / (zoom / 10)) / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
                 this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;
@@ -340,9 +329,9 @@
 
             if (this.options.direction === "horizontal") {
                 col = Math.min(col, this._maxGridCols);
-                row = Math.min(row, this.options.lanes - item.h);
+                row = Math.min(row, this.options.height - item.h);
             } else {
-                col = Math.min(col, this.options.lanes - item.w);
+                col = Math.min(col, this.options.width - item.w);
                 row = Math.min(row, this._maxGridCols);
             }
 

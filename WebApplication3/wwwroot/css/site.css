@@ -106,8 +106,8 @@ div {
 
 #grid {
     position: relative;
-    width: 1680px !important;
-    height: 1680px !important;
+    width: 1681px !important;
+    height: 12001px !important;
     list-style: none;
     /* Will be modified by the grid jquery lib, depending on the items */
     -webkit-transition: width 0.2s, height 0.2s;

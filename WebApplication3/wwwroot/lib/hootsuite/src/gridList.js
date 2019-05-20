@@ -82,6 +82,8 @@
 
         defaults: {
             lanes: 5,
+            width: 5,
+            height: 5,
             direction: 'horizontal'
         },
 
@@ -113,7 +115,7 @@
             output += border;
 
             // Render table contents row by row, as we go on the y axis
-            for (i = 0; i < this._options.lanes; i++) {
+            for (i = 0; i < this._options.height; i++) {
                 output += '\n' + this._padNumber(i, ' ') + '|';
                 for (j = 0; j < widthOfGrid; j++) {
                     output += ' ';
@@ -345,9 +347,9 @@
 
                 if (item.autoSize) {
                     if (this._options.direction === 'horizontal') {
-                        item.h = this._options.lanes;
+                        item.h = this._options.height;
                     } else {
-                        item.w = this._options.lanes;
+                        item.w = this._options.width;
                     }
                 }
             }
@@ -372,7 +374,7 @@
             }
 
             // Make sure the item isn't larger than the entire grid
-            if (newPosition[1] + position.h > this._options.lanes) {
+            if (newPosition[1] + position.h > this._options.height) {
                 return false;
             }
 
@@ -475,7 +477,7 @@
             var i;
             for (i = 0; i < N; i++) {
                 if (!this.grid[i]) {
-                    this.grid.push(new GridCol(this._options.lanes));
+                    this.grid.push(new GridCol(this._options.width));
                 }
             }
         },
