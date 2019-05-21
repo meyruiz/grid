@@ -10,7 +10,7 @@ function openDialogConfig(el) {
     gridData["dialog"].find("div input.item_lenFT").val(lengthFT);
     gridData["dialog"].find("div input.item_lenIN").val(lengthIN);
     gridData["dialog"].find("div input.item_w").val(width);
-    gridData["dialog"].dialog({ position: { my: "center", at: "center", of: el } });
+    gridData["dialog"].dialog({ position: { my: "top", at: "top", of: el } });
 
     gridData["DemoGrid"].toggleOffcuts($(el).attr("data-id"));
 
