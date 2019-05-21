@@ -397,6 +397,8 @@ $(function () {
 
     // Get grid element
     gridData["grid"] = $('#grid');
+    document.getElementById('grid').style.width = '1681px !important';
+    //$('#grid').css('width', '1681px !important');
     // Initialize dialogs
     initializeDialog();
 

@@ -161,8 +161,8 @@
 
         _onDrag: function (event, ui) {
             
-            var canvasHeight = 12000;
-            var canvasWidth = 1680;
+            var canvasHeight = document.querySelector("#gridHeight").textContent * 20;
+            var canvasWidth = document.querySelector("#gridWidth").textContent * 20;
             var item = this._getItemByElement(ui.helper);
             ui.position.top = Math.round(ui.position.top / (zoom / 10));
             ui.position.left = Math.round(ui.position.left / (zoom / 10));
