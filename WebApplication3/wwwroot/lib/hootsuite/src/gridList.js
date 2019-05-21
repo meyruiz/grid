@@ -87,46 +87,6 @@
             direction: 'horizontal'
         },
 
-        /**
-         * Illustates grid as text-based table, using a number identifier for each
-         * item. E.g.
-         *
-         *  #|  0  1  2  3  4  5  6  7  8  9 10 11 12 13
-         *  --------------------------------------------
-         *  0| 00 02 03 04 04 06 08 08 08 12 12 13 14 16
-         *  1| 01 -- 03 05 05 07 09 10 11 11 -- 13 15 --
-         *
-         * Warn: Does not work if items don't have a width or height specified
-         * besides their position in the grid.
-         */
-        toString: function() {
-            var widthOfGrid = this.grid.length,
-                output = '\n #|',
-                border = '\n --',
-                item,
-                i,
-                j;
-
-            // Render the table header
-            for (i = 0; i < widthOfGrid; i++) {
-                output += ' ' + this._padNumber(i, ' ');
-                border += '---';
-            };
-            output += border;
-
-            // Render table contents row by row, as we go on the y axis
-            for (i = 0; i < this._options.height; i++) {
-                output += '\n' + this._padNumber(i, ' ') + '|';
-                for (j = 0; j < widthOfGrid; j++) {
-                    output += ' ';
-                    item = this.grid[j][i];
-                    output += item ? this._padNumber(this.items.indexOf(item), '0') : '--';
-                }
-            };
-            output += '\n';
-            return output;
-        },
-
         generateGrid: function() {
             /**
              * Build the grid structure from scratch, with the current item positions
@@ -136,31 +96,6 @@
             for (i = 0; i < this.items.length; i++) {
                 this._markItemPositionToGrid(this.items[i]);
             }
-        },
-
-        resizeGrid: function(lanes) {
-            var currentColumn = 0;
-
-            this._options.lanes = lanes;
-            this._adjustSizeOfItems();
-
-            this._sortItemsByPosition();
-            this._resetGrid();
-
-            // The items will be sorted based on their index within the this.items array,
-            // that is their "1d position"
-            for (var i = 0; i < this.items.length; i++) {
-                var item = this.items[i],
-                    position = this._getItemPosition(item);
-
-                this._updateItemPosition(
-                    item, this.findPositionForItem(item, {x: currentColumn, y: 0}));
-
-                // New items should never be placed to the left of previous items
-                currentColumn = Math.max(currentColumn, position.x);
-            }
-
-            this._pullItemsToLeft();
         },
 
         findPositionForItem: function(item, start, fixedRow) {
@@ -322,7 +257,7 @@
 
         _adjustSizeOfItems: function() {
             /**
-             * Some items can have 100% height or 100% width. Those dimmensions are
+             * Some items can have 100% height or 100% width. Those dimensions are
              * expressed as 0. We need to ensure a valid width and height for each of
              * those items as the number of items per lane.
              */

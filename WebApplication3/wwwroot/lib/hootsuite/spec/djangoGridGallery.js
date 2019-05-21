@@ -357,7 +357,6 @@ $(function () {
         },
         removeElement: function (element) {
             console.log("Remove");
-            console.log(element);
             $(element).remove();
             this.gridElement.gridList('removeElement', element);
             gridData["DemoGrid"].getElementsToArray();
@@ -403,8 +402,8 @@ $(function () {
 
     // Initialize grid
     var data = {
-        'size': 84, 
-        'height': 600,
+        'size': document.querySelector("#gridWidth").textContent, 
+        'height': document.querySelector("#gridHeight").textContent,
         'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
             { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
@@ -413,8 +412,9 @@ $(function () {
     };
 
     gridData["DemoGrid"].items = data['data'];
-    gridData["DemoGrid"].currentSize = data['size'];
-    gridData["DemoGrid"].height = data['height'];
+    gridData["DemoGrid"].currentSize = document.querySelector("#gridWidth").textContent;
+    gridData["DemoGrid"].width = document.querySelector("#gridWidth").textContent;
+    gridData["DemoGrid"].height = document.querySelector("#gridHeight").textContent;
     gridData["DemoGrid"].gridElement = gridData["grid"];
     gridData["DemoGrid"].gridElement.width(gridData["grid"].parent().width());
     gridData["DemoGrid"].buildElements(data['data']);
@@ -425,8 +425,8 @@ $(function () {
     });
 
     function disableDrag() {
-        //$('.Cut').draggable('disable');
-        //$('.Cut').bind('dragstart', gridItemDisableHandler);
+        $('li.Cut').draggable('disable');
+        //$('li.Cut').bind('dragstart', gridItemDisableHandler);
     }
 
     $(".config").click(function(e) {
