@@ -124,42 +124,31 @@ $(function () {
                 item = items[i];
                 var length = item.lenFT + (item.lenIN / 12);
 
-                if (item.status == "Cut") {
-                    $item = $(
-                        '<li class="Cut">' +
-                        '<div class="inner ' + item.status + '">' +
-                        '<div class="controls ' + item.status + '">' +
-                        '<a href="#config" class="config ' + item.status + '">Config</a>' +
-                        '</div>' +
-                        '<div class="info ' + item.status + '">' +
-                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' +
-                        '<p> Cust: Acme Mining Co.' +
-                        '<p> Date: 03/31/2019' +
-                        '<p> Order: 123456789' +
-                        '<p> Prod Ord: 123456789' +
-                        '</div>' +
-                        '</div>' +
-                        '</li>'
-                    );
-                } else {
-                    $item = $(
-                        '<li>' +
-                        '<div class="inner ' + item.status + '">' +
-                        '<div class="controls ' + item.status + '">' +
-                        '<a href="#config" class="config ' + item.status + '">Config</a>' +
-                        '</div>' +
-                        '<div class="info ' + item.status + '">' +
-                        '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' +
-                        '<p> Cust: Acme Mining Co.' +
-                        '<p> Date: 03/31/2019' +
-                        '<p> Order: 123456789' +
-                        '<p> Prod Ord: 123456789' +
-                        '</div>' +
-                        '</div>' +
-                        '</li>'
-                    );
-                }
-
+                $item = $(
+                    '<li class="' + item.status + '">' +
+                    '<div class="tooltiptext">' +
+                    '<p>' + length.toFixed(4) + "' x " + item.w + '.0000"' + '</p>' +
+                    '<p>Prod Ord #: ' + 123456789 + '</p>' +
+                    '<p>Order #: ' + 1000168 + '</p>' +
+                    '<p>Order Date #: ' + "5/19/2011" + '</p>' +
+                    '<p>Cust ID: ' + 100031 + '</p>' +
+                    '<p>Cust: ' + "Johnstone Machining" + '</p>' +
+                    '</div>' + 
+                    '<div class="inner ' + item.status + '">' +
+                    '<div class="controls ' + item.status + '">' +
+                    '<a href="#config" class="config ' + item.status + '">Config</a>' +
+                    '</div>' +
+                    '<div class="info ' + item.status + '">' +
+                    '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + item.w + '.0000"</p>' +
+                    '<p> Cust: Acme Mining Co.' +
+                    '<p> Date: 03/31/2019' +
+                    '<p> Order: 123456789' +
+                    '<p> Prod Ord: 123456789' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
+                );
+               
                 $item.attr({
                     'data-id': item.id,
                     'data-w': item.w,

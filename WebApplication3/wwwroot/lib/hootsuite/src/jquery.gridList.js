@@ -286,7 +286,7 @@
             for (var i = 0; i < this.items.length; i++) {
                 // Don't interfere with the positions of the dragged items
                 // Don't interfere with cuts already cut
-                if (this.items[i].move || this.items[i].$element.attr("data-status") == "Cut") {
+                if (this.items[i].move) { //|| this.items[i].$element.attr("data-status") == "Cut") {
                     continue;
                 }
                 this.items[i].$element.attr("data-x", this.items[i].x);
