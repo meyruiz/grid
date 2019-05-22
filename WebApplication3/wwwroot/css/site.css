@@ -135,6 +135,7 @@ button:hover {
 
         .grid li .tooltiptext {
             visibility: hidden;
+            top: 15%;
             width: 220px;
             background-color: black;
             color: #fff;
@@ -143,13 +144,14 @@ button:hover {
             border-radius: 6px;
             /* Position the tooltip text - see examples below! */
             position: absolute;
-            z-index: 1;
             opacity: 0.8;
             font-size: 4.5em;
+            z-index: -1;
         }
 
         .grid li:hover .tooltiptext {
             visibility: visible;
+            z-index: 2;
         }
 
         .grid li .inner {
