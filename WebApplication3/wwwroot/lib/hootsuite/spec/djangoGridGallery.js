@@ -164,6 +164,10 @@ $(function () {
                     'data-prod': 123456789
                 });
                 this.gridElement.append($item);
+
+                if (isOverflown(this.gridElement.children('li')[i])) {
+                    // ADD HERE
+                }
             }
             this._init();
             disableDrag();
