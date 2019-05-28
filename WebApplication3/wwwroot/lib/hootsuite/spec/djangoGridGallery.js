@@ -307,12 +307,13 @@ $(function () {
         hideInfoCutIfOverflow: function (id) {
             var el = this.gridElement.children('li')[id];
             // Timer to update resizing changes to the cuts and check if it's actually overflown
-            var overflow = setTimeout(isOverflown(el), 2000);
-            if (overflow) {
-                el.childNodes[1].childNodes[1].style.visibility = "hidden";
-            } else {
-                el.childNodes[1].childNodes[1].style.visibility = "visible";
-            }
+            setTimeout(function () {
+                if (isOverflown(el)) {
+                    el.childNodes[1].childNodes[1].style.visibility = "hidden";
+                } else {
+                    el.childNodes[1].childNodes[1].style.visibility = "visible";
+                }
+            }, 100);
         },
         getElementsToArray: function () {
             items = [...this.gridElement.children('li')];
