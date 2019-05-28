@@ -1,14 +1,14 @@
 var gridData = {};
 
 function isOverflown(element) {
-    return element.scrollHeight - 5 > element.clientHeight || element.scrollWidth - 20 > element.clientWidth;
+    return element.scrollHeight - 10 > element.clientHeight || element.scrollWidth - 20 > element.clientWidth;
 }
 
 function showTooltip(el) {
     var element = el.childNodes[0];
     if (isOverflown(el)) {
         element.style.visibility = "visible";
-        el.childNodes[1].childNodes[1].style.visibility = "hidden"
+        //el.childNodes[1].childNodes[1].style.visibility = "hidden";
     } else {
         element.style.visibility = "hidden";
     }
@@ -53,14 +53,15 @@ function applyDialogConfig() {
     var lengthFT = parseInt(gridData["dialog"].find("div input.item_lenFT").val());
     var lengthIN = parseInt(gridData["dialog"].find("div input.item_lenIN").val());
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
-    //var content = gridData["dialog"].find("div input.item_content").val(lengthFT);
 
     var length = lengthFT + (lengthIN / 12);
 
     gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
     gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
-    //gridData["cell_dialog_open"].attr("item_content", content);
+    gridData["cell_dialog_open"].attr("data-h", length);
+
+    gridData["cell_dialog_open"].find(".tooltiptext .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
     gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
 
     if (width > 0 && width <= gridData["DemoGrid"].currentSize) {
@@ -74,6 +75,8 @@ function applyDialogConfig() {
             }
         );
     }
+
+    gridData["DemoGrid"].hideInfoCutIfOverflow(gridData["cell_dialog_open"].attr("data-id"));
 }
 
 function initializeDialog() {
@@ -145,7 +148,7 @@ $(function () {
                 $item = $(
                     '<li class="' + item.status + '" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)" >' +
                     '<div class="tooltiptext">' +
-                    '<p>' + length.toFixed(4) + "' x " + item.w + '.0000"' + '</p>' +
+                    '<p class="dimensions">' + length.toFixed(4) + "' x " + item.w + '.0000"' + '</p>' +
                     '<p>Prod Ord #: ' + 123456789 + '</p>' +
                     '<p>Order #: ' + 1000168 + '</p>' +
                     '<p>Order Date #: ' + "5/19/2011" + '</p>' +
@@ -301,15 +304,14 @@ $(function () {
 
             this._init();
         },
-        checkOverflow: function () {
-            for (i = 0; i < items.length; i++) {
-                if (isOverflown(this.gridElement.children('li')[i])) {
-                    var element = this.gridElement.children('li')[i].childNodes[0];
-                    element.classList.add("show");
-                } else {
-                    var element = this.gridElement.children('li')[i].childNodes[0];
-                    element.style.zIndex = "-10";
-                }
+        hideInfoCutIfOverflow: function (id) {
+            var el = this.gridElement.children('li')[id];
+            // Timer to update resizing changes to the cuts and check if it's actually overflown
+            var overflow = setTimeout(isOverflown(el), 2000);
+            if (overflow) {
+                el.childNodes[1].childNodes[1].style.visibility = "hidden";
+            } else {
+                el.childNodes[1].childNodes[1].style.visibility = "visible";
             }
         },
         getElementsToArray: function () {
