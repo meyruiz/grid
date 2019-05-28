@@ -145,10 +145,14 @@ button:hover {
             position: absolute;
             opacity: 0.8;
             font-size: 4.5em;
-            z-index: -1;
+            z-index: 1;
         }
 
-        .grid li:hover .tooltiptext {
+       /*.grid li:hover .tooltiptext {
+            visibility: visible;
+        }*/
+
+        .grid li .tooltiptext.show {
             visibility: visible;
             z-index: 2;
         }
@@ -175,7 +179,7 @@ button:hover {
         }
 
         .grid li .inner .info {
-            font-size: 6em;
+            font-size: 5em;
             margin-top: 30px;
         }
 

@@ -1,5 +1,22 @@
 var gridData = {};
 
+function isOverflown(element) {
+    return element.scrollHeight - 5 > element.clientHeight || element.scrollWidth - 20 > element.clientWidth;
+}
+
+function showTooltip(el) {
+    var element = el.childNodes[0];
+    if (isOverflown(el)) {
+        element.style.visibility = "visible";
+    } else {
+        element.style.visibility = "hidden";
+    }
+}
+
+function hideTooltip(el) {
+    var element = el.childNodes[0];
+    element.style.visibility = "hidden";
+}
 
 function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
@@ -105,7 +122,7 @@ $(function () {
         gridElement: null,
         currentSize: 84,
         items: [],
-        _init: function(){
+        _init: function () {
             this.gridElement.gridList({
                 lanes: gridData["DemoGrid"].currentSize,
                 width: gridData["DemoGrid"].currentSize,
@@ -113,11 +130,11 @@ $(function () {
                 widthHeightRatio: 1,
                 heightToFontSizeRatio: 0.15,
                 direction: 'vertical',
-                onChange: function(changedItems) {
+                onChange: function (changedItems) {
                 }
             });
         },
-        buildElements: function(items) {
+        buildElements: function (items) {
             var item, i;
             this.gridElement.empty();
             for (i = 0; i < items.length; i++) {
@@ -125,7 +142,7 @@ $(function () {
                 var length = item.lenFT + (item.lenIN / 12);
 
                 $item = $(
-                    '<li class="' + item.status + '">' +
+                    '<li class="' + item.status + '" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)" >' +
                     '<div class="tooltiptext">' +
                     '<p>' + length.toFixed(4) + "' x " + item.w + '.0000"' + '</p>' +
                     '<p>Prod Ord #: ' + 123456789 + '</p>' +
@@ -133,7 +150,7 @@ $(function () {
                     '<p>Order Date #: ' + "5/19/2011" + '</p>' +
                     '<p>Cust ID: ' + 100031 + '</p>' +
                     '<p>Cust: ' + "Johnstone Machining" + '</p>' +
-                    '</div>' + 
+                    '</div>' +
                     '<div class="inner ' + item.status + '">' +
                     '<div class="controls ' + item.status + '">' +
                     '<a href="#config" class="config ' + item.status + '">Config</a>' +
@@ -148,7 +165,7 @@ $(function () {
                     '</div>' +
                     '</li>'
                 );
-               
+
                 $item.attr({
                     'data-id': item.id,
                     'data-w': item.w,
@@ -164,10 +181,6 @@ $(function () {
                     'data-prod': 123456789
                 });
                 this.gridElement.append($item);
-
-                if (isOverflown(this.gridElement.children('li')[i])) {
-                    // ADD HERE
-                }
             }
             this._init();
             disableDrag();
@@ -227,21 +240,21 @@ $(function () {
             }
 
             $item = $(
-                    '<li>' +
-                        '<div class="inner ' + status + '">' +
-                            '<div class="controls ' + status + '">' +
-                            '<a href="#config" class="config ' + status + '">Config</a>' +
-                            '</div>' +
-                            '<div class="info ' + status + '">' +
-                            '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' + 
-                            '<p> Cust: Acme Mining Co.' +
-                            '<p> Date: 03/31/2019' +
-                            '<p> Order: 123456789' +
-                            '<p> Prod Ord: 123456789' +
-                            '</div>' +
-                        '</div>' +
-                    '</li>'
-                );
+                '<li>' +
+                '<div class="inner ' + status + '">' +
+                '<div class="controls ' + status + '">' +
+                '<a href="#config" class="config ' + status + '">Config</a>' +
+                '</div>' +
+                '<div class="info ' + status + '">' +
+                '<p class="dimensions">' + length.toFixed(4) + "'" + 'x' + widthIN + '.0000"</p>' +
+                '<p> Cust: Acme Mining Co.' +
+                '<p> Date: 03/31/2019' +
+                '<p> Order: 123456789' +
+                '<p> Prod Ord: 123456789' +
+                '</div>' +
+                '</div>' +
+                '</li>'
+            );
 
             if (status != "Offcut") {
                 $item.attr({
@@ -286,6 +299,17 @@ $(function () {
             });
 
             this._init();
+        },
+        checkOverflow: function () {
+            for (i = 0; i < items.length; i++) {
+                if (isOverflown(this.gridElement.children('li')[i])) {
+                    var element = this.gridElement.children('li')[i].childNodes[0];
+                    element.classList.add("show");
+                } else {
+                    var element = this.gridElement.children('li')[i].childNodes[0];
+                    element.style.zIndex = "-10";
+                }
+            }
         },
         getElementsToArray: function () {
             items = [...this.gridElement.children('li')];
@@ -463,9 +487,4 @@ $(function () {
         $("#exampleModal input").val("");
         console.log("Add element");
     });
-
-    function isOverflown(element) {
-        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-    }
-
 });
