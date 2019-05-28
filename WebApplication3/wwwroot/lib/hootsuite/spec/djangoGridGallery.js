@@ -8,6 +8,7 @@ function showTooltip(el) {
     var element = el.childNodes[0];
     if (isOverflown(el)) {
         element.style.visibility = "visible";
+        el.childNodes[1].childNodes[1].style.visibility = "hidden"
     } else {
         element.style.visibility = "hidden";
     }
