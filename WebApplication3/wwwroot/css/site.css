@@ -274,8 +274,8 @@ button:hover {
     .ruler-horizontal .in {
         height: 14px;
         width: 22%;
-        flex: 1;
         flex-direction: column;
+        flex: 0 0 100%;
     }
 
         .ruler-horizontal .in:after {
@@ -328,7 +328,8 @@ button:hover {
 
     .ruler-vertical .in {
         width: 14px;
-        flex: 1;
+        flex-direction: column;
+        flex: 0 0 100%;
     }
 
         .ruler-vertical .in:after {
