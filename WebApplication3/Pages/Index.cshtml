@@ -4,7 +4,6 @@
     ViewData["Title"] = "Home page";
 }
 
-<body>
     <div id="dialog" title="Cell Settings">
         <div>
             <label>Size</label>
@@ -45,8 +44,8 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="scale" class="col-md-2 border" style="height:700px;">
+    <body>
+        <div id="scale">
             <p>Scale</p>
             <p>2' x 1.00"</p>
             <hr />
@@ -56,7 +55,7 @@
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
             <button type="button" class="btn print" href="#print" onclick="PrintElem()" style="margin-bottom:15px;">Print</button>
         </div>
-        <div class="col-md-10">
+        <div id="main">
             <div class="row">
                 <div class="col-md-12 border">
                     <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL REINFORCED BELT    LOT: D0118990-B    CUST: ACME MINING OF MINNESOTA, INC</p>
@@ -64,8 +63,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;
-  flex-wrap: wrap;">
+                <div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">
                     <div class='ruler-horizontal'>
                         <div class='in'></div>
                         <div class='in'></div>
@@ -94,9 +92,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <button type="button" class="btn save" style="float:right;">Save</button>
-</body>
+        <button type="button" class="btn save" style="float:right;">Save</button>
+    </body>
 
 
 <script type="text/javascript">
