@@ -55,44 +55,41 @@
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
             <button type="button" class="btn print" href="#print" onclick="PrintElem()" style="margin-bottom:15px;">Print</button>
         </div>
-        <div id="main">
-            <div class="row">
-                <div class="col-md-12 border">
-                    <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL REINFORCED BELT    LOT: D0118990-B    CUST: ACME MINING OF MINNESOTA, INC</p>
-                    <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
+        <div id="main" class="vbox">
+            <div id="info-general">
+                <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL REINFORCED BELT    LOT: D0118990-B    CUST: ACME MINING OF MINNESOTA, INC</p>
+                <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
+            </div>
+            <div id="container" style="height:637px; overflow: auto;display: flex;">
+                <!--<div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">-->
+                <div class='ruler-horizontal'>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                </div>
+                <div class='ruler-vertical'>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                    <div class='in'></div>
+                </div>
+                <div id="grid-container" class="grid-container">
+                    <ul id="grid" class="grid" style="width: 1681px !important;">
+                        <li class="position-highlight">
+                            <div class="inner"></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">
-                    <div class='ruler-horizontal'>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                    </div>
-                    <div class='ruler-vertical'>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                    </div>
-                    <div id="grid-container" class="grid-container">
-                        <ul id="grid" class="grid" style="width: 1681px !important;">
-                            <li class="position-highlight">
-                                <div class="inner"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <button type="button" class="btn save" style="float:right;">Save</button>
         </div>
-        <button type="button" class="btn save" style="float:right;">Save</button>
     </body>
 
 

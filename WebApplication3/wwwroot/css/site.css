@@ -17,12 +17,20 @@ html, body, .viewport {
     z-index: 2;
 }
 
-.vbox {
+.hbox {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+}
+
+.vbox {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 #scale {
@@ -110,7 +118,6 @@ button:hover {
 }
 
 .grid-container {
-    position: absolute;
     top: 30px;
     left: 30px;
     right: 30px;
