@@ -62,7 +62,7 @@ html, body, .viewport {
 #container {
     width: 90%;
     height: 85%;
-    overflow: auto;
+    overflow: scroll;
 }
 
 hr {
@@ -110,13 +110,7 @@ button:hover {
 }
 
 .grid-container {
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 0;
-    max-width: 95%;
-    max-height: 600px;
-    height: 600px;
+    display: flex;
 }
 
 #grid {
@@ -279,8 +273,9 @@ button:hover {
 .ruler-horizontal {
     position: relative;
     display: flex;
-    max-width: 100%;
     top: -20px;
+    left: 25px;
+    width: 1910px;
 }
 
     .ruler-horizontal .in {
@@ -291,7 +286,7 @@ button:hover {
         .ruler-horizontal .in:after {
             position: absolute;
             bottom: -15px;
-            font: 11px/1 sans-serif;
+            font: 12px sans-serif;
         }
 
         .ruler-horizontal .in:nth-of-type(1):after {
@@ -328,16 +323,12 @@ button:hover {
 
 
 .ruler-vertical {
-    position: absolute;
-    height: 100%;
-    margin: 27px 0 0px 0px;
-    width: 14px;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
     .ruler-vertical .in {
-        width: 14px;
         flex-direction: column;
         flex: 1;
     }
