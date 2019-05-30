@@ -60,7 +60,7 @@
                 <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL REINFORCED BELT    LOT: D0118990-B    CUST: ACME MINING OF MINNESOTA, INC</p>
                 <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
             </div>
-            <div id="container" style="height:637px; overflow: auto;display: flex;">
+            <div id="container">
                 <!--<div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">-->
                 <div class='ruler-horizontal'>
                     <div class='in'></div>
@@ -81,14 +81,14 @@
                     <div class='in'></div>
                 </div>
                 <div id="grid-container" class="grid-container">
-                    <ul id="grid" class="grid" style="width: 1681px !important;">
+                    <ul id="grid" class="grid">
                         <li class="position-highlight">
                             <div class="inner"></div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <button type="button" class="btn save" style="float:right;">Save</button>
+            <button type="button" class="btn save" style="float:right; width:60px;">Save</button>
         </div>
     </body>
 
@@ -132,8 +132,8 @@
         var width = (1680 * (Number(zoom) / 10));
         var height = (1680 * (Number(zoom) / 10));
 
-        document.getElementById("grid-container").style.width = width + "px";
-        document.getElementById("grid-container").style.height = height + "px";
+        //document.getElementById("grid-container").style.width = width + "px";
+        //document.getElementById("grid-container").style.height = height + "px";
 
         //document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
         //document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
