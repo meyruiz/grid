@@ -94,7 +94,7 @@ using WebApplication3;
             WriteLiteral("            </div>\r\n        </div>\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(2171, 3861, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9585638c61f8409b8fa084e3d621da5b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f14ae0f321514600a6eadd3bf49a73c6", async() => {
                 BeginContext(2177, 3848, true);
                 WriteLiteral(@"
         <div id=""scale"">

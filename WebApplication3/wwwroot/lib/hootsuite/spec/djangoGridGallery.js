@@ -244,7 +244,15 @@ $(function () {
             }
 
             $item = $(
-                '<li>' +
+                '<li class="' + status + '" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)" >' +
+                '<div class="tooltiptext">' +
+                '<p class="dimensions">' + length.toFixed(4) + "' x " + widthIN + '.0000"' + '</p>' +
+                '<p>Prod Ord #: ' + 123456789 + '</p>' +
+                '<p>Order #: ' + 1000168 + '</p>' +
+                '<p>Order Date #: ' + "5/19/2011" + '</p>' +
+                '<p>Cust ID: ' + 100031 + '</p>' +
+                '<p>Cust: ' + "Johnstone Machining" + '</p>' +
+                '</div>' +
                 '<div class="inner ' + status + '">' +
                 '<div class="controls ' + status + '">' +
                 '<a href="#config" class="config ' + status + '">Config</a>' +
@@ -260,6 +268,7 @@ $(function () {
                 '</li>'
             );
 
+            //Offcut has specific x and y positions to fill
             if (status != "Offcut") {
                 $item.attr({
                     'data-id': this.gridElement.children('li').length,
@@ -267,7 +276,7 @@ $(function () {
                     'data-h': length,
                     'data-lenFT': lengthFT,
                     'data-lenIN': lengthIN,
-                    'data-x': posX,
+                    'data-x': posX, 
                     'data-y': posY,
                     'data-status': status,
                     'data-cust': "Acme Mining Co",
@@ -302,6 +311,8 @@ $(function () {
                 openDialogConfig(el);
             });
 
+            console.log($item.attr("data-id"));
+            gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
             this._init();
         },
         hideInfoCutIfOverflow: function (id) {
