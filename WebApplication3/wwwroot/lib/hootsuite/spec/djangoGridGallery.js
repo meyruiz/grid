@@ -185,11 +185,22 @@ $(function () {
                     'data-prod': 123456789
                 });
                 this.gridElement.append($item);
+                //gridData["DemoGrid"].hideInfoCutIfOverflow(item.id);
             }
+
+            // Initialize grid
             this._init();
+            
             disableDrag();
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
+
+            for (i = 0; i < items.length; i++) {
+                item = items[i];
+                console.log(item.id);
+                gridData["DemoGrid"].hideInfoCutIfOverflow(item.id);
+            }
+
         },
         addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, status) {
             var maxHeight = 0;
@@ -324,7 +335,7 @@ $(function () {
                 } else {
                     el.childNodes[1].childNodes[1].style.visibility = "visible";
                 }
-            }, 100);
+            }, 300);
         },
         getElementsToArray: function () {
             items = [...this.gridElement.children('li')];
@@ -440,8 +451,8 @@ $(function () {
         'height': document.querySelector("#gridHeight").textContent,
         'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
-            { id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
+            { id: 2, x: 0, y: 10, h: 9, w: 9, lenFT: 9, lenIN: 0, status: "Allocated" },
+            { id: 3, x: 10, y: 10, h: 15, w: 15, lenFT: 15, lenIN: 0, status: "Allocated" }
         ]
     };
 
