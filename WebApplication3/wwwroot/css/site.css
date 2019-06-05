@@ -17,6 +17,10 @@ html, body, .viewport {
     z-index: 2;
 }
 
+.ui-dialog {
+    width: 380px !important;
+}
+
 #info-general, #container, #scale {
     padding: 0.25em;
     margin: 0.25em;
