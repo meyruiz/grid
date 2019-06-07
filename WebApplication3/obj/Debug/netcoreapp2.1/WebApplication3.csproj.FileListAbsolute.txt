@@ -1,128 +1,160 @@
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.deps.json
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.json
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.dev.json
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.dll
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csprojAssemblyReference.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CoreCompileInputs.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfoInputs.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfo.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.input.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.output.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorCoreGenerate.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_Layout.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewImports.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cache
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cs
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CopyComplete
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.deps.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.dev.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csprojAssemblyReference.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CoreCompileInputs.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfoInputs.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.input.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.output.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorCoreGenerate.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_Layout.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewImports.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CopyComplete
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.deps.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.dev.json
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csprojAssemblyReference.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CoreCompileInputs.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfoInputs.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.input.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.output.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorCoreGenerate.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_Layout.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewImports.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cache
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cs
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.dll
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.pdb
-C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CopyComplete
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.deps.json
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.json
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.runtimeconfig.dev.json
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.dll
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.pdb
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.dll
-D:\Documentos\Epicor\grid\WebApplication3\bin\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csprojAssemblyReference.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CoreCompileInputs.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorAssemblyInfo.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfoInputs.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.AssemblyInfo.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.input.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.TagHelpers.output.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorCoreGenerate.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_Layout.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewImports.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cache
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.RazorTargetAssemblyInfo.cs
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.Views.pdb
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.dll
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.pdb
-D:\Documentos\Epicor\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CopyComplete
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.deps.json
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.json
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.dev.json
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.dll
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csprojAssemblyReference.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CoreCompileInputs.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfoInputs.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfo.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.input.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.output.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorCoreGenerate.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/About.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Error.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.g.cshtml.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cache
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cs
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/source/repos/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CopyComplete
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.deps.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.dev.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csprojAssemblyReference.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CoreCompileInputs.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfoInputs.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.input.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.output.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorCoreGenerate.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/About.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Error.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CopyComplete
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.deps.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.dev.json
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csprojAssemblyReference.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CoreCompileInputs.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfoInputs.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.input.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.output.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorCoreGenerate.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/About.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Error.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.g.cshtml.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cache
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cs
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.dll
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.pdb
+C:/Users/mayra.ruiz/OneDrive - Epicor/Documents/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CopyComplete
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.deps.json
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.json
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.dev.json
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.dll
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.pdb
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.dll
+D:/Documentos/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csprojAssemblyReference.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CoreCompileInputs.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfoInputs.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfo.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.input.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.output.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorCoreGenerate.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/About.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Error.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.g.cshtml.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cache
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cs
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.dll
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.pdb
+D:/Documentos/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CopyComplete
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.deps.json
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.json
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.runtimeconfig.dev.json
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.dll
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.pdb
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.dll
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/bin/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csprojAssemblyReference.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CoreCompileInputs.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorAssemblyInfo.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfoInputs.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.AssemblyInfo.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.input.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.TagHelpers.output.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorCoreGenerate.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/About.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Error.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.g.cshtml.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cache
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.RazorTargetAssemblyInfo.cs
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.Views.pdb
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.dll
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.pdb
+/Users/mruiz/Documents/Epicor/grid/WebApplication3/obj/Debug/netcoreapp2.1/WebApplication3.csproj.CopyComplete

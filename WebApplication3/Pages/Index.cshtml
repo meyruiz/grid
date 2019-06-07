@@ -123,80 +123,80 @@
     </body>
 
 
-<script type="text/javascript">
-    var zoom = 10;
+    <script type="text/javascript">var zoom = 10;
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 
-    function setZoom(zoom, el) {
-        transformOrigin = [0, 0];
-        el = el || instance.getContainer();
-        var p = ["webkit", "moz", "ms", "o"],
-            s = "scale(" + zoom + ")",
-            oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+        function setZoom(zoom, el) {
+            transformOrigin = [0, 0];
+            el = el || instance.getContainer();
+            var p = ["webkit", "moz", "ms", "o"],
+                s = "scale(" + zoom + ")",
+                oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
 
-        for (var i = 0; i < p.length; i++) {
-            el.style[p[i] + "Transform"] = s;
-            el.style[p[i] + "TransformOrigin"] = oString;
+            for (var i = 0; i < p.length; i++) {
+                el.style[p[i] + "Transform"] = s;
+                el.style[p[i] + "TransformOrigin"] = oString;
+            }
+
+            el.style["transform"] = s;
+            el.style["transformOrigin"] = oString;
         }
 
-        el.style["transform"] = s;
-        el.style["transformOrigin"] = oString;
-    }
+        //setZoom(5,document.getElementsByClassName('grid-container')[0]);
 
-    //setZoom(5,document.getElementsByClassName('grid-container')[0]);
+        function showVal(a) {
+            var zoomScale = Number(a) / 10;
+            setZoom(zoomScale, document.getElementsByClassName('grid')[0])
+        }
 
-    function showVal(a) {
-        var zoomScale = Number(a) / 10;
-        setZoom(zoomScale, document.getElementsByClassName('grid')[0])
-    }
+        function changeZoom(a) {
+            console.log(zoom);
 
-    function changeZoom(a) {
-        zoom += a;
-        var zoomScale = Number(zoom) / 10;
-        setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
+            if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
+                zoom += a;
+                var zoomScale = Number(zoom) / 10;
+                setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
+                var width = (1680 * (Number(zoom) / 10));
+                var height = (1680 * (Number(zoom) / 10));
+            }
 
-        var width = (1680 * (Number(zoom) / 10));
-        var height = (1680 * (Number(zoom) / 10));
+            //document.getElementById("grid-container").style.width = width + "px";
+            //document.getElementById("grid-container").style.height = height + "px";
 
-        //document.getElementById("grid-container").style.width = width + "px";
-        //document.getElementById("grid-container").style.height = height + "px";
+            //document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
+            //document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
 
-        //document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
-        //document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
+        }
 
-    }
+        var zoomScale = document.getElementById('grid');
+        const element = document.querySelector('.grid');
+        const style = getComputedStyle(element);
 
-    var zoomScale = document.getElementById('grid');
-    const element = document.querySelector('.grid');
-    const style = getComputedStyle(element);
+        // var canvasHeight = $('#canvas').height();
+        // var canvasWidth = $('#canvas').width();
 
-    // var canvasHeight = $('#canvas').height();
-    // var canvasWidth = $('#canvas').width();
+        function PrintElem() {
+            var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-    function PrintElem() {
-        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+            mywindow.document.write('<base href="' + location.origin + location.pathname + '">');
+            mywindow.document.write('<html><head><title>' + document.title + '</title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write('<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/css/site.css" type="text/css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/css/jquery-ui.min.css" />');
+            mywindow.document.write('<h1>' + document.title + '</h1>');
+            mywindow.document.write(document.getElementById("grid-container").innerHTML);
+            mywindow.document.write('</body></html>');
 
-        mywindow.document.write('<base href="' + location.origin + location.pathname + '">');
-        mywindow.document.write('<html><head><title>' + document.title + '</title>');
-        mywindow.document.write('</head><body >');
-        mywindow.document.write('<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />');
-        mywindow.document.write('<link rel="stylesheet" href="/css/site.css" type="text/css" />');
-        mywindow.document.write('<link rel="stylesheet" href="/css/jquery-ui.min.css" />');
-        mywindow.document.write('<h1>' + document.title + '</h1>');
-        mywindow.document.write(document.getElementById("grid-container").innerHTML);
-        mywindow.document.write('</body></html>');
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
 
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10*/
+            mywindow.print();
+            mywindow.close();
 
-        mywindow.print();
-        mywindow.close();
-
-        return true;
-    }
-
-</script>
+            return true;
+        }</script>

@@ -195,12 +195,12 @@ $(function () {
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
 
-            for (i = 0; i < items.length; i++) {
+            /* for (i = 0; i < items.length; i++) {
                 item = items[i];
                 console.log(item.id);
                 gridData["DemoGrid"].hideInfoCutIfOverflow(item.id);
-            }
-
+            } 
+            */
         },
         addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, status) {
             var maxHeight = 0;
@@ -336,6 +336,7 @@ $(function () {
                     el.childNodes[1].childNodes[1].style.visibility = "visible";
                 }
             }, 300);
+            
         },
         getElementsToArray: function () {
             items = [...this.gridElement.children('li')];
