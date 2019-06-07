@@ -185,7 +185,12 @@ $(function () {
                     'data-prod': 123456789
                 });
                 this.gridElement.append($item);
-                //gridData["DemoGrid"].hideInfoCutIfOverflow(item.id);
+
+                // if item is too small to display info
+                if (item.w <= 8 || item.h <= 9) {
+                    console.log($item);
+                    $item[0].childNodes[1].childNodes[1].style.visibility = "hidden";
+                }
             }
 
             // Initialize grid

@@ -1,28 +1,27 @@
 ﻿<Properties StartupConfiguration="{9C16B419-511C-449D-A321-E0E3D00BFF96}|Default">
   <MonoDevelop.Ide.ItemProperties.WebApplication3 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/Pages/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js">
     <Files>
-      <File FileName="WebApplication3/Pages/Index.cshtml" Line="128" Column="19" />
       <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/gridList.js" Line="33" Column="9" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" Line="376" Column="7" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" Line="374" Column="28" />
       <File FileName="WebApplication3/wwwroot/css/site.css" Line="21" Column="14" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" Line="330" Column="58" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" Line="203" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WebApplication3" expanded="True">
             <Node name="WebApplication3" expanded="True">
-              <Node name="Pages" expanded="True">
-                <Node name="Index.cshtml" selected="True" />
-              </Node>
+              <Node name="Pages" expanded="True" />
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
                 <Node name="lib" expanded="True">
                   <Node name="hootsuite" expanded="True">
                     <Node name="spec" expanded="True" />
-                    <Node name="src" expanded="True" />
+                    <Node name="src" expanded="True">
+                      <Node name="jquery.gridList.js" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
