@@ -187,7 +187,15 @@
             });
 
             this._updateItemPosition(item, [position.x, position.y]);
-            this._resolveCollisions(item);
+
+            const collidingItems = this._getItemsCollidingWithItem(item);
+            if (collidingItems.length) {
+                this._updateItemPosition(item, [position.x, position.y]);
+                console.log("Colliding");
+            }
+
+            //this._updateItemPosition(item, [position.x, position.y]);
+            //this._resolveCollisions(item);
         },
 
         resizeItem: function(item, size) {

@@ -446,8 +446,7 @@ $(function () {
 
     // Get grid element
     gridData["grid"] = $('#grid');
-    document.getElementById('grid').style.width = '1681px !important';
-    //$('#grid').css('width', '1681px !important');
+
     // Initialize dialogs
     initializeDialog();
 
@@ -459,7 +458,7 @@ $(function () {
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
             { id: 2, x: 0, y: 10, h: 9, w: 9, lenFT: 9, lenIN: 0, status: "Allocated" },
             { id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
-            { id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
+            //{ id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
         ]
     };
 
