@@ -123,7 +123,10 @@
     </body>
 
 
-    <script type="text/javascript">var zoom = 10;
+    <script type="text/javascript">
+
+        var zoom = 10;
+        const widthHorizontalRuler = 1910;
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
@@ -153,15 +156,15 @@
         }
 
         function changeZoom(a) {
-            console.log(zoom);
 
             if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
                 zoom += a;
                 var zoomScale = Number(zoom) / 10;
                 setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
-                var width = (1680 * (Number(zoom) / 10));
-                var height = (1680 * (Number(zoom) / 10));
+                const ruler = document.querySelector(".ruler-horizontal");
+                //const width = ruler.clientWidth;
+                ruler.style.width = `${widthHorizontalRuler * (Number(zoom) / 10)}px`;
             }
 
             //document.getElementById("grid-container").style.width = width + "px";
