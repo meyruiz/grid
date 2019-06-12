@@ -187,7 +187,7 @@ $(function () {
                 this.gridElement.append($item);
 
                 // if item is too small to display info
-                if (item.w <= 8 || item.h <= 9) {
+                if (item.w <= 9 && item.h < 10) {
                     console.log($item);
                     $item[0].childNodes[1].childNodes[1].style.visibility = "hidden";
                 }

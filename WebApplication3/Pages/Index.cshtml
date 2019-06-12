@@ -157,6 +157,9 @@
 
         function changeZoom(a) {
 
+            const tooltips = document.querySelectorAll('.tooltiptext');
+            const fontSize = 4.5;
+
             if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
                 zoom += a;
                 var zoomScale = Number(zoom) / 10;
@@ -165,6 +168,12 @@
                 const ruler = document.querySelector(".ruler-horizontal");
                 //const width = ruler.clientWidth;
                 ruler.style.width = `${widthHorizontalRuler * (Number(zoom) / 10)}px`;
+
+                tooltips.forEach(tooltip => {
+                    tooltip.style.fontSize = `${fontSize / (Number(zoom) / 10)}em`;
+                    tooltip.style.width = `${tooltip.clientWidth / (Number(zoom) / 10)}px`;
+                    tooltip.style.height = `${tooltip.clientHeight / (Number(zoom) / 10)}px`;
+                });
             }
 
             //document.getElementById("grid-container").style.width = width + "px";

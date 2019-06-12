@@ -178,7 +178,10 @@
             }
         },
 
-        moveItemToPosition: function(item, newPosition) {
+        moveItemToPosition: function (item, newPosition) {
+
+            //const firstPosition = this._getItemPosition(item);
+
             var position = this._getItemPosition({
                 x: newPosition[0],
                 y: newPosition[1],
@@ -186,16 +189,17 @@
                 h: item.h
             });
 
-            this._updateItemPosition(item, [position.x, position.y]);
-
-            const collidingItems = this._getItemsCollidingWithItem(item);
-            if (collidingItems.length) {
-                this._updateItemPosition(item, [position.x, position.y]);
-                console.log("Colliding");
-            }
-
             //this._updateItemPosition(item, [position.x, position.y]);
-            //this._resolveCollisions(item);
+
+            // if item collides another one, return to first position
+            /*const collidingItems = this._getItemsCollidingWithItem(item);
+            if (collidingItems.length) {
+                this._updateItemPosition(item, [firstPosition.x, firstPosition.y]);
+                console.log("Colliding");
+            }*/
+
+            this._updateItemPosition(item, [position.x, position.y]);
+            this._resolveCollisions(item);
         },
 
         resizeItem: function(item, size) {

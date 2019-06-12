@@ -157,3 +157,4 @@ C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\n
 C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.dll
 C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.pdb
 C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csproj.CopyComplete
+C:\Users\mayra.ruiz\OneDrive - Epicor\Documents\grid\WebApplication3\obj\Debug\netcoreapp2.1\WebApplication3.csprojAssemblyReference.cache
