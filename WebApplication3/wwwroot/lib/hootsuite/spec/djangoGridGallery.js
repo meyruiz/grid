@@ -188,7 +188,6 @@ $(function () {
 
                 // if item is too small to display info
                 if (item.w <= 9 && item.h < 10) {
-                    console.log($item);
                     $item[0].childNodes[1].childNodes[1].style.visibility = "hidden";
                 }
             }
@@ -199,13 +198,6 @@ $(function () {
             disableDrag();
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
-
-            /* for (i = 0; i < items.length; i++) {
-                item = items[i];
-                console.log(item.id);
-                gridData["DemoGrid"].hideInfoCutIfOverflow(item.id);
-            } 
-            */
         },
         addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, status) {
             var maxHeight = 0;

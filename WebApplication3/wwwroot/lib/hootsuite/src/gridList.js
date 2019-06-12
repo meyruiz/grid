@@ -118,6 +118,8 @@
 
             var x, y, position;
 
+            console.log(fixedRow);
+
             // Start searching for a position from the horizontal position of the
             // rightmost item from the grid
             for (x = start.x; x < this.grid.length; x++) {
@@ -180,7 +182,7 @@
 
         moveItemToPosition: function (item, newPosition) {
 
-            //const firstPosition = this._getItemPosition(item);
+            const firstPosition = this._getItemPosition(item);
 
             var position = this._getItemPosition({
                 x: newPosition[0],
@@ -189,17 +191,17 @@
                 h: item.h
             });
 
-            //this._updateItemPosition(item, [position.x, position.y]);
+            this._updateItemPosition(item, [position.x, position.y]);
 
             // if item collides another one, return to first position
-            /*const collidingItems = this._getItemsCollidingWithItem(item);
+            const collidingItems = this._getItemsCollidingWithItem(item);
             if (collidingItems.length) {
                 this._updateItemPosition(item, [firstPosition.x, firstPosition.y]);
                 console.log("Colliding");
-            }*/
+            }
 
-            this._updateItemPosition(item, [position.x, position.y]);
-            this._resolveCollisions(item);
+            //this._updateItemPosition(item, [position.x, position.y]);
+            //this._resolveCollisions(item);
         },
 
         resizeItem: function(item, size) {
@@ -450,14 +452,14 @@
             position2.y + position2.h <= position1.y);
         },
 
-        _resolveCollisions: function(item) {
+        /*_resolveCollisions: function(item) {
             if (!this._tryToResolveCollisionsLocally(item)) {
                 this._pullItemsToLeft(item);
             }
             this._pullItemsToLeft();
         },
-
-        _tryToResolveCollisionsLocally: function(item) {
+        */
+        /*_tryToResolveCollisionsLocally: function(item) { */
             /**
              * Attempt to resolve the collisions after moving a an item over one or more
              * other items within the grid, by shifting the position of the colliding
@@ -465,7 +467,7 @@
              * in which case we will revert all position permutations. To be able to
              * revert to the initial item positions, we create a virtual grid in the
              * process
-             */
+             */ /*
             var collidingItems = this._getItemsCollidingWithItem(item);
             if (!collidingItems.length) {
                 return true;
@@ -519,7 +521,7 @@
             GridList.cloneItems(_gridList.items, this.items);
             this.generateGrid();
             return true;
-        },
+        }, */
 
         _pullItemsToLeft: function(fixedItem) {
             /**

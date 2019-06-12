@@ -156,9 +156,10 @@
         }
 
         function changeZoom(a) {
-
             const tooltips = document.querySelectorAll('.tooltiptext');
             const fontSize = 4.5;
+            const width = 200;
+            const height = 140;
 
             if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
                 zoom += a;
@@ -170,18 +171,11 @@
                 ruler.style.width = `${widthHorizontalRuler * (Number(zoom) / 10)}px`;
 
                 tooltips.forEach(tooltip => {
-                    tooltip.style.fontSize = `${fontSize / (Number(zoom) / 10)}em`;
-                    tooltip.style.width = `${tooltip.clientWidth / (Number(zoom) / 10)}px`;
-                    tooltip.style.height = `${tooltip.clientHeight / (Number(zoom) / 10)}px`;
+                    tooltip.style.fontSize = `${fontSize * (Number(zoom) / 10)}em`;
+                    tooltip.style.width = `${width * (Number(zoom) / 10)}px`;
+                    tooltip.style.height = `${height * (Number(zoom) / 10)}px`;
                 });
             }
-
-            //document.getElementById("grid-container").style.width = width + "px";
-            //document.getElementById("grid-container").style.height = height + "px";
-
-            //document.getElementsByClassName("grid-container").style.width = (1680 * (Number(zoom) / 10));
-            //document.getElementsByClassName("grid-container").style.height = (1680 * (Number(zoom) / 10));
-
         }
 
         var zoomScale = document.getElementById('grid');
