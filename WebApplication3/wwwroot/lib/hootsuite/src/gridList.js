@@ -212,16 +212,25 @@
              * @param {Object} size
              * @param {Number} [size.w=item.w] The new width.
              * @param {Number} [size.h=item.h] The new height.
-             */
+            */
 
             var width = size.w || item.w,
                 height = size.h || item.h;
 
-            this._updateItemSize(item, width, height);
+            const initialSize = [item.w, item.h];
 
-            this._resolveCollisions(item);
+            item.w = size.w;
+            item.h = size.h;
 
-            this._pullItemsToLeft();
+            // if item collides another one, return to first position
+            const collidingItems = this._getItemsCollidingWithItem(item);
+            console.log(collidingItems);
+            if (collidingItems.length == 0) {
+                this._updateItemSize(item, width, height);
+            } else {
+                alert("Move item to another position");
+                this._updateItemSize(item, initialSize[0], initialSize[1]);
+            }
         },
 
         getChangedItems: function(initialItems, idAttribute) {
