@@ -100,62 +100,6 @@
             }
         },
 
-        findPositionForItem: function(item, start, fixedRow) {
-            /**
-             * This method has two options for the position we want for the item:
-             * - Starting from a certain row/column number and only looking for
-             *   positions to its right
-             * - Accepting positions for a certain row number only (use-case: items
-             *   being shifted to the left/right as a result of collisions)
-             *
-             * @param {Object<x:Number, y:Number, w:Number, h:Number} item
-             * @param {Object<x:Number, y:Number} start Position from which to start
-             *     the search.
-             * @param {Number} [fixedRow] If provided, we're going to try to find a
-             *     position for the new item on it. If doesn't fit there, we're going
-             *     to put it on the first row.
-             *
-             * @returns {Number[2]} x and y.
-             */
-
-            var x, y, position;
-
-            console.log(fixedRow);
-
-            // Start searching for a position from the horizontal position of the
-            // rightmost item from the grid
-            for (x = start.x; x < this.grid.length; x++) {
-                if (fixedRow !== undefined) {
-                    position = [x, fixedRow];
-
-                    if (this._itemFitsAtPosition(item, position)) {
-                        return position;
-                    }
-                } else {
-                    for (y = start.y; y < this._options.lanes; y++) {
-                        position = [x, y];
-
-                        if (this._itemFitsAtPosition(item, position)) {
-                            return position;
-                        }
-                    }
-                }
-            }
-
-            console.log(this.grid.length);
-
-            // If we've reached this point, we need to start a new column
-            var newCol = this.grid.length,
-                newRow = 0;
-
-            if (fixedRow !== undefined &&
-                this._itemFitsAtPosition(item, [newCol, fixedRow])) {
-                newRow = fixedRow;
-            }
-
-            return [newCol, newRow];
-        },
-
         removeItem: function (item) {
             var itemPosX = item.x;
             var itemPosY = item.y;
