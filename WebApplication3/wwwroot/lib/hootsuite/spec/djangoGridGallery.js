@@ -319,7 +319,6 @@ $(function () {
                 openDialogConfig(el);
             });
 
-            console.log($item.attr("data-id"));
             gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
             this._init();
         },
@@ -448,7 +447,7 @@ $(function () {
         'height': document.querySelector("#gridHeight").textContent,
         'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
             { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { id: 2, x: 0, y: 10, h: 9, w: 9, lenFT: 9, lenIN: 0, status: "Allocated" },
+            //{ id: 2, x: 0, y: 10, h: 9, w: 9, lenFT: 9, lenIN: 0, status: "Allocated" },
             { id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
             //{ id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
         ]

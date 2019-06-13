@@ -340,22 +340,6 @@
             return [col, row];
         },
 
-        // _highlightPositionForItem: function(item) {
-        //   this.$positionHighlight.css({
-        //     width: this._getItemWidth(item),
-        //     height: this._getItemHeight(item),
-        //     left: item.x * this._cellWidth,
-        //     top: item.y * this._cellHeight
-        //   }).show();
-        //   if (this.options.heightToFontSizeRatio) {
-        //     this.$positionHighlight.css('font-size', this._fontSize);
-        //   }
-        // },
-        //
-        // _removePositionHighlight: function() {
-        //   this.$positionHighlight.hide();
-        // },
-
         _createGridSnapshot: function() {
             this._items = GridList.cloneItems(this.items);
         },

@@ -71,6 +71,8 @@
             if (!_items[i]) {
                 _items[i] = {};
             }
+
+            // Get every property in item to make a copy of the object
             for (k in items[i]) {
                 _items[i][k] = items[i][k];
             }
@@ -140,6 +142,8 @@
                 }
             }
 
+            console.log(this.grid.length);
+
             // If we've reached this point, we need to start a new column
             var newCol = this.grid.length,
                 newRow = 0;
@@ -199,9 +203,6 @@
                 this._updateItemPosition(item, [firstPosition.x, firstPosition.y]);
                 console.log("Colliding");
             }
-
-            //this._updateItemPosition(item, [position.x, position.y]);
-            //this._resolveCollisions(item);
         },
 
         resizeItem: function(item, size) {
@@ -459,145 +460,6 @@
             position2.x + position2.w <= position1.x ||
             position2.y >= position1.y + position1.h ||
             position2.y + position2.h <= position1.y);
-        },
-
-        /*_resolveCollisions: function(item) {
-            if (!this._tryToResolveCollisionsLocally(item)) {
-                this._pullItemsToLeft(item);
-            }
-            this._pullItemsToLeft();
-        },
-        */
-        /*_tryToResolveCollisionsLocally: function(item) { */
-            /**
-             * Attempt to resolve the collisions after moving a an item over one or more
-             * other items within the grid, by shifting the position of the colliding
-             * items around the moving one. This might result in subsequent collisions,
-             * in which case we will revert all position permutations. To be able to
-             * revert to the initial item positions, we create a virtual grid in the
-             * process
-             */ /*
-            var collidingItems = this._getItemsCollidingWithItem(item);
-            if (!collidingItems.length) {
-                return true;
-            }
-            var _gridList = new GridList([], this._options),
-                leftOfItem,
-                rightOfItem,
-                aboveOfItem,
-                belowOfItem;
-
-            GridList.cloneItems(this.items, _gridList.items);
-            _gridList.generateGrid();
-
-            for (var i = 0; i < collidingItems.length; i++) {
-                var collidingItem = _gridList.items[collidingItems[i]],
-                    collidingPosition = this._getItemPosition(collidingItem);
-
-                // We use a simple algorithm for moving items around when collisions occur:
-                // In this prioritized order, we try to move a colliding item around the
-                // moving one:
-                // 1. to its left side
-                // 2. above it
-                // 3. under it
-                // 4. to its right side
-                var position = this._getItemPosition(item);
-
-                leftOfItem = [position.x - collidingPosition.w, collidingPosition.y];
-                rightOfItem = [position.x + position.w, collidingPosition.y];
-                aboveOfItem = [collidingPosition.x, position.y - collidingPosition.h];
-                belowOfItem = [collidingPosition.x, position.y + position.h];
-
-                if (_gridList._itemFitsAtPosition(collidingItem, leftOfItem)) {
-                    _gridList._updateItemPosition(collidingItem, leftOfItem);
-                } else if (_gridList._itemFitsAtPosition(collidingItem, aboveOfItem)) {
-                    _gridList._updateItemPosition(collidingItem, aboveOfItem);
-                } else if (_gridList._itemFitsAtPosition(collidingItem, belowOfItem)) {
-                    _gridList._updateItemPosition(collidingItem, belowOfItem);
-                } else if (_gridList._itemFitsAtPosition(collidingItem, rightOfItem)) {
-                    _gridList._updateItemPosition(collidingItem, rightOfItem);
-                } else {
-                    // Collisions failed, we must use the pullItemsToLeft method to arrange
-                    // the other items around this item with fixed position. This is our
-                    // plan B for when local collision resolving fails.
-                    return false;
-                }
-            }
-            // If we reached this point it means we managed to resolve the collisions
-            // from one single iteration, just by moving the colliding items around. So
-            // we accept this scenario and marge the brached-out grid instance into the
-            // original one
-            GridList.cloneItems(_gridList.items, this.items);
-            this.generateGrid();
-            return true;
-        }, */
-
-        _pullItemsToLeft: function(fixedItem) {
-            /**
-             * Build the grid from scratch, by using the current item positions and
-             * pulling them as much to the left as possible, removing as space between
-             * them as possible.
-             *
-             * If a "fixed item" is provided, its position will be kept intact and the
-             * rest of the items will be layed around it.
-             */
-
-
-            // Start a fresh grid with the fixed item already placed inside
-            this._sortItemsByPosition();
-            this._resetGrid();
-
-            // Start the grid with the fixed item as the first positioned item
-            if (fixedItem) {
-                var fixedPosition = this._getItemPosition(fixedItem);
-                this._updateItemPosition(fixedItem, [fixedPosition.x, fixedPosition.y]);
-            }
-
-            for (var i = 0; i < this.items.length; i++) {
-                var item = this.items[i],
-                    position = this._getItemPosition(item);
-
-                // The fixed item keeps its exact position
-                if (fixedItem && item == fixedItem) {
-                    continue;
-                }
-
-                var x = this._findLeftMostPositionForItem(item),
-                    newPosition = this.findPositionForItem(
-                        item, {x: x, y: 0}, position.y);
-
-                this._updateItemPosition(item, newPosition);
-            }
-        },
-
-        _findLeftMostPositionForItem: function(item) {
-            /**
-             * When pulling items to the left, we need to find the leftmost position for
-             * an item, with two considerations in mind:
-             * - preserving its current row
-             * - preserving the previous horizontal order between items
-             */
-
-            var tail = 0,
-                position = this._getItemPosition(item);
-
-            for (var i = 0; i < this.grid.length; i++) {
-                for (var j = position.y; j < position.y + position.h; j++) {
-                    var otherItem = this.grid[i][j];
-
-                    if (!otherItem) {
-                        continue;
-                    }
-
-                    var otherPosition = this._getItemPosition(otherItem);
-
-                    if (this.items.indexOf(otherItem) < this.items.indexOf(item)) {
-                        tail = otherPosition.x + otherPosition.w;
-                    }
-                }
-            }
-
-            return tail;
         },
 
         _getItemByAttribute: function(key, value) {
