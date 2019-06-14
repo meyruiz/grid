@@ -78,7 +78,6 @@ function initializeDialog() {
                         gridData["cell_dialog_open"]);
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    //gridData["grid"].gridList('toggleDrag', true); // Makes errors when removing elements with zoom enabled
                 }
             },
             {
@@ -86,7 +85,6 @@ function initializeDialog() {
                 click: function() {
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    //gridData["grid"].gridList('toggleDrag', true);
                 }
             },
             {
@@ -95,13 +93,11 @@ function initializeDialog() {
                     applyDialogConfig();
                     gridData["cell_dialog_open"] = null;
                     $( this ).dialog( "close" );
-                    //gridData["grid"].gridList('toggleDrag', true);
                 }
             }
         ],
         close: function() {
             gridData["cell_dialog_open"] = null;
-            gridData["grid"].gridList('toggleDrag', true);
         }
     });
 }
@@ -180,7 +176,7 @@ $(function () {
             // Initialize grid
             this._init();
             
-            disableDrag();
+            gridData["DemoGrid"].disableDrag();
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
         },
@@ -305,6 +301,7 @@ $(function () {
             });
 
             gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
+            gridData["DemoGrid"].disableDrag();
             this._init();
         },
 
@@ -374,6 +371,7 @@ $(function () {
             if (size) {
                 this.currentSize = size;
             }
+
             this.gridElement.gridList('resize', this.currentSize);
         },
 

@@ -84,6 +84,7 @@
             else {
                 this._unbindEvents();
             }
+            console.log(this.$items);
             this.$items.draggable({disabled: !dragEnabled});
         },
 
@@ -227,8 +228,9 @@
                     y: Number($(element).attr('data-y')),
                     w: Number($(element).attr('data-w')),
                     h: Number($(element).attr('data-h')),
-                    id: Number($(element).attr('data-id'))
-                });
+                    id: Number($(element).attr('data-id')),
+                    status: $(element).attr('data-status')
+                });                  
             });
             return items;
         },
