@@ -1,4 +1,4 @@
-// It does not try to register in a CommonJS environment since jQuery is not
+﻿// It does not try to register in a CommonJS environment since jQuery is not
 // likely to run in those environments.
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
@@ -107,10 +107,7 @@
                 null, this.items.map(function(item) { return item.w; }));
             this._tallestItem = Math.max.apply(
                 null, this.items.map(function(item) { return item.h; }));
-
-            // Used to highlight a position an element will land on upon drop
-            // this.$positionHighlight = this.$element.find('.position-highlight').hide();
-
+                
             this._initGridList();
             this.reflow();
 
@@ -155,6 +152,8 @@
 
             // Since dragging actually alters the grid, we need to establish the number
             // of cols (+1 extra) before the drag starts
+
+            console.log(this.gridList.grid.length);
 
             this._maxGridCols = this.gridList.grid.length;
         },

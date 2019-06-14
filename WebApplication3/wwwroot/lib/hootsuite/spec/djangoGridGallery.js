@@ -1,4 +1,4 @@
-var gridData = {};
+﻿var gridData = {};
 
 function isOverflown(element) {
     return element.scrollHeight - 10 > element.clientHeight || element.scrollWidth - 20 > element.clientWidth;
@@ -6,9 +6,9 @@ function isOverflown(element) {
 
 function showTooltip(el) {
     var element = el.childNodes[0];
+    el.style.zIndex = 2;
     if (isOverflown(el)) {
         element.style.visibility = "visible";
-        //el.childNodes[1].childNodes[1].style.visibility = "hidden";
     } else {
         element.style.visibility = "hidden";
     }
@@ -16,6 +16,7 @@ function showTooltip(el) {
 
 function hideTooltip(el) {
     var element = el.childNodes[0];
+    el.style.zIndex = 1;
     element.style.visibility = "hidden";
 }
 
