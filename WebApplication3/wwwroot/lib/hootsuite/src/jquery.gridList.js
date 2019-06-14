@@ -153,7 +153,7 @@
             // Since dragging actually alters the grid, we need to establish the number
             // of cols (+1 extra) before the drag starts
 
-            console.log(this.gridList.grid.length);
+            console.log(this.gridList.grid.length); // outputs 20?
 
             this._maxGridCols = this.gridList.grid.length;
         },

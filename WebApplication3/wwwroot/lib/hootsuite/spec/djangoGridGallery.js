@@ -9,8 +9,6 @@ function showTooltip(el) {
     el.style.zIndex = 2;
     if (isOverflown(el)) {
         element.style.visibility = "visible";
-    } else {
-        element.style.visibility = "hidden";
     }
 }
 
@@ -20,7 +18,7 @@ function hideTooltip(el) {
     element.style.visibility = "hidden";
 }
 
-function openDialogConfig(el) {
+function openDialogConfig(el) { 
     gridData["cell_dialog_open"] = el;
     var lengthFT = $(el).attr("data-lenFT");
     var lengthIN = $(el).attr("data-lenIN");
@@ -31,22 +29,8 @@ function openDialogConfig(el) {
     gridData["dialog"].find("div input.item_w").val(width);
     gridData["dialog"].dialog({ position: { my: "top", at: "top", of: el } });
 
-    gridData["DemoGrid"].toggleOffcuts($(el).attr("data-id"));
-
-    if ($(el).hasClass("showHOffcut")) {
-        gridData["dialog"].find("div .add-horizontal-offcut").show();
-        gridData["dialog"].find("div .add-horizontal-offcut").attr("data-id", $(el).attr("data-id"));
-    } else {
-        gridData["dialog"].find("div .add-horizontal-offcut").hide();
-    }
-
-    if ($(el).hasClass("showVOffcut")) {
-        gridData["dialog"].find("div .add-vertical-offcut").show();
-        gridData["dialog"].find("div .add-vertical-offcut").attr("data-id", $(el).attr("data-id"));
-    } else {
-        gridData["dialog"].find("div .add-vertical-offcut").hide();
-    }
-
+    gridData["DemoGrid"].showOffcutButtons(el);
+    
     gridData["dialog"].dialog("open");
 }
 
@@ -323,6 +307,22 @@ $(function () {
             gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
             this._init();
         },
+
+        disableDrag: function () {
+            $('li.Cut').draggable('disable');
+            //var el = $(e.currentTarget).closest('li');
+            $('li.Cut').find(".controls").hide();
+            //$('li.Cut').bind('dragstart', gridItemDisableHandler);
+        },
+
+        getElementsToArray: function () {
+            items = [...this.gridElement.children('li')];
+            // Update ids to get them later 
+            items.forEach(function (value, index) {
+                value.dataset.id = index;
+            })
+        },
+
         hideInfoCutIfOverflow: function (id) {
             var el = this.gridElement.children('li')[id];
             // Timer to update resizing changes to the cuts and check if it's actually overflown
@@ -335,13 +335,66 @@ $(function () {
             }, 300);
             
         },
-        getElementsToArray: function () {
-            items = [...this.gridElement.children('li')];
-            // Update ids to get them later 
-            items.forEach(function (value, index) {
-                value.dataset.id = index;
-            })
+       
+        offcut: function (type, id) {
+            var currentCut = this.gridElement.children('li')[id];
+            var x = parseInt(currentCut.dataset.x);
+            var w = parseInt(currentCut.dataset.w);
+            var y = parseInt(currentCut.dataset.y);
+            var h = parseInt(currentCut.dataset.h);
+
+            if (type == "horizontal") {
+                if (x == 0) {
+                    var posX = x + w;
+                    var width = data['size'] - w;
+                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "Offcut");
+                }
+
+                if (x + w == data['size']) {
+                    var width = data['size'] - w;
+                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "Offcut");
+                }
+
+            } else {
+                var posY = y + h;
+                var height = data['height'] - (y + h);
+                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "Offcut");
+            }  
+            gridData["DemoGrid"].getElementsToArray();
         },
+
+        removeElement: function (element) {
+            console.log("Remove");
+            $(element).remove();
+            this.gridElement.gridList('removeElement', element);
+            gridData["DemoGrid"].getElementsToArray();
+        },
+
+        resize: function(size) {
+            if (size) {
+                this.currentSize = size;
+            }
+            this.gridElement.gridList('resize', this.currentSize);
+        },
+
+        showOffcutButtons: function (el) {
+            gridData["DemoGrid"].toggleOffcuts($(el).attr("data-id"));
+
+            if ($(el).hasClass("showHOffcut")) {
+                gridData["dialog"].find("div .add-horizontal-offcut").show();
+                gridData["dialog"].find("div .add-horizontal-offcut").attr("data-id", $(el).attr("data-id"));
+            } else {
+                gridData["dialog"].find("div .add-horizontal-offcut").hide();
+            }
+
+            if ($(el).hasClass("showVOffcut")) {
+                gridData["dialog"].find("div .add-vertical-offcut").show();
+                gridData["dialog"].find("div .add-vertical-offcut").attr("data-id", $(el).attr("data-id"));
+            } else {
+                gridData["dialog"].find("div .add-vertical-offcut").hide();
+            }
+        },
+
         toggleOffcuts: function (id) {
             var cutNextToXPos = false;
             var cutNextToYPos = false;
@@ -395,44 +448,6 @@ $(function () {
             } else {
                 currentCut.classList.remove('showVOffcut');
             }  
-        },
-        removeElement: function (element) {
-            console.log("Remove");
-            $(element).remove();
-            this.gridElement.gridList('removeElement', element);
-            gridData["DemoGrid"].getElementsToArray();
-        },
-        offcut: function (type, id) {
-            var currentCut = this.gridElement.children('li')[id];
-            var x = parseInt(currentCut.dataset.x);
-            var w = parseInt(currentCut.dataset.w);
-            var y = parseInt(currentCut.dataset.y);
-            var h = parseInt(currentCut.dataset.h);
-
-            if (type == "horizontal") {
-                if (x == 0) {
-                    var posX = x + w;
-                    var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "Offcut");
-                }
-
-                if (x + w == data['size']) {
-                    var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "Offcut");
-                }
-
-            } else {
-                var posY = y + h;
-                var height = data['height'] - (y + h);
-                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "Offcut");
-            }  
-            gridData["DemoGrid"].getElementsToArray();
-        },
-        resize: function(size) {
-            if (size) {
-                this.currentSize = size;
-            }
-            this.gridElement.gridList('resize', this.currentSize);
         }
     };
 
@@ -466,13 +481,6 @@ $(function () {
         console.log("resize");
         gridData["grid"].gridList('reflow');
     });
-
-    function disableDrag() {
-        $('li.Cut').draggable('disable');
-        //var el = $(e.currentTarget).closest('li');
-        $('li.Cut').find(".controls").hide();
-        //$('li.Cut').bind('dragstart', gridItemDisableHandler);
-    }
 
     $(".config").click(function(e) {
         var el = $(e.currentTarget).closest('li');
