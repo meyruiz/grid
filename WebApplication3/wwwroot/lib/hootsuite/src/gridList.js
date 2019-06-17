@@ -167,17 +167,15 @@
             item.w = size.w;
             item.h = size.h;
 
-            this._updateItemSize(item, width, height);
-
             // if item collides another one, return to first position
-            /* const collidingItems = this._getItemsCollidingWithItem(item);
-            console.log(collidingItems);
+            const collidingItems = this._getItemsCollidingWithItem(item);
+
             if (collidingItems.length == 0) {
                 this._updateItemSize(item, width, height);
             } else {
                 alert("Move item to another position");
                 this._updateItemSize(item, initialSize[0], initialSize[1]);
-            }*/
+            }
         },
 
         getChangedItems: function(initialItems, idAttribute) {

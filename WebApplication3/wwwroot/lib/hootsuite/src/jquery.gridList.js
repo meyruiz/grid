@@ -85,7 +85,8 @@
                 this._unbindEvents();
             }
 
-            this.$items.draggable({disabled: !dragEnabled});
+            this.$items.draggable({ disabled: !dragEnabled });
+            this._disableDrag();
         },
 
         _bindMethod: function(fn) {
@@ -112,11 +113,14 @@
             this._initGridList();
             this.reflow();
 
+
             if (this.options.dragAndDrop) {
                 // Init Draggable JQuery UI plugin for each of the list items
                 // http://api.jqueryui.com/draggable/
                 this.$items.draggable(this.draggableOptions);
             }
+
+            this._disableDrag();
         },
 
         _initGridList: function() {
@@ -130,6 +134,19 @@
             });
         },
 
+        _disableDrag: function () {
+            for (let i = 0; i < this.$items.length; i++) {
+                const item = this.$items[i];
+                if ($(item).attr('data-status') == "Cut") {
+                    console.log(item);
+
+                    $(item).removeClass('ui-draggable');
+                    $(item).draggable('disable');
+
+                }
+            }
+        },
+
         _bindEvents: function() {
             this._onStart = this._bindMethod(this._onStart);
             this._onDrag = this._bindMethod(this._onDrag);
@@ -137,12 +154,16 @@
             this.$items.on('dragstart', this._onStart);
             this.$items.on('drag', this._onDrag);
             this.$items.on('dragstop', this._onStop);
+
+            this._disableDrag();
         },
 
         _unbindEvents: function() {
             this.$items.off('dragstart', this._onStart);
             this.$items.off('drag', this._onDrag);
             this.$items.off('dragstop', this._onStop);
+
+            this._disableDrag();
         },
 
         _onStart: function(event, ui) {
@@ -219,6 +240,7 @@
              */
             var _this = this,
                 items = [],
+                itemsUnableToMove = [],
                 item;
             this.$items.each(function(i, element) {
                 items.push({
@@ -230,7 +252,20 @@
                     id: Number($(element).attr('data-id')),
                     status: $(element).attr('data-status')
                 });                  
+
+                if ($(element).attr('data-status') == "Cut") {
+                    itemsUnableToMove.push({
+                        $element: $(element),
+                        x: Number($(element).attr('data-x')),
+                        y: Number($(element).attr('data-y')),
+                        w: Number($(element).attr('data-w')),
+                        h: Number($(element).attr('data-h')),
+                        id: Number($(element).attr('data-id')),
+                        status: $(element).attr('data-status')
+                    });
+                }
             });
+
             return items;
         },
 
