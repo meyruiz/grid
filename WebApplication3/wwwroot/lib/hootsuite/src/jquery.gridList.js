@@ -138,11 +138,8 @@
             for (let i = 0; i < this.$items.length; i++) {
                 const item = this.$items[i];
                 if ($(item).attr('data-status') == "Cut") {
-                    console.log(item);
-
                     $(item).removeClass('ui-draggable');
                     $(item).draggable('disable');
-
                 }
             }
         },

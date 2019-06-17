@@ -120,10 +120,9 @@
     </body>
 
 
-    <script type="text/javascript">
-
-        var zoom = 10;
-        const widthHorizontalRuler = 1910;
+    <script type="text/javascript">var zoom = 10;
+        const rulerHorizontal = document.querySelector(".ruler-horizontal");
+        const widthHorizontalRuler = rulerHorizontal.clientWidth;
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
@@ -163,15 +162,16 @@
                 var zoomScale = Number(zoom) / 10;
                 setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
-                const ruler = document.querySelector(".ruler-horizontal");
-                //const width = ruler.clientWidth;
-                ruler.style.width = `${widthHorizontalRuler * (Number(zoom) / 10)}px`;
+                rulerHorizontal.style.width = `${widthHorizontalRuler * zoomScale}px`;
 
-                tooltips.forEach(tooltip => {
-                    tooltip.style.fontSize = `${fontSize * (Number(zoom) / 10)}em`;
-                    tooltip.style.width = `${width * (Number(zoom) / 10)}px`;
-                    tooltip.style.height = `${height * (Number(zoom) / 10)}px`;
-                });
+                if (zoom < 10) {
+                    console.log("e");
+                    tooltips.forEach(tooltip => {
+                        tooltip.style.fontSize = `${fontSize / zoomScale}em`;
+                        tooltip.style.width = `${width / zoomScale}px`;
+                        tooltip.style.height = `${height / zoomScale}px`;
+                    });
+                }
             }
         }
 
