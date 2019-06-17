@@ -84,7 +84,7 @@
             else {
                 this._unbindEvents();
             }
-            console.log(this.$items);
+
             this.$items.draggable({disabled: !dragEnabled});
         },
 

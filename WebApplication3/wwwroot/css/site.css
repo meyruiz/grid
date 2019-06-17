@@ -1,4 +1,4 @@
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
 for details on configuring this project to bundle and minify static web assets. */
 
 * {
@@ -279,12 +279,12 @@ button:hover {
     display: flex;
     top: -20px;
     left: 25px;
-    width: 1910px;
+    width: calc(100% - 40px);
+    justify-content: space-between;
 }
 
     .ruler-horizontal .in {
         flex-direction: column;
-        flex: 1;
     }
 
         .ruler-horizontal .in:after {
@@ -327,18 +327,17 @@ button:hover {
 
 
 .ruler-vertical {
-    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
     .ruler-vertical .in {
         flex-direction: column;
-        flex: 1;
     }
 
         .ruler-vertical .in:after {
-            bottom: -15px;
+
             font: 11px/1 sans-serif;
         }
 
