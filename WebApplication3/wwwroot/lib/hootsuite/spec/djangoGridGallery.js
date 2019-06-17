@@ -98,6 +98,7 @@ function initializeDialog() {
         ],
         close: function() {
             gridData["cell_dialog_open"] = null;
+            gridData["grid"].gridList('toggleDrag', true);
         }
     });
 }
@@ -306,7 +307,7 @@ $(function () {
         },
 
         disableDrag: function () {
-            $('li.Cut').draggable('disable');
+            //$('li.Cut').draggable('disable');
             //var el = $(e.currentTarget).closest('li');
             $('li.Cut').find(".controls").hide();
             //$('li.Cut').bind('dragstart', gridItemDisableHandler);

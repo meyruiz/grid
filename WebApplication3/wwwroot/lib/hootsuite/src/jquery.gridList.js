@@ -207,7 +207,6 @@
             $(ui.helper).removeClass('ui-draggable-dragging');
 
             this._applyPositionToItems();
-            // this._removePositionHighlight();
         },
 
         _generateItemsFromDOM: function() {

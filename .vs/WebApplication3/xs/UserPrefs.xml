@@ -1,21 +1,19 @@
 ﻿<Properties StartupConfiguration="{9C16B419-511C-449D-A321-E0E3D00BFF96}|Default">
   <MonoDevelop.Ide.ItemProperties.WebApplication3 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/Pages/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/EmptyTextFile.txt">
     <Files>
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/gridList.js" Line="396" Column="35" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" Line="119" Column="14" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" Line="299" Column="54" />
-      <File FileName="WebApplication3/wwwroot/css/site.css" Line="340" Column="1" />
-      <File FileName="WebApplication3/Pages/Index.cshtml" Line="77" Column="36" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/gridList.js" Line="172" Column="1" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" Line="231" Column="59" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" Line="101" Column="13" />
+      <File FileName="WebApplication3/wwwroot/css/site.css" />
+      <File FileName="WebApplication3/Pages/Index.cshtml" />
+      <File FileName="WebApplication3/EmptyTextFile.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WebApplication3" expanded="True">
             <Node name="WebApplication3" expanded="True">
-              <Node name="Pages" expanded="True">
-                <Node name="Index.cshtml" selected="True" />
-              </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
@@ -26,6 +24,7 @@
                   </Node>
                 </Node>
               </Node>
+              <Node name="EmptyTextFile.txt" selected="True" />
             </Node>
           </Node>
         </State>
