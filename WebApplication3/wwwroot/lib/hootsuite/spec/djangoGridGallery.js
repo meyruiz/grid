@@ -113,7 +113,7 @@ $(function () {
                 lanes: gridData["DemoGrid"].currentSize,
                 width: gridData["DemoGrid"].currentSize,
                 height: 600,
-                widthHeightRatio: 1,
+                widthHeightRatio: scaleWidthToHeight,
                 heightToFontSizeRatio: 0.15,
                 direction: 'vertical',
                 onChange: function (changedItems) {
@@ -177,11 +177,10 @@ $(function () {
             // Initialize grid
             this._init();
             
-            gridData["DemoGrid"].disableDrag();
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
         },
-        addCustomElement: function (x, y, lengthFT, lengthIN, widthIN, status) {
+        addItem: function (x, y, lengthFT, lengthIN, widthIN, status) {
             var maxHeight = 0;
             var length = lengthFT + (lengthIN / 12);
             items.forEach(function (value, index) {
@@ -302,15 +301,7 @@ $(function () {
             });
 
             gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
-            gridData["DemoGrid"].disableDrag();
             this._init();
-        },
-
-        disableDrag: function () {
-            //$('li.Cut').draggable('disable');
-            //var el = $(e.currentTarget).closest('li');
-            $('li.Cut').find(".controls").hide();
-            //$('li.Cut').bind('dragstart', gridItemDisableHandler);
         },
 
         getElementsToArray: function () {
@@ -345,18 +336,18 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(posX, y, h, 0, width, "Offcut");
+                    gridData["DemoGrid"].addItem(posX, y, h, 0, width, "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addCustomElement(0, y, h, 0, width, "Offcut");
+                    gridData["DemoGrid"].addItem(0, y, h, 0, width, "Offcut");
                 }
 
             } else {
                 var posY = y + h;
                 var height = data['height'] - (y + h);
-                gridData["DemoGrid"].addCustomElement(x, posY, height, 0, w, "Offcut");
+                gridData["DemoGrid"].addItem(x, posY, height, 0, w, "Offcut");
             }  
             gridData["DemoGrid"].getElementsToArray();
         },
@@ -516,7 +507,7 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
-        gridData["DemoGrid"].addCustomElement(-1, -1, lengthFT, lengthIN, widthIN, "Allocated");
+        gridData["DemoGrid"].addItem(-1, -1, lengthFT, lengthIN, widthIN, "Allocated");
         $("#exampleModal input").val("");
         console.log("Add element");
     });

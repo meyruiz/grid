@@ -187,10 +187,6 @@ button:hover {
                 margin: 30px 0;
             }
 
-            .grid li .inner .info p {
-                margin: 20px 0;
-            }
-
         .grid li.changed .inner {
             background: #ffff66;
             -webkit-transition: none;
@@ -280,10 +276,6 @@ button:hover {
     justify-content: space-between;
 }
 
-    .ruler-horizontal .in {
-        flex-direction: column;
-    }
-
         .ruler-horizontal .in:after {
             position: absolute;
             bottom: -15px;
@@ -329,12 +321,7 @@ button:hover {
     justify-content: space-between;
 }
 
-    .ruler-vertical .in {
-        flex-direction: column;
-    }
-
         .ruler-vertical .in:after {
-
             font: 11px/1 sans-serif;
         }
 
