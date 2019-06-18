@@ -160,7 +160,6 @@ button:hover {
 
         .grid li .inner {
             position: absolute;
-            background: #33c6ff;
             border-style: solid;
             border-width: 2px;
             top: 0;
@@ -171,11 +170,11 @@ button:hover {
             transition: background 3s;
         }
 
-        .grid li .Offcut {
+        .grid li.Offcut {
             background: #FF6FFF !important;
         }
 
-        .grid li .Cut {
+        .grid li.Cut {
             background: gray !important;
         }
 
@@ -214,7 +213,6 @@ button:hover {
             }
 
     .grid .controls {
-        background: #33c6ff;
         position: absolute;
         top: 0;
         right: 0;
@@ -232,7 +230,6 @@ button:hover {
             float: left;
             margin: 5px 5px 0 0;
             padding: 0.3em;
-            background: #33c6ff;
             color: black;
             text-decoration: none;
         }

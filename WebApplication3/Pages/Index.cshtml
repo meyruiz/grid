@@ -120,9 +120,13 @@
     </body>
 
 
-    <script type="text/javascript">var zoom = 10;
+    <script type="text/javascript">
+
+        var zoom = 10;
         const rulerHorizontal = document.querySelector(".ruler-horizontal");
         const widthHorizontalRuler = rulerHorizontal.clientWidth;
+        const rulerVertical = document.querySelector(".ruler-vertical");
+        const widthVerticalRuler = rulerVertical.clientHeight;
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
@@ -163,9 +167,9 @@
                 setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
                 rulerHorizontal.style.width = `${widthHorizontalRuler * zoomScale}px`;
+                rulerVertical.style.height = `${widthVerticalRuler * zoomScale}px`;
 
                 if (zoom < 10) {
-                    console.log("e");
                     tooltips.forEach(tooltip => {
                         tooltip.style.fontSize = `${fontSize / zoomScale}em`;
                         tooltip.style.width = `${width / zoomScale}px`;
@@ -175,31 +179,4 @@
             }
         }
 
-        var zoomScale = document.getElementById('grid');
-        const element = document.querySelector('.grid');
-        const style = getComputedStyle(element);
-
-        // var canvasHeight = $('#canvas').height();
-        // var canvasWidth = $('#canvas').width();
-
-        function PrintElem() {
-            var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
-            mywindow.document.write('<base href="' + location.origin + location.pathname + '">');
-            mywindow.document.write('<html><head><title>' + document.title + '</title>');
-            mywindow.document.write('</head><body >');
-            mywindow.document.write('<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />');
-            mywindow.document.write('<link rel="stylesheet" href="/css/site.css" type="text/css" />');
-            mywindow.document.write('<link rel="stylesheet" href="/css/jquery-ui.min.css" />');
-            mywindow.document.write('<h1>' + document.title + '</h1>');
-            mywindow.document.write(document.getElementById("grid-container").innerHTML);
-            mywindow.document.write('</body></html>');
-
-            mywindow.document.close(); // necessary for IE >= 10
-            mywindow.focus(); // necessary for IE >= 10*/
-
-            mywindow.print();
-            mywindow.close();
-
-            return true;
-        }</script>
+    </script>
