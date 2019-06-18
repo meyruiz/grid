@@ -125,6 +125,8 @@
         var zoom = 10;
         const rulerHorizontal = document.querySelector(".ruler-horizontal");
         const widthHorizontalRuler = rulerHorizontal.clientWidth;
+        const grid = document.querySelector("#grid");
+        rulerHorizontal.style.width = `${grid.clientWidth}px`;
         const rulerVertical = document.querySelector(".ruler-vertical");
         const widthVerticalRuler = rulerVertical.clientHeight;
 
