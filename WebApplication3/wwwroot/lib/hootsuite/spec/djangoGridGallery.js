@@ -20,12 +20,11 @@ function hideTooltip(el) {
 
 function openDialogConfig(el) { 
     gridData["cell_dialog_open"] = el;
-    var lengthFT = $(el).attr("data-lenFT");
-    var lengthIN = $(el).attr("data-lenIN");
+    var length = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
 
-    gridData["dialog"].find("div input.item_lenFT").val(lengthFT);
-    gridData["dialog"].find("div input.item_lenIN").val(lengthIN);
+    gridData["dialog"].find("div input.item_lenFT").val(length / 12);
+    gridData["dialog"].find("div input.item_lenIN").val(length % 12);
     gridData["dialog"].find("div input.item_w").val(width);
     gridData["dialog"].dialog({ position: { my: "top", at: "top", of: el } });
 
@@ -41,6 +40,9 @@ function applyDialogConfig() {
 
     var length = lengthFT + (lengthIN / 12);
 
+    console.log(length);
+    console.log(lengthIN);
+
     gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
     gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
@@ -53,8 +55,8 @@ function applyDialogConfig() {
         gridData["DemoGrid"].gridElement.gridList('resizeItem',
             gridData["cell_dialog_open"],
             {
-                lenFT: lengthFT,
-                lenIN: lengthIN,
+                //lenFT: lengthFT,
+                lenIN: (lengthFT * 12) + lengthIN,
                 w: width,
                 h: length
             }
@@ -125,7 +127,7 @@ $(function () {
             this.gridElement.empty();
             for (i = 0; i < items.length; i++) {
                 item = items[i];
-                var length = item.lenFT + (item.lenIN / 12);
+                var length = item.lenIN / 12;
 
                 $item = $(
                     '<li class="' + item.status + '" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)" >' +
@@ -158,7 +160,6 @@ $(function () {
                     'data-h': item.h,
                     'data-x': item.x,
                     'data-y': item.y,
-                    'data-lenFT': item.lenFT,
                     'data-lenIN': item.lenIN,
                     'data-status': item.status,
                     'data-cust': "Acme Mining Co",
@@ -180,10 +181,10 @@ $(function () {
             // Get all built elements and pass them to var items array
             gridData["DemoGrid"].getElementsToArray();
         },
-        addItem: function (x, y, lengthFT, lengthIN, widthIN, status) {
+        addItem: function (x, y, lengthIN, widthIN, status) {
             var maxHeight = 0;
-            var length = lengthFT + (lengthIN / 12);
-            items.forEach(function (value, index) {
+            var length = lengthIN / 12;
+            items.forEach(function (value) {
                 var cellY = parseInt(value.dataset.y);
                 var cellH = parseInt(value.dataset.h);
 
@@ -214,14 +215,15 @@ $(function () {
                 }
             });
 
+            // If its not an offcut we need to check empty space to put the item
             if (status != "Offcut") {
-                var posX, posY;
                 for (var j = 0; j < maxHeight; j++) {
                     var flag = 0;
                     for (i = 0; i < this.currentSize; i++) {
                         if (auxList[i][j] != 0) {
-                            posX = i;
-                            posY = j;
+                            // overwrite x and y positions so we don't rewrite the whole item later
+                            x = i;
+                            y = j;
                             flag = 1;
                             break;
                         }
@@ -257,38 +259,18 @@ $(function () {
                 '</li>'
             );
 
-            //Offcut has specific x and y positions to fill
-            if (status != "Offcut") {
-                $item.attr({
-                    'data-id': this.gridElement.children('li').length,
-                    'data-w': widthIN,
-                    'data-h': length,
-                    'data-lenFT': lengthFT,
-                    'data-lenIN': lengthIN,
-                    'data-x': posX, 
-                    'data-y': posY,
-                    'data-status': status,
-                    'data-cust': "Acme Mining Co",
-                    'data-date': "03/31/2019",
-                    'data-order': 123456789,
-                    'data-prod': 123456789
-                });
-            } else {
-                $item.attr({
-                    'data-id': this.gridElement.children('li').length,
-                    'data-w': widthIN,
-                    'data-h': length,
-                    'data-lenFT': lengthFT,
-                    'data-lenIN': lengthIN,
-                    'data-x': x,
-                    'data-y': y,
-                    'data-status': status,
-                    'data-cust': "Acme Mining Co",
-                    'data-date': "03/31/2019",
-                    'data-order': 123456789,
-                    'data-prod': 123456789
-                });
-            }
+            $item.attr({
+                'data-id': this.gridElement.children('li').length,
+                'data-w': widthIN,
+                'data-h': length,
+                'data-x': x, 
+                'data-y': y,
+                'data-status': status,
+                'data-cust': "Acme Mining Co",
+                'data-date': "03/31/2019",
+                'data-order': 123456789,
+                'data-prod': 123456789
+            });
 
             // Append item to grid list and items array
             this.gridElement.append($item);
@@ -336,12 +318,13 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addItem(posX, y, h, 0, width, "Offcut");
+                    //addItem: function (x, y, lengthIN, widthIN, status) {
+                    gridData["DemoGrid"].addItem(posX, y, h, width, "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
-                    gridData["DemoGrid"].addItem(0, y, h, 0, width, "Offcut");
+                    gridData["DemoGrid"].addItem(0, y, h, width, "Offcut");
                 }
 
             } else {
@@ -451,9 +434,9 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
-            { id: 1, x: 10, y: 0, h: 10, w: 74, lenFT: 10, lenIN: 0, status: "Offcut" },
-            { id: 2, x: 0, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
+        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenIN: 120, status: "Allocated" },
+            //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
+            //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
             //{ id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
         ]
@@ -498,7 +481,6 @@ $(function () {
 
     $('.save').click(function (e) {
         e.preventDefault();
-
         console.log(gridData["DemoGrid"].items);
     });
 
@@ -507,7 +489,12 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
-        gridData["DemoGrid"].addItem(-1, -1, lengthFT, lengthIN, widthIN, "Allocated");
+
+        lengthIN = (lengthFT * 12) + lengthIN;
+        console.log(lengthIN);
+       
+        gridData["DemoGrid"].addItem(-1, -1, lengthIN, widthIN, "Allocated");
+
         $("#exampleModal input").val("");
         console.log("Add element");
     });
