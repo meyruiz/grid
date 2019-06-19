@@ -23,7 +23,7 @@ function openDialogConfig(el) {
     var length = $(el).attr("data-lenIN");
     var width = $(el).attr("data-w");
 
-    gridData["dialog"].find("div input.item_lenFT").val(length / 12);
+    gridData["dialog"].find("div input.item_lenFT").val(Math.floor(length / 12));
     gridData["dialog"].find("div input.item_lenIN").val(length % 12);
     gridData["dialog"].find("div input.item_w").val(width);
     gridData["dialog"].dialog({ position: { my: "top", at: "top", of: el } });
@@ -39,12 +39,8 @@ function applyDialogConfig() {
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
 
     var length = lengthFT + (lengthIN / 12);
-
-    console.log(length);
-    console.log(lengthIN);
-
-    gridData["cell_dialog_open"].attr("data-lenFT", lengthFT);
-    gridData["cell_dialog_open"].attr("data-lenIN", lengthIN);
+    
+    gridData["cell_dialog_open"].attr("data-lenIN", (lengthFT * 12) + lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
     gridData["cell_dialog_open"].attr("data-h", length);
 
@@ -55,8 +51,7 @@ function applyDialogConfig() {
         gridData["DemoGrid"].gridElement.gridList('resizeItem',
             gridData["cell_dialog_open"],
             {
-                //lenFT: lengthFT,
-                lenIN: (lengthFT * 12) + lengthIN,
+                lenIN: lengthIN,
                 w: width,
                 h: length
             }

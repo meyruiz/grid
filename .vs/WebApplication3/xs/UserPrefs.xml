@@ -1,27 +1,28 @@
 ﻿<Properties StartupConfiguration="{9C16B419-511C-449D-A321-E0E3D00BFF96}|Default">
   <MonoDevelop.Ide.ItemProperties.WebApplication3 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebApplication3/Pages/Index.cshtml">
     <Files>
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/gridList.js" Line="172" Column="1" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" Line="231" Column="59" />
-      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" Line="101" Column="13" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/gridList.js" Line="152" Column="15" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/src/jquery.gridList.js" />
+      <File FileName="WebApplication3/wwwroot/lib/hootsuite/spec/djangoGridGallery.js" />
       <File FileName="WebApplication3/wwwroot/css/site.css" />
-      <File FileName="WebApplication3/Pages/Index.cshtml" />
+      <File FileName="WebApplication3/Pages/Index.cshtml" Line="170" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WebApplication3" expanded="True">
             <Node name="WebApplication3" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Index.cshtml" selected="True" />
+              </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
                 <Node name="lib" expanded="True">
                   <Node name="hootsuite" expanded="True">
                     <Node name="spec" expanded="True" />
-                    <Node name="src" expanded="True">
-                      <Node name="jquery.gridList.js" selected="True" />
-                    </Node>
+                    <Node name="src" expanded="True" />
                   </Node>
                 </Node>
               </Node>
