@@ -313,19 +313,21 @@ $(function () {
                 if (x == 0) {
                     var posX = x + w;
                     var width = data['size'] - w;
-                    //addItem: function (x, y, lengthIN, widthIN, status) {
+                    h *= 12; // convert inches to ft 
                     gridData["DemoGrid"].addItem(posX, y, h, width, "Offcut");
                 }
 
                 if (x + w == data['size']) {
                     var width = data['size'] - w;
+                    h *= 12; // convert inches to ft 
                     gridData["DemoGrid"].addItem(0, y, h, width, "Offcut");
                 }
 
             } else {
                 var posY = y + h;
                 var height = data['height'] - (y + h);
-                gridData["DemoGrid"].addItem(x, posY, height, 0, w, "Offcut");
+                height *= 12;
+                gridData["DemoGrid"].addItem(x, posY, height, w, "Offcut");
             }  
             gridData["DemoGrid"].getElementsToArray();
         },
