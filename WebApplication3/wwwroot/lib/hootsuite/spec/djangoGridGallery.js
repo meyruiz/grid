@@ -260,6 +260,7 @@ $(function () {
                 'data-h': length,
                 'data-x': x, 
                 'data-y': y,
+                'data-lenIN': lengthIN,
                 'data-status': status,
                 'data-cust': "Acme Mining Co",
                 'data-date': "03/31/2019",
@@ -308,6 +309,7 @@ $(function () {
             var w = parseInt(currentCut.dataset.w);
             var y = parseInt(currentCut.dataset.y);
             var h = parseInt(currentCut.dataset.h);
+            var length = parseInt(currentCut.dataset.lenIN);
 
             if (type == "horizontal") {
                 if (x == 0) {
@@ -324,6 +326,7 @@ $(function () {
                 }
 
             } else {
+                // TODO: Make it work when ft are in fractions (grid is in ft)
                 var posY = y + h;
                 var height = data['height'] - (y + h);
                 height *= 12;
@@ -486,12 +489,18 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
+        
+        if (!lengthIN) {
+            lengthIN = 0;
+        }
 
-        lengthIN = (lengthFT * 12) + lengthIN;
-        console.log(lengthIN);
+        if ((lengthFT != null && widthIN != null)) {
+            lengthIN = (lengthFT * 12) + lengthIN;
+            gridData["DemoGrid"].addItem(-1, -1, lengthIN, widthIN, "Allocated");
+        } else {
+            alert("Please fill in length and height");
+        }
        
-        gridData["DemoGrid"].addItem(-1, -1, lengthIN, widthIN, "Allocated");
-
         $("#exampleModal input").val("");
         console.log("Add element");
     });
