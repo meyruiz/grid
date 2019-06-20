@@ -494,7 +494,7 @@ $(function () {
             lengthIN = 0;
         }
 
-        if ((lengthFT != null && widthIN != null)) {
+        if ((lengthFT != null && widthIN != null) && (lengthFT > 0 && lengthIN >= 0 && widthIN > 0)) {
             lengthIN = (lengthFT * 12) + lengthIN;
             gridData["DemoGrid"].addItem(-1, -1, lengthIN, widthIN, "Allocated");
         } else {
