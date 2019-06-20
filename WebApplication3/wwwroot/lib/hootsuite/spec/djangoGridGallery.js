@@ -109,7 +109,7 @@ $(function () {
             this.gridElement.gridList({
                 lanes: gridData["DemoGrid"].currentSize,
                 width: gridData["DemoGrid"].currentSize,
-                height: 600,
+                height: 7200,
                 widthHeightRatio: scaleWidthToHeight,
                 heightToFontSizeRatio: 0.15,
                 direction: 'vertical',
@@ -133,7 +133,7 @@ $(function () {
                     '<p>Order Date #: ' + "5/19/2011" + '</p>' +
                     '<p>Cust ID: ' + 100031 + '</p>' +
                     '<p>Cust: ' + "Johnstone Machining" + '</p>' +
-                    '</div>' +
+                    '</div>' + 
                     '<div class="inner ' + item.status + '">' +
                     '<div class="controls ' + item.status + '">' +
                     '<a href="#config" class="config ' + item.status + '">Config</a>' +
@@ -433,8 +433,8 @@ $(function () {
     // Initialize grid
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
-        'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 12, w: 12, lenIN: 144, status: "Cut" },
+        'height': document.querySelector("#gridHeight").textContent * 12,
+        'data': [{ id: 0, x: 0, y: 0, h: 20, w: 10, lenIN: 240, status: "Allocated" },
             //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },

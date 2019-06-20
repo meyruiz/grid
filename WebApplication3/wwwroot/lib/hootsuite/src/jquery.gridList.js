@@ -273,7 +273,7 @@
                 // this._cellWidth = this._cellHeight * this.options.widthHeightRatio; 
             } else {
                 this._cellWidth = Math.floor(this.$element.width() / this.options.width / zoomScale);
-                this._cellHeight = Math.floor(this.$element.height() / this.options.height / zoomScale) / this.options.widthHeightRatio;
+                this._cellHeight = Math.floor((this.$element.height() / this.options.height / zoomScale) * 12) / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
                 this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;
@@ -332,12 +332,17 @@
             if (!this._previousDragPosition) {
                 return true;
             }
+
             return (newPosition[0] != this._previousDragPosition[0] ||
             newPosition[1] != this._previousDragPosition[1]);
         },
 
         _snapItemPositionToGrid: function(item) {
             var position = item.$element.position();
+
+            console.log("Cell Height: " + this._cellHeight);
+            console.log("Options Height: " + this.options.height);
+            console.log("Element Height: " + this.$element.height());
 
             position[0] -= this.$element.position().left;
 
