@@ -434,7 +434,7 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 10, w: 10, lenIN: 120, status: "Allocated" },
+        'data': [{ id: 0, x: 0, y: 0, h: 12, w: 12, lenIN: 144, status: "Cut" },
             //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },

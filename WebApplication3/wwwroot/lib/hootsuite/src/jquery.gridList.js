@@ -249,18 +249,6 @@
                     id: Number($(element).attr('data-id')),
                     status: $(element).attr('data-status')
                 });                  
-
-                if ($(element).attr('data-status') == "Cut") {
-                    itemsUnableToMove.push({
-                        $element: $(element),
-                        x: Number($(element).attr('data-x')),
-                        y: Number($(element).attr('data-y')),
-                        w: Number($(element).attr('data-w')),
-                        h: Number($(element).attr('data-h')),
-                        id: Number($(element).attr('data-id')),
-                        status: $(element).attr('data-status')
-                    });
-                }
             });
 
             return items;
