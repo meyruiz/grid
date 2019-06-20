@@ -80,10 +80,11 @@
     <script type="text/javascript">
 
         let zoom = 10;
+        let zoomScale = 1;
         const scaleWidthToHeight = 1;
-        const rulerHorizontal = document.querySelector(".ruler-horizontal");
-        const widthHorizontalRuler = rulerHorizontal.clientWidth;
         const grid = document.querySelector("#grid");
+        const rulerHorizontal = document.querySelector(".ruler-horizontal");
+        const widthHorizontalRuler = grid.clientWidth;
         const rulerVertical = document.querySelector(".ruler-vertical");
         const widthVerticalRuler = rulerVertical.clientHeight;
         const gridWidth = 84;
@@ -138,7 +139,7 @@
         //setZoom(5,document.getElementsByClassName('grid-container')[0]);
 
         function showVal(a) {
-            var zoomScale = Number(a) / 10;
+            zoomScale = Number(a) / 10;
             setZoom(zoomScale, document.getElementsByClassName('grid')[0])
         }
 
@@ -150,7 +151,7 @@
 
             if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
                 zoom += a;
-                var zoomScale = Number(zoom) / 10;
+                zoomScale = Number(zoom) / 10;
                 setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
 
                 rulerHorizontal.style.width = `${widthHorizontalRuler * zoomScale}px`;

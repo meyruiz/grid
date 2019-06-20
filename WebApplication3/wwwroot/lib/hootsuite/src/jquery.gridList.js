@@ -182,8 +182,8 @@
             var canvasHeight = document.querySelector("#gridHeight").textContent * 20;
             var canvasWidth = document.querySelector("#gridWidth").textContent * 20;
             var item = this._getItemByElement(ui.helper);
-            ui.position.top = Math.round(ui.position.top / (zoom / 10));
-            ui.position.left = Math.round(ui.position.left / (zoom / 10));
+            ui.position.top = Math.round(ui.position.top / zoomScale);
+            ui.position.left = Math.round(ui.position.left / zoomScale);
 
             // don't let draggable to get outside of the canvas
             if (ui.position.left < 0)
@@ -279,13 +279,13 @@
         /* Change cell size this instead of every instance of the size */
         _calculateCellSize: function () {
             if (this.options.direction === "horizontal") {
-                this._cellHeight = Math.floor(this.$element.height() / this.options.height / (zoom / 10));
-                this._cellWidth = Math.floor(this.$element.width() / this.options.width / (zoom / 10)) * this.options.widthHeightRatio;
+                this._cellHeight = Math.floor(this.$element.height() / this.options.height / zoomScale);
+                this._cellWidth = Math.floor(this.$element.width() / this.options.width / zoomScale) * this.options.widthHeightRatio;
                 // Prev like this because it bas calculated based on this.options.lanes instead of width/height. Now changed to support different sizes.
                 // this._cellWidth = this._cellHeight * this.options.widthHeightRatio; 
             } else {
-                this._cellWidth = Math.floor(this.$element.width() / this.options.width / (zoom / 10));
-                this._cellHeight = Math.floor(this.$element.height() / this.options.height / (zoom / 10)) / this.options.widthHeightRatio;
+                this._cellWidth = Math.floor(this.$element.width() / this.options.width / zoomScale);
+                this._cellHeight = Math.floor(this.$element.height() / this.options.height / zoomScale) / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
                 this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;
@@ -353,8 +353,8 @@
 
             position[0] -= this.$element.position().left;
 
-            var col = Math.round((position.left / this._cellWidth) / (zoom / 10)),
-                row = Math.round((position.top / this._cellHeight) / (zoom / 10));
+            var col = Math.round((position.left / this._cellWidth) / zoomScale),
+                row = Math.round((position.top / this._cellHeight) / zoomScale);
 
             // Keep item position within the grid and don't let the item create more
             // than one extra column
