@@ -62,52 +62,9 @@
             </div>
             <div id="container">
                 <!--<div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">-->
-                <div class='ruler-horizontal'>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                    <div class='in'></div>
-                </div>
+                <div class='ruler-horizontal'></div>
                 <div id="grid-container" class="grid-container">
-                    <div class='ruler-vertical'>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                        <div class='in'></div>
-                    </div>
+                    <div class='ruler-vertical'></div>
                     <ul id="grid" class="grid">
                         <li class="position-highlight">
                             <div class="inner"></div>
@@ -127,14 +84,40 @@
         const rulerHorizontal = document.querySelector(".ruler-horizontal");
         const widthHorizontalRuler = rulerHorizontal.clientWidth;
         const grid = document.querySelector("#grid");
-        rulerHorizontal.style.width = `${grid.clientWidth}px`;
         const rulerVertical = document.querySelector(".ruler-vertical");
         const widthVerticalRuler = rulerVertical.clientHeight;
-        rulerVertical.style.height = `${widthVerticalRuler / scaleWidthToHeight}px`;
+        const gridWidth = 84;
+        const gridHeight = 600;
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
+            init();
+            createRulerDimensions();
         });
+
+        function init() {
+            rulerHorizontal.style.width = `${grid.clientWidth}px`;
+            rulerVertical.style.height = `${widthVerticalRuler / scaleWidthToHeight}px`;
+        }
+
+        function createRulerDimensions() {
+            let numItemsHorizontal = gridWidth / 12;
+            let numItemsVertical = gridHeight / 20;
+
+            for (let i = 0; i <= numItemsHorizontal; i++) {
+                let div = document.createElement('div');
+                div.className = 'in';
+                div.dataset.text = (i * 12) + ".0'";
+                rulerHorizontal.appendChild(div);
+            }
+
+            for (let i = 0; i <= numItemsVertical; i++) {
+                let div = document.createElement('div');
+                div.className = 'in';
+                div.dataset.text = (i * 20) + ".0'";
+                rulerVertical.appendChild(div);
+            }
+        }
 
         function setZoom(zoom, el) {
             transformOrigin = [0, 0];
