@@ -39,26 +39,27 @@ function applyDialogConfig() {
     var width = parseInt(gridData["dialog"].find("div input.item_w").val());
 
     var length = lengthFT + (lengthIN / 12);
-    
-    gridData["cell_dialog_open"].attr("data-lenIN", (lengthFT * 12) + lengthIN);
-    gridData["cell_dialog_open"].attr("data-w", width);
-    gridData["cell_dialog_open"].attr("data-h", length * 12);
-
-    gridData["cell_dialog_open"].find(".tooltiptext .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
-    gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
 
     if (width > 0 && width <= gridData["DemoGrid"].currentSize) {
         gridData["DemoGrid"].gridElement.gridList('resizeItem',
             gridData["cell_dialog_open"],
             {
-                lenIN: lengthIN,
                 w: width,
                 h: length * 12
             }
         );
     }
 
-    gridData["DemoGrid"].hideInfoCutIfOverflow(gridData["cell_dialog_open"].attr("data-id"));
+    if (!flagResize) {
+        gridData["cell_dialog_open"].attr("data-lenIN", (lengthFT * 12) + lengthIN);
+        gridData["cell_dialog_open"].attr("data-w", width);
+        gridData["cell_dialog_open"].attr("data-h", length * 12);
+
+        gridData["cell_dialog_open"].find(".tooltiptext .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
+        gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
+        gridData["DemoGrid"].hideInfoCutIfOverflow(gridData["cell_dialog_open"].attr("data-id"));
+        flagResize = false;
+    }
 }
 
 function initializeDialog() {
@@ -162,6 +163,9 @@ $(function () {
                     'data-prod': 123456789
                 });
                 this.gridElement.append($item);
+
+                // Need to hide too for cuts for other transactions
+                $('li.Cut').find(".controls").hide();
 
                 // if item is too small to display info
                 if (item.w <= 9 && length < 10) {

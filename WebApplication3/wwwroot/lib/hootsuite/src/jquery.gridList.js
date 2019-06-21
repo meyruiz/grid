@@ -273,10 +273,7 @@
                 // this._cellWidth = this._cellHeight * this.options.widthHeightRatio; 
             } else {
                 this._cellWidth = Math.floor(this.$element.width() / this.options.width / zoomScale);
-                this._cellHeight = (((this.$element.height() / this.options.height) / zoomScale) / this.options.widthHeightRatio);
-                console.log("Element Height: " + this.$element.height());
-                console.log("Options Height: " + this.options.height);
-                console.log("Cell Height: " + this._cellHeight);
+                this._cellHeight = this.$element.height() / this.options.height / zoomScale / this.options.widthHeightRatio;
             }
             if (this.options.heightToFontSizeRatio) {
                 this._fontSize = this._cellHeight * this.options.heightToFontSizeRatio;

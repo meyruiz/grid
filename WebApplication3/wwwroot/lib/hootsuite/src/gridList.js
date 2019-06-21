@@ -145,7 +145,6 @@
             const collidingItems = this._getItemsCollidingWithItem(item);
             if (collidingItems.length) {
                 this._updateItemPosition(item, [firstPosition.x, firstPosition.y]);
-                console.log("Colliding");
             }
         },
 
@@ -174,6 +173,7 @@
                 this._updateItemSize(item, width, height);
             } else {
                 alert("Move item to another position");
+                flagResize = true;
                 this._updateItemSize(item, initialSize[0], initialSize[1]);
             }
         },
