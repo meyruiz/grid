@@ -20,8 +20,10 @@ function hideTooltip(el) {
 
 function openDialogConfig(el) { 
     gridData["cell_dialog_open"] = el;
-    var length = $(el).attr("data-lenIN");
+    var length = $(el).attr("data-h");
     var width = $(el).attr("data-w");
+
+    console.log(length);
 
     gridData["dialog"].find("div input.item_lenFT").val(Math.floor(length / 12));
     gridData["dialog"].find("div input.item_lenIN").val(length % 12);
@@ -111,7 +113,7 @@ $(function () {
                 width: gridData["DemoGrid"].currentSize,
                 height: 7200,
                 widthHeightRatio: scaleWidthToHeight,
-                heightToFontSizeRatio: 0.15,
+                heightToFontSizeRatio: 1.55,
                 direction: 'vertical',
                 onChange: function (changedItems) {
                 }
@@ -257,10 +259,10 @@ $(function () {
             $item.attr({
                 'data-id': this.gridElement.children('li').length,
                 'data-w': widthIN,
-                'data-h': length,
+                'data-h': length * 12,
                 'data-x': x, 
                 'data-y': y,
-                'data-lenIN': lengthIN,
+                'data-lenIN': lengthIN / 12,
                 'data-status': status,
                 'data-cust': "Acme Mining Co",
                 'data-date': "03/31/2019",
@@ -433,8 +435,8 @@ $(function () {
     // Initialize grid
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
-        'height': document.querySelector("#gridHeight").textContent * 12,
-        'data': [{ id: 0, x: 0, y: 0, h: 20, w: 10, lenIN: 240, status: "Allocated" },
+        'height': document.querySelector("#gridHeight").textContent,
+        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, lenIN: 240, status: "Allocated" },
             //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
