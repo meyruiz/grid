@@ -185,6 +185,8 @@
             ui.position.top = Math.round(ui.position.top / zoomScale);
             ui.position.left = Math.round(ui.position.left / zoomScale);
 
+            hideTooltip(ui.helper[0]);
+
             // don't let draggable to get outside of the canvas
             if (ui.position.left < 0)
                 ui.position.left = 0;
@@ -223,6 +225,7 @@
             // HACK: jQuery.draggable removes this class after the dragstop callback,
             // and we need it removed before the drop, to re-enable CSS transitions
             $(ui.helper).removeClass('ui-draggable-dragging');
+            showTooltip(ui.helper[0]);
 
             this._applyPositionToItems();
         },
