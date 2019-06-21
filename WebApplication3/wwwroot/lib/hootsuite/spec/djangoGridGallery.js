@@ -23,8 +23,6 @@ function openDialogConfig(el) {
     var length = $(el).attr("data-h");
     var width = $(el).attr("data-w");
 
-    console.log(length);
-
     gridData["dialog"].find("div input.item_lenFT").val(Math.floor(length / 12));
     gridData["dialog"].find("div input.item_lenIN").val(length % 12);
     gridData["dialog"].find("div input.item_w").val(width);
@@ -44,7 +42,7 @@ function applyDialogConfig() {
     
     gridData["cell_dialog_open"].attr("data-lenIN", (lengthFT * 12) + lengthIN);
     gridData["cell_dialog_open"].attr("data-w", width);
-    gridData["cell_dialog_open"].attr("data-h", length);
+    gridData["cell_dialog_open"].attr("data-h", length * 12);
 
     gridData["cell_dialog_open"].find(".tooltiptext .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
     gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
@@ -55,7 +53,7 @@ function applyDialogConfig() {
             {
                 lenIN: lengthIN,
                 w: width,
-                h: length
+                h: length * 12
             }
         );
     }
@@ -124,7 +122,7 @@ $(function () {
             this.gridElement.empty();
             for (i = 0; i < items.length; i++) {
                 item = items[i];
-                var length = item.lenIN / 12;
+                var length = item.h / 12;
 
                 $item = $(
                     '<li class="' + item.status + '" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)" >' +
@@ -157,7 +155,6 @@ $(function () {
                     'data-h': item.h,
                     'data-x': item.x,
                     'data-y': item.y,
-                    'data-lenIN': item.lenIN,
                     'data-status': item.status,
                     'data-cust': "Acme Mining Co",
                     'data-date': "03/31/2019",
@@ -167,7 +164,7 @@ $(function () {
                 this.gridElement.append($item);
 
                 // if item is too small to display info
-                if (item.w <= 9 && item.h < 10) {
+                if (item.w <= 9 && length < 10) {
                     $item[0].childNodes[1].childNodes[1].style.visibility = "hidden";
                 }
             }
@@ -183,7 +180,7 @@ $(function () {
             var length = lengthIN / 12;
             items.forEach(function (value) {
                 var cellY = parseInt(value.dataset.y);
-                var cellH = parseInt(value.dataset.h);
+                var cellH = parseInt(value.dataset.h) / 12;
 
                 if (cellY + cellH > maxHeight) {
                     maxHeight = cellY + cellH;
@@ -203,7 +200,7 @@ $(function () {
                 var cellX = parseInt(value.dataset.x);
                 var cellY = parseInt(value.dataset.y);
                 var cellW = parseInt(value.dataset.w);
-                var cellH = parseInt(value.dataset.h);
+                var cellH = parseInt(value.dataset.h) / 12;
 
                 for (var i = cellX; i < cellX + cellW; i++) {
                     for (var j = cellY; j < cellY + cellH; j++) {
@@ -262,7 +259,6 @@ $(function () {
                 'data-h': length * 12,
                 'data-x': x, 
                 'data-y': y,
-                'data-lenIN': lengthIN / 12,
                 'data-status': status,
                 'data-cust': "Acme Mining Co",
                 'data-date': "03/31/2019",
@@ -310,7 +306,7 @@ $(function () {
             var x = parseInt(currentCut.dataset.x);
             var w = parseInt(currentCut.dataset.w);
             var y = parseInt(currentCut.dataset.y);
-            var h = parseInt(currentCut.dataset.h);
+            var h = parseInt(currentCut.dataset.h) / 12;
             var length = parseInt(currentCut.dataset.lenIN);
 
             if (type == "horizontal") {
@@ -331,6 +327,7 @@ $(function () {
                 // TODO: Make it work when ft are in fractions (grid is in ft)
                 var posY = y + h;
                 var height = data['height'] - (y + h);
+                posY *= 12; // position from in to ft
                 height *= 12;
                 gridData["DemoGrid"].addItem(x, posY, height, w, "Offcut");
             }  
@@ -380,14 +377,14 @@ $(function () {
             var cellX = parseInt(currentCut.dataset.x);
             var cellY = parseInt(currentCut.dataset.y);
             var cellW = parseInt(currentCut.dataset.w);
-            var cellH = parseInt(currentCut.dataset.h);
+            var cellH = parseInt(currentCut.dataset.h) / 12;
             
             items.forEach(function (value, index) {
                 if (index != id) {
                     var x = parseInt(value.dataset.x);
                     var w = parseInt(value.dataset.w);
                     var y = parseInt(value.dataset.y);
-                    var h = parseInt(value.dataset.h);
+                    var h = parseInt(value.dataset.h) / 12;
 
                     // if grid has no empty space horizontally
                     if ((cellY + cellH - 1 > y && cellY < y + h)) {
@@ -436,7 +433,7 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, lenIN: 240, status: "Allocated" },
+        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, status: "Allocated" },
             //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
