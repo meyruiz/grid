@@ -184,7 +184,7 @@ $(function () {
             var length = lengthIN / 12;
             items.forEach(function (value) {
                 var cellY = parseInt(value.dataset.y);
-                var cellH = parseInt(value.dataset.h) / 12;
+                var cellH = parseInt(value.dataset.h);
 
                 if (cellY + cellH > maxHeight) {
                     maxHeight = cellY + cellH;
@@ -204,7 +204,7 @@ $(function () {
                 var cellX = parseInt(value.dataset.x);
                 var cellY = parseInt(value.dataset.y);
                 var cellW = parseInt(value.dataset.w);
-                var cellH = parseInt(value.dataset.h) / 12;
+                var cellH = parseInt(value.dataset.h);
 
                 for (var i = cellX; i < cellX + cellW; i++) {
                     for (var j = cellY; j < cellY + cellH; j++) {
@@ -381,14 +381,14 @@ $(function () {
             var cellX = parseInt(currentCut.dataset.x);
             var cellY = parseInt(currentCut.dataset.y);
             var cellW = parseInt(currentCut.dataset.w);
-            var cellH = parseInt(currentCut.dataset.h) / 12;
+            var cellH = parseInt(currentCut.dataset.h) ;
             
             items.forEach(function (value, index) {
                 if (index != id) {
                     var x = parseInt(value.dataset.x);
                     var w = parseInt(value.dataset.w);
                     var y = parseInt(value.dataset.y);
-                    var h = parseInt(value.dataset.h) / 12;
+                    var h = parseInt(value.dataset.h);
 
                     // if grid has no empty space horizontally
                     if ((cellY + cellH - 1 > y && cellY < y + h)) {
@@ -438,7 +438,7 @@ $(function () {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
         'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, status: "Allocated" },
-            //{ id: 1, x: 10, y: 0, h: 120, w: 74, lenIN: 0, status: "Offcut" },
+            //{ id: 1, x: 10, y: 0, h: 120, w: 10, lenIN: 0, status: "Cut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
             //{ id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
