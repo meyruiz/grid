@@ -112,7 +112,7 @@ $(function () {
                 width: gridData["DemoGrid"].currentSize,
                 height: 7200,
                 widthHeightRatio: scaleWidthToHeight,
-                heightToFontSizeRatio: 1.55,
+                heightToFontSizeRatio: 1.55 * scaleWidthToHeight,
                 direction: 'vertical',
                 onChange: function (changedItems) {
                 }
