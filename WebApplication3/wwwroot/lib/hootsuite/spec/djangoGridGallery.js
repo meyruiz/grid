@@ -29,7 +29,6 @@ function openDialogConfig(el) {
     gridData["dialog"].dialog({ position: { my: "top", at: "top", of: el } });
 
     gridData["DemoGrid"].showOffcutButtons(el);
-    
     gridData["dialog"].dialog("open");
 }
 
@@ -258,10 +257,10 @@ $(function () {
             );
 
             $item.attr({
-                'data-id': this.gridElement.children('li').length,
+                'data-id': this.gridElement.children('li').length - 1,
                 'data-w': widthIN,
                 'data-h': length * 12,
-                'data-x': x, 
+                'data-x': x,
                 'data-y': y,
                 'data-status': status,
                 'data-cust': "Acme Mining Co",
@@ -280,13 +279,23 @@ $(function () {
                 openDialogConfig(el);
             });
 
+            gridData["DemoGrid"].items.push(
+                {   id: this.gridElement.children('li').length - 1,
+                    x: x, y: y, h: length * 12, w: widthIN, status: status,
+                    cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789
+                }
+            );
             gridData["DemoGrid"].hideInfoCutIfOverflow($item.attr("data-id"));
             this._init();
         },
 
+        getItems: function () {
+            return items;
+        },
+
         getElementsToArray: function () {
             items = [...this.gridElement.children('li')];
-            // Update ids to get them later 
+            // Update ids to get them later
             items.forEach(function (value, index) {
                 value.dataset.id = index;
             })
@@ -437,7 +446,8 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, status: "Allocated" },
+        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, status: "Allocated",
+        cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789 },
             //{ id: 1, x: 10, y: 0, h: 120, w: 10, lenIN: 0, status: "Cut" },
             //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
             //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
