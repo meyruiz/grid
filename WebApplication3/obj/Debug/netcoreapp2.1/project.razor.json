@@ -2859,28 +2859,13 @@
   "RootNamespace": "WebApplication3",
   "Documents": [
     {
-      "FilePath": "Pages\\Contact.cshtml",
-      "TargetPath": "Pages\\Contact.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Pages\\Privacy.cshtml",
-      "TargetPath": "Pages\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Pages\\_ViewImports.cshtml",
       "TargetPath": "Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Pages\\About.cshtml",
-      "TargetPath": "Pages\\About.cshtml",
       "FileKind": "mvc"
     },
     {
