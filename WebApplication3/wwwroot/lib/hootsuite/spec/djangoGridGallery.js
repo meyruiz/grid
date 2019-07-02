@@ -217,7 +217,7 @@ $(function () {
                 for (var j = 0; j < maxHeight; j++) {
                     var flag = 0;
                     for (i = 0; i < this.currentSize; i++) {
-                        if (auxList[i][j] != 0) {
+                        if (auxList[i][j] != 0 && widthIN + i <= this.currentSize) {
                             // overwrite x and y positions so we don't rewrite the whole item later
                             x = i;
                             y = j;
@@ -311,9 +311,9 @@ $(function () {
                     el.childNodes[1].childNodes[1].style.visibility = "visible";
                 }
             }, 300);
-            
+
         },
-       
+
         offcut: function (type, id) {
             var currentCut = this.gridElement.children('li')[id];
             var x = parseInt(currentCut.dataset.x);
@@ -343,7 +343,7 @@ $(function () {
                 posY *= 12; // position from in to ft
                 height *= 12;
                 gridData["DemoGrid"].addItem(x, posY, height, w, "Offcut");
-            }  
+            }
             gridData["DemoGrid"].getElementsToArray();
         },
 
