@@ -302,16 +302,27 @@ $(function () {
         },
 
         hideInfoCutIfOverflow: function (id) {
-            var el = this.gridElement.children('li')[id];
-            // Timer to update resizing changes to the cuts and check if it's actually overflown
-            setTimeout(function () {
-                if (isOverflown(el)) {
-                    el.childNodes[1].childNodes[1].style.visibility = "hidden";
-                } else {
-                    el.childNodes[1].childNodes[1].style.visibility = "visible";
-                }
-            }, 300);
-
+            if (id) {
+                var el = this.gridElement.children('li')[id];
+                // Timer to update resizing changes to the cuts and check if it's actually overflown
+                setTimeout(function () {
+                    if (isOverflown(el)) {
+                        el.childNodes[1].childNodes[1].style.visibility = "hidden";
+                    } else {
+                        el.childNodes[1].childNodes[1].style.visibility = "visible";
+                    }
+                }, 300);
+            } else {
+                let listElements = this.gridElement.children('li');
+                items.forEach(function (value, index) {
+                    let el = listElements[value.dataset.id];
+                    if (isOverflown(el)) {
+                        el.childNodes[1].childNodes[1].style.visibility = "hidden";
+                    } else {
+                        el.childNodes[1].childNodes[1].style.visibility = "visible";
+                    }
+                })
+            }
         },
 
         offcut: function (type, id) {
@@ -446,13 +457,7 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{ id: 0, x: 0, y: 0, h: 240, w: 10, status: "Allocated",
-        cust: "Acme Mining Co", date: "03/31/2019", order: 123456789, prod: 123456789 },
-            //{ id: 1, x: 10, y: 0, h: 120, w: 10, lenIN: 0, status: "Cut" },
-            //{ id: 2, x: 0, y: 10, h: 120, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" }
-            //{ id: 3, x: 10, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Allocated" },
-            //{ id: 4, x: 20, y: 10, h: 10, w: 10, lenFT: 10, lenIN: 0, status: "Cut" },
-        ]
+        'data': [{"id":0,"x":0,"y":0,"h":240,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":1,"x":10,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":2,"x":20,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":3,"x":30,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":4,"x":40,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":5,"x":50,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":6,"x":60,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789}]
     };
 
     gridData["DemoGrid"].items = data['data'];
@@ -494,7 +499,7 @@ $(function () {
 
     $('.save').click(function (e) {
         e.preventDefault();
-        console.log(gridData["DemoGrid"].items);
+        console.log(JSON.stringify(gridData["DemoGrid"].items));
     });
 
     $('.add-cust-cell').click(function (e) {
@@ -502,7 +507,7 @@ $(function () {
         var lengthFT = parseInt(document.getElementById("lengthFT").value);
         var lengthIN = parseInt(document.getElementById("lengthIN").value);
         var widthIN = parseInt(document.getElementById("widthIN").value);
-        
+
         if (!lengthIN) {
             lengthIN = 0;
         }
@@ -513,7 +518,7 @@ $(function () {
         } else {
             alert("Please fill in length and height");
         }
-       
+
         $("#exampleModal input").val("");
         console.log("Add element");
     });
