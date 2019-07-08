@@ -96,7 +96,7 @@ using WebApplication3;
 ");
             EndContext();
             BeginContext(2015, 1621, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c10c6e21d45453e9e5ef07607e07aa5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3cfdce273664220957b3f8ebcda0461", async() => {
                 BeginContext(2021, 1608, true);
                 WriteLiteral(@"
     <div id=""scale"">

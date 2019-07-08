@@ -178,7 +178,7 @@
         },
 
         _onDrag: function (event, ui) {
-            
+
             var canvasHeight = document.querySelector("#gridHeight").textContent * 24;
             var canvasWidth = document.querySelector("#gridWidth").textContent * 24;
             var item = this._getItemByElement(ui.helper);
@@ -190,14 +190,13 @@
             // don't let draggable to get outside of the canvas
             if (ui.position.left < 0)
                 ui.position.left = 0;
-            if (ui.position.left + (this._cellWidth * (this._getItemWidth(item) / 12)) > canvasWidth) // multiply per item's width / 20 (20 is the grid's size in px)
-                ui.position.left = canvasWidth - (this._cellWidth * (this._getItemWidth(item) / 12));
+            if (ui.position.left + (this._cellWidth * (this._getItemWidth(item) / 24)) > canvasWidth) // multiply per item's width / 20 (20 is the grid's size in px)
+                ui.position.left = canvasWidth - (this._cellWidth * (this._getItemWidth(item) / 24));
             if (ui.position.top < 0)
                 ui.position.top = 0;
             if (ui.position.top + (this._cellHeight * (this._getItemHeight(item) / 12)) > canvasHeight)
                 ui.position.top = canvasHeight - (this._cellHeight * (this._getItemHeight(item) / 12));
 
-            
             newPosition = this._snapItemPositionToGrid(item);
 
             if (this._dragPositionChanged(newPosition)) {
