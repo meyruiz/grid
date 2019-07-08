@@ -1,7 +1,7 @@
 ﻿var gridData = {};
 
 function isOverflown(element) {
-    return element.scrollHeight - 10 > element.clientHeight || element.scrollWidth - 20 > element.clientWidth;
+    return element.scrollHeight - 10 > element.clientHeight * zoomScale || element.scrollWidth -22 > element.clientWidth * zoomScale;
 }
 
 function showTooltip(el) {
