@@ -57,8 +57,9 @@ function applyDialogConfig() {
         gridData["cell_dialog_open"].find(".tooltiptext .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
         gridData["cell_dialog_open"].find(".inner .info .dimensions").text(length.toFixed(4) + "'x" + width.toFixed(4)) + '"';
         gridData["DemoGrid"].hideInfoCutIfOverflow(gridData["cell_dialog_open"].attr("data-id"));
-        flagResize = false;
     }
+
+    flagResize = false;
 }
 
 function initializeDialog() {
@@ -331,7 +332,6 @@ $(function () {
             var w = parseInt(currentCut.dataset.w);
             var y = parseInt(currentCut.dataset.y);
             var h = parseInt(currentCut.dataset.h) / 12;
-            var length = parseInt(currentCut.dataset.lenIN);
 
             if (type == "horizontal") {
                 if (x == 0) {
