@@ -18,8 +18,8 @@
         </span>
     </div>
     <div>
-        <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut" style="margin-bottom:15px;">Horizontal Offcut</button>
-        <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;">Vertical Offcut</button>
+        <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut" style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Horizontal Offcut</button>
+        <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
     </div>
 </div>
 
@@ -28,7 +28,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enter Cut Size</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -44,6 +44,29 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="offcutCost" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Item ID: <input id="itemId" type="text" name="itemId"><input id="itemName" type="text" name="itemName"></p>
+                <p>Remnant (L x M): <input id="height" type="text" name="height"> <input id="width" type="text" name="width"> </p>
+
+                <p>Cut (L x M): <input id="itemDimensions" type="text" name="itemDimensions"></p>
+                <p>Total Cut Cost: $<input id="cutCost" type="text" name="cutCost"> <input id="cutPercentage" type="text" name="cutPercentage"></p>
+                <p>Offcut (L x M): <input id="itemDimensions" type="text" name="itemDimensions"></p>
+                <p>Total Offcut Cost: $<input id="offcutCost" type="text" name="offcutCost"> <input id="offcutPercentage" type="text" name="offcutPercentage"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <body>
     <div id="scale">
         <p>Scale</p>

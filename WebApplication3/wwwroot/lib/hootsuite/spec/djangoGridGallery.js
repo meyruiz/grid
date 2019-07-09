@@ -1,7 +1,7 @@
 ﻿var gridData = {};
 
 function isOverflown(element) {
-    return element.scrollHeight - 10 > element.clientHeight * zoomScale || element.scrollWidth -22 > element.clientWidth * zoomScale;
+    return element.scrollHeight - 10 > element.clientHeight * zoomScale || element.scrollWidth - 22 > element.clientWidth * zoomScale;
 }
 
 function showTooltip(el) {
@@ -18,7 +18,7 @@ function hideTooltip(el) {
     element.style.visibility = "hidden";
 }
 
-function openDialogConfig(el) { 
+function openDialogConfig(el) {
     gridData["cell_dialog_open"] = el;
     var length = $(el).attr("data-h");
     var width = $(el).attr("data-w");
@@ -134,7 +134,7 @@ $(function () {
                     '<p>Order Date #: ' + "5/19/2011" + '</p>' +
                     '<p>Cust ID: ' + 100031 + '</p>' +
                     '<p>Cust: ' + "Johnstone Machining" + '</p>' +
-                    '</div>' + 
+                    '</div>' +
                     '<div class="inner ' + item.status + '">' +
                     '<div class="controls ' + item.status + '">' +
                     '<a href="#config" class="config ' + item.status + '">Config</a>' +
@@ -457,7 +457,7 @@ $(function () {
     var data = {
         'size': document.querySelector("#gridWidth").textContent, 
         'height': document.querySelector("#gridHeight").textContent,
-        'data': [{"id":0,"x":0,"y":0,"h":240,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":1,"x":10,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":2,"x":20,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":3,"x":30,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":4,"x":40,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":5,"x":50,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":6,"x":60,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789}]
+        'data': [{"id":0,"x":0,"y":0,"h":240,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789}]//,{"id":1,"x":10,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":2,"x":20,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":3,"x":30,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":4,"x":40,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":5,"x":50,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789},{"id":6,"x":60,"y":0,"h":120,"w":10,"status":"Allocated","cust":"Acme Mining Co","date":"03/31/2019","order":123456789,"prod":123456789}]
     };
 
     gridData["DemoGrid"].items = data['data'];
