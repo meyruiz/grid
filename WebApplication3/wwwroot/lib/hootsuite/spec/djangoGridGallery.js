@@ -348,7 +348,6 @@ $(function () {
                 }
 
             } else {
-                // TODO: Make it work when ft are in fractions (grid is in ft)
                 var posY = y + h;
                 var height = data['height'] - (y + h);
                 posY *= 12; // position from in to ft
@@ -371,6 +370,17 @@ $(function () {
             }
 
             this.gridElement.gridList('resize', this.currentSize);
+        },
+
+        setCostInformation: function (id) {
+            let currentCut = this.gridElement.children('li')[id];
+            let costModal = document.querySelector('#offcutCost');
+
+            console.log(currentCut);
+            costModal.querySelector('#itemId').value = "BELTDEMO";
+            costModal.querySelector('#itemName').value = "BELT DEMO";
+            costModal.querySelector('#length').value = "BELTDEMO";
+            costModal.querySelector('#width').value = "BELT DEMO";
         },
 
         showOffcutButtons: function (el) {
@@ -402,7 +412,7 @@ $(function () {
             var cellY = parseInt(currentCut.dataset.y);
             var cellW = parseInt(currentCut.dataset.w);
             var cellH = parseInt(currentCut.dataset.h) ;
-            
+
             items.forEach(function (value, index) {
                 if (index != id) {
                     var x = parseInt(value.dataset.x);
@@ -487,6 +497,7 @@ $(function () {
 
     $('.add-horizontal-offcut').click(function (e) {
         e.preventDefault();
+        gridData["DemoGrid"].setCostInformation(this.dataset.id);
         gridData["DemoGrid"].offcut("horizontal", this.dataset.id);
         console.log("Add horizontal offcut");
     });
