@@ -47,9 +47,9 @@ html, body, .viewport {
 }
 
 #scale {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+    -webkit-flex: 0.4;
+    -ms-flex: 0.4;
+    flex: 0.4;
 }
 
     #scale .btn {

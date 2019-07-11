@@ -1,0 +1,229 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belting Grid</title>
+
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="css/site.css" />
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="js/site.js" asp-append-version="true"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="lib/hootsuite/src/jquery-3.1.1.min.js"></script>
+        <script src="lib/hootsuite/src/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+        <script src="lib/hootsuite/src/gridList.js"></script>
+        <script src="lib/hootsuite/src/jquery.gridList.js"></script>
+        <script src="lib/hootsuite/spec/djangoGridGallery.js"></script>
+</head>
+
+<partial name="_CookieConsentPartial" />
+
+<div class="container body-content hbox viewport">
+
+    <div id="dialog" title="Cell Settings">
+        <div>
+            <label>Size</label>
+        </div>
+        <div>
+            <span style="right: 0;">
+                Length:
+                <input type="text" class="item_lenFT" style="width: 35px;"> FT
+                <input type="text" class="item_lenIN" style="width: 35px;"> IN
+
+                Width: <input type="text" class="item_w" style="width: 35px;"> IN
+            </span>
+        </div>
+        <div>
+            <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
+                style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Horizontal Offcut</button>
+            <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;"
+                data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text"
+                            name="lengthIN"> IN </p>
+                    <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary add-cust-cell" href="#add-cust-cell" data-toggle="modal"
+                        data-target="#exampleModal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="offcutCost" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Item ID: <input id="itemId" type="text" name="itemId"><input id="itemName" type="text"
+                            name="itemName"></p>
+                    <p>Remnant (L x M): <input id="length" type="text" name="length"> <input id="width" type="text"
+                            name="width"> </p>
+
+                    <p>Cut (L x M): <input id="itemDimensions" type="text" name="itemDimensions"> Total Cut Cost: $<input
+                            id="cutCost" type="text" name="cutCost"> <input id="cutPercentage" type="text"
+                            name="cutPercentage"></p>
+                    <p>Offcut (L x M): <input id="itemDimensions" type="text" name="itemDimensions"> Total Offcut Cost:
+                        $<input id="offcutCost" type="text" name="offcutCost"> <input id="offcutPercentage" type="text"
+                            name="offcutPercentage"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <body>
+        <div id="scale">
+            <p>Scale</p>
+            <p>2' x 1.00"</p>
+            <hr />
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cut</button>
+            <hr />
+            <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
+            <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
+            <button type="button" class="btn print" href="#print" onclick="PrintElem()"
+                style="margin-bottom:15px;">Print</button>
+        </div>
+        <div id="main" class="vbox">
+            <div id="info-general">
+                <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL
+                    REINFORCED BELT LOT: D0118990-B CUST: ACME MINING OF MINNESOTA, INC</p>
+                <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
+            </div>
+            <div id="container">
+                <!--<div class="col-md-12 border" style="height:637px; overflow: scroll;display: flex;flex-wrap: wrap;">-->
+                <div class='ruler-horizontal'></div>
+                <div id="grid-container" class="grid-container">
+                    <div class='ruler-vertical'></div>
+                    <ul id="grid" class="grid">
+                        <li class="position-highlight">
+                            <div class="inner"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="btn save" style="float:right; width:60px;">Save</button>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+
+    let zoom = 10;
+    let zoomScale = 1;
+    const scaleWidthToHeight = 1;
+    const grid = document.querySelector("#grid");
+    const rulerHorizontal = document.querySelector(".ruler-horizontal");
+    const widthHorizontalRuler = grid.clientWidth;
+    const rulerVertical = document.querySelector(".ruler-vertical");
+    const widthVerticalRuler = rulerVertical.clientHeight;
+    const gridWidth = 84;
+    const gridHeight = 600;
+    let flagResize = false;
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        init();
+        createRulerDimensions();
+    });
+
+    function init() {
+        rulerHorizontal.style.width = `${grid.clientWidth}px`;
+        rulerVertical.style.height = `${widthVerticalRuler / scaleWidthToHeight}px`;
+    }
+
+    function createRulerDimensions() {
+        let numItemsHorizontal = gridWidth / 12;
+        let numItemsVertical = gridHeight / 20;
+
+        for (let i = 0; i <= numItemsHorizontal; i++) {
+            let div = document.createElement('div');
+            div.className = 'in';
+            div.dataset.text = (i * 12) + '.0"';
+            rulerHorizontal.appendChild(div);
+        }
+
+        for (let i = 0; i <= numItemsVertical; i++) {
+            let div = document.createElement('div');
+            div.className = 'in';
+            div.dataset.text = (i * 20) + ".0'";
+            rulerVertical.appendChild(div);
+        }
+    }
+
+    function setZoom(zoom, el) {
+        transformOrigin = [0, 0];
+        el = el || instance.getContainer();
+        var p = ["webkit", "moz", "ms", "o"],
+            s = "scale(" + zoom + ")",
+            oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+
+        for (var i = 0; i < p.length; i++) {
+            el.style[p[i] + "Transform"] = s;
+            el.style[p[i] + "TransformOrigin"] = oString;
+        }
+
+        el.style["transform"] = s;
+        el.style["transformOrigin"] = oString;
+    }
+
+    function showVal(a) {
+        zoomScale = Number(a) / 10;
+        setZoom(zoomScale, document.getElementsByClassName('grid')[0])
+    }
+
+    function changeZoom(a) {
+        const tooltips = document.querySelectorAll('.tooltiptext');
+        const fontSize = 4.5;
+        const width = 200;
+        const height = 140;
+
+        if ((zoom != 7 && a != 1) || (zoom != 14 && a != -1)) {
+            zoom += a;
+            zoomScale = Number(zoom) / 10;
+            setZoom(zoomScale, document.getElementsByClassName('grid')[0]);
+
+            rulerHorizontal.style.width = `${widthHorizontalRuler * zoomScale}px`;
+            rulerVertical.style.height = `${widthVerticalRuler * zoomScale}px`;
+
+            if (zoom < 10) {
+                tooltips.forEach(tooltip => {
+                    tooltip.style.fontSize = `${fontSize / zoomScale}em`;
+                    tooltip.style.width = `${width / zoomScale}px`;
+                    tooltip.style.height = `${height / zoomScale}px`;
+                });
+            }
+        }
+        gridData["DemoGrid"].hideInfoCutIfOverflow();
+    }
+
+</script>
