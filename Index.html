@@ -23,126 +23,125 @@
     <script src="lib/hootsuite/spec/djangoGridGallery.js"></script>
 </head>
 
+<div id="dialog" title="Cell Settings">
+    <div>
+        <label>Size</label>
+    </div>
+    <div>
+        <span style="right: 0;">
+            Length:
+            <input type="text" class="item_lenFT" style="width: 35px;"> FT
+            <input type="text" class="item_lenIN" style="width: 35px;"> IN
+
+            Width: <input type="text" class="item_w" style="width: 35px;"> IN
+        </span>
+    </div>
+    <div>
+        <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
+            style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Horizontal Offcut</button>
+        <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;"
+            data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text"
+                        name="lengthIN"> IN </p>
+                <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary add-cust-cell" href="#add-cust-cell" data-toggle="modal"
+                    data-target="#exampleModal">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="offcutCost" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Item ID: </p>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="itemId" type="text" name="itemId">
+                    </div>
+                    <div class="col-md-5">
+                        <input id="itemName" type="text" name="itemName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Remnant (L x M): </p>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="length" type="text" name="length">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="width" type="text" name="width">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Cut (L x M): </p>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="itemDimensions" type="text" name="itemDimensions">
+                    </div>
+                    <div class="col-md-2">
+                        <p>Total Cut Cost: $</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="cutCost" type="text" name="cutCost">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="cutPercentage" type="text" name="cutPercentage">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Offcut (L x M): </p>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="offcutDimensions" type="text" name="itemDimensions">
+                    </div>
+                    <div class="col-md-2">
+                        <p>Total Offcut Cost: $</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="offcutCost" type="text" name="offcutCost">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="offcutPercentage" type="text" name="offcutPercentage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container body-content hbox viewport">
-
-    <div id="dialog" title="Cell Settings">
-        <div>
-            <label>Size</label>
-        </div>
-        <div>
-            <span style="right: 0;">
-                Length:
-                <input type="text" class="item_lenFT" style="width: 35px;"> FT
-                <input type="text" class="item_lenIN" style="width: 35px;"> IN
-
-                Width: <input type="text" class="item_w" style="width: 35px;"> IN
-            </span>
-        </div>
-        <div>
-            <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
-                style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Horizontal Offcut</button>
-            <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;"
-                data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Length: <input id="lengthFT" type="text" name="lengthFT"> FT <input id="lengthIN" type="text"
-                            name="lengthIN"> IN </p>
-                    <p>Width: <input id="widthIN" type="text" name="widthIN"> IN </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary add-cust-cell" href="#add-cust-cell" data-toggle="modal"
-                        data-target="#exampleModal">Create</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="offcutCost" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Item ID: </p>
-                        </div>
-                        <div class="col-md-3">
-                            <input id="itemId" type="text" name="itemId">
-                        </div>
-                        <div class="col-md-3">
-                            <input id="itemName" type="text" name="itemName">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Remnant (L x M): </p>
-                        </div>
-                        <div class="col-md-2">
-                            <input id="length" type="text" name="length">
-                        </div>
-                        <div class="col-md-2">
-                            <input id="width" type="text" name="width">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Cut (L x M): </p>
-                        </div>
-                        <div class="col-md-3">
-                            <input id="itemDimensions" type="text" name="itemDimensions">
-                        </div>
-                        <div class="col-md-2">
-                            <p>Total Cut Cost: $</p>
-                        </div>
-                        <div class="col-md-2">
-                            <input id="cutCost" type="text" name="cutCost">
-                        </div>
-                        <div class="col-md-2">
-                            <input id="cutPercentage" type="text" name="cutPercentage">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Offcut (L x M): </p>
-                        </div>
-                        <div class="col-md-3">
-                            <input id="offcutDimensions" type="text" name="itemDimensions">
-                        </div>
-                        <div class="col-md-2">
-                            <p>Total Offcut Cost: $</p>
-                        </div>
-                        <div class="col-md-2">
-                            <input id="offcutCost" type="text" name="offcutCost">
-                        </div>
-                        <div class="col-md-2">
-                            <input id="offcutPercentage" type="text" name="offcutPercentage">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <body>
         <div id="scale">
             <p>Scale</p>
@@ -152,8 +151,7 @@
             <hr />
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
             <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
-            <button type="button" class="btn print" href="#print" onclick="PrintElem()"
-                style="margin-bottom:15px;">Print</button>
+            <button type="button" class="btn" style="margin-bottom:15px;">Print</button>
         </div>
         <div id="main" class="vbox">
             <div id="info-general">
