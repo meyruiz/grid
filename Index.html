@@ -38,7 +38,7 @@
     </div>
     <div>
         <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
-            style="margin-bottom:15px;" data-toggle="modal" data-target="#offcutCost">Horizontal Offcut</button>
+            style="margin-bottom:15px;" data-toggle="modal" data-target="#cutCostModal">Horizontal Offcut</button>
         <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;"
             data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
     </div>
@@ -69,7 +69,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="offcutCost" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
+<div class="modal fade" id="cutCostModal" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -133,7 +133,7 @@
                         <input id="offcutCost" type="text" name="offcutCost">
                     </div>
                     <div class="col-md-2">
-                        <input id="offcutPercentage" type="text" name="offcutPercentage">
+                        <input id="offcutPercentage" type="text" name="offcutPercentage" oninput="calculateCost()">
                     </div>
                 </div>
             </div>
