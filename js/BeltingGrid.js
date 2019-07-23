@@ -122,7 +122,7 @@ function getPercentageOffcut (size, direction) {
 }
 
 function calculateCost() {
-    let costModal = document.querySelector('#cutCostModal');
+    let costModal = document.querySelector('#belt-cut-cost');
     let offcutPercentage = parseFloat(costModal.querySelector("#offcutPercentage").value);
     let cutPercentage = 100 - offcutPercentage;
     let total_qty = 40;
@@ -138,7 +138,7 @@ function calculateCost() {
 
 function setCostInformation(id, offcutData) {
     let currentCut = gridData["DemoGrid"].gridElement.children('li')[id];
-    let costModal = document.querySelector('#cutCostModal');
+    let costModal = document.querySelector('#belt-cut-cost');
     let cutLength = parseInt(currentCut.dataset.h) / 12;
     let cutWidth = parseInt(currentCut.dataset.w);
     let offcutLength = offcutData.h / 12;

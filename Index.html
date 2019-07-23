@@ -14,34 +14,32 @@
     <script src="lib/hootsuite/spec/djangoGridGallery.js"></script>
 </head>
 
-<div id="dialog" title="Cell Settings">
+<div id="belt-cut-settings" title="Cut Settings">
     <div>
         <label>Size</label>
     </div>
-    <div>
-        <span style="right: 0;">
+    <div class="info">
+        <span>
             Length:
-            <input type="text" class="item_lenFT" style="width: 35px;"> FT
-            <input type="text" class="item_lenIN" style="width: 35px;"> IN
-
-            Width: <input type="text" class="item_w" style="width: 35px;"> IN
+            <input type="text" class="lenFT"> FT
+            <input type="text" class="lenIN"> IN
+            Width: <input type="text" class="width"> IN
         </span>
     </div>
     <div>
-        <button type="button" class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
-            style="margin-bottom:15px;" data-toggle="modal" data-target="#cutCostModal">Horizontal Offcut</button>
-        <button type="button" class="btn add-vertical-offcut" href="#add-vertical-offcut" style="margin-bottom:15px;"
-            data-toggle="modal" data-target="#offcutCost">Vertical Offcut</button>
+        <button class="btn add-horizontal-offcut" href="#add-horizontal-offcut"
+            data-toggle="modal" data-target="#belt-cut-cost">Horizontal Offcut</button>
+        <button class="btn add-vertical-offcut" href="#add-vertical-offcut"
+            data-toggle="modal" data-target="#belt-cut-cost">Vertical Offcut</button>
     </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="belt-new-cut" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                <h5 class="modal-title">New cut</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -54,18 +52,17 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary add-cust-cell" href="#add-cust-cell" data-toggle="modal"
-                    data-target="#exampleModal">Create</button>
+                    data-target="#belt-new-cut">Create</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="cutCostModal" tabindex="-1" role="dialog" aria-labelledby="offcutCostLabel"
-    aria-hidden="true">
+<div class="modal fade" id="belt-cut-cost" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Calculate Cost</h5>
+                <h5 class="modal-title">Calculate Cost</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -137,11 +134,10 @@
         <p>Scale</p>
         <p>2' x 1.00"</p>
         <hr />
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cut</button>
-        <hr />
-        <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
-        <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
-        <button type="button" class="btn" style="margin-bottom:15px;">Print</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#belt-new-cut">Add Cut</button>
+        <button type="button" class="btn" onclick="changeZoom(1)"> Zoom In </button>
+        <button type="button" class="btn" onclick="changeZoom(-1)"> Zoom Out </button>
+        <button type="button" class="btn"> Print </button>
     </div>
     <div id="main" class="vbox">
         <div id="info-general">
