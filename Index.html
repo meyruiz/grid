@@ -2,22 +2,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Belting Grid</title>
-
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="css/jquery-ui.min.css" />
     <link rel="stylesheet" href="css/site.css" />
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="js/site.js" asp-append-version="true"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="lib/hootsuite/src/jquery-3.1.1.min.js"></script>
     <script src="lib/hootsuite/src/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
     <script src="lib/hootsuite/src/gridList.js"></script>
     <script src="lib/hootsuite/src/jquery.gridList.js"></script>
     <script src="lib/hootsuite/spec/djangoGridGallery.js"></script>
@@ -141,38 +132,37 @@
     </div>
 </div>
 
-<div class="container body-content hbox viewport">
-    <body>
-        <div id="scale">
-            <p>Scale</p>
-            <p>2' x 1.00"</p>
-            <hr />
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cut</button>
-            <hr />
-            <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
-            <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
-            <button type="button" class="btn" style="margin-bottom:15px;">Print</button>
+<body id="belt-grid" class="hbox">
+    <div id="scale">
+        <p>Scale</p>
+        <p>2' x 1.00"</p>
+        <hr />
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cut</button>
+        <hr />
+        <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(1)">Zoom In</button>
+        <button type="button" class="btn" style="margin-bottom:15px;" onclick="changeZoom(-1)">Zoom Out</button>
+        <button type="button" class="btn" style="margin-bottom:15px;">Print</button>
+    </div>
+    <div id="main" class="vbox">
+        <div id="info-general">
+            <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL
+                REINFORCED BELT LOT: D0118990-B CUST: ACME MINING OF MINNESOTA, INC</p>
+            <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
         </div>
-        <div id="main" class="vbox">
-            <div id="info-general">
-                <p>SIZE: <span id="gridHeight">600</span>' X <span id="gridWidth">84</span>.0000" ITEM: FERROFLEX STEEL
-                    REINFORCED BELT LOT: D0118990-B CUST: ACME MINING OF MINNESOTA, INC</p>
-                <p>REQUIRED: 2 CUTS - 80'6.0000" X 36.0000 ****1 OF 2 ADDED ****</p>
+        <div id="container">
+            <div class='ruler-horizontal'></div>
+            <div id="grid-container" class="grid-container">
+                <div class='ruler-vertical'></div>
+                <ul id="grid" class="grid">
+                    <li class="position-highlight">
+                        <div class="inner"></div>
+                    </li>
+                </ul>
             </div>
-            <div id="container">
-                <div class='ruler-horizontal'></div>
-                <div id="grid-container" class="grid-container">
-                    <div class='ruler-vertical'></div>
-                    <ul id="grid" class="grid">
-                        <li class="position-highlight">
-                            <div class="inner"></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <button type="button" class="btn save" style="float:right; width:60px;">Save</button>
         </div>
+        <button type="button" class="btn save" style="float:right; width:60px;">Save</button>
     </div>
 </body>
 
-<script src="lib/hootsuite/spec/BeltingGrid.js"></script>
+<script src="js/BeltingGrid.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>

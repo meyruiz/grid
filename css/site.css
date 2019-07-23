@@ -13,6 +13,16 @@ html, body, .viewport {
     margin: 0;
 }
 
+#belt-grid #scale {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+    #belt-grid #scale .btn {
+        width: 100%;
+    }
+
 #dialog {
     z-index: 2;
 }
@@ -45,17 +55,6 @@ html, body, .viewport {
     -ms-flex-direction: column;
     flex-direction: column;
 }
-
-#scale {
-    -webkit-flex: 0.4;
-    -ms-flex: 0.4;
-    flex: 0.4;
-}
-
-    #scale .btn {
-        width: 100%;
-        /*max-width: 100px;*/
-    }
 
 #main {
     -webkit-flex: 5;
@@ -270,8 +269,8 @@ button:hover {
 .ruler-horizontal {
     position: relative;
     display: flex;
-    top: -20px;
-    left: 15px;
+    top: -17px;
+    left: 21px;
     width: calc(100% - 40px);
     justify-content: space-between;
 }
