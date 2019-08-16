@@ -6,8 +6,6 @@ const rulerHorizontal = document.querySelector(".ruler-horizontal");
 const widthHorizontalRuler = grid.clientWidth;
 const rulerVertical = document.querySelector(".ruler-vertical");
 const widthVerticalRuler = rulerVertical.clientHeight;
-const gridWidth = 84;
-const gridHeight = 600;
 let flagResize = false;
 
 $(document).ready(function () {

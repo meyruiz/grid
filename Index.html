@@ -14,6 +14,12 @@
     <script src="lib/hootsuite/spec/djangoGridGallery.js"></script>
 </head>
 
+<script>
+    var gridWidth = 48;
+    var gridHeight = 80;
+    document.write("<style> #belt-grid #grid {  width:" + (gridWidth*20+1) + "px !important; height: " + (gridHeight*20+1) + "px !important; }  </style>")
+</script>
+
 <div id="belt-cut-settings" title="Cut Settings">
     <div>
         <label>Size</label>
